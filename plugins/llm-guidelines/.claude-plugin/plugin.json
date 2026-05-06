@@ -1,0 +1,12 @@
+{
+  "name": "llm-guidelines",
+  "version": "2026.05",
+  "description": "Apply the community guidelines for empirical SE studies involving LLMs to a paper draft and its supplementary material.",
+  "homepage": "https://llm-guidelines.org",
+  "repository": "https://github.com/se-uhd/llm-guidelines-skill",
+  "license": "CC-BY-4.0",
+  "author": {
+    "name": "Software Engineering Group, Heidelberg University",
+    "url": "https://github.com/se-uhd"
+  }
+}

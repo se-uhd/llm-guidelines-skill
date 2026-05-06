@@ -1,0 +1,18 @@
+{
+  "name": "llm-guidelines",
+  "description": "Reporting guidelines for empirical software engineering studies involving LLMs, packaged as an Agent Skill.",
+  "owner": {
+    "name": "Software Engineering Group, Heidelberg University",
+    "url": "https://github.com/se-uhd"
+  },
+  "plugins": [
+    {
+      "name": "llm-guidelines",
+      "source": "./plugins/llm-guidelines",
+      "description": "Apply the community guidelines for empirical SE studies involving LLMs to a paper draft and its supplementary material.",
+      "version": "2026.05",
+      "homepage": "https://llm-guidelines.org",
+      "license": "CC-BY-4.0"
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+# Advantages and Challenges
+
+Using LLMs in empirical SE research, whether as tools for researchers or for software engineers, offers several potential advantages but also raises fundamental challenges that cut across the study types described above.
+
+## Advantages
+
+The primary advantage of using LLMs for research tasks is *speed, cost reduction, and scalability*. LLMs can annotate, judge, synthesize, and simulate faster and at lower cost than human researchers, with studies showing cost reductions of 50–96% on various natural language tasks (S. Wang et al. 2021) (e.g., Z. He et al. (2024) found that GPT-4 annotation required only two days and 122.08 USD compared to several weeks and 4,508 USD for a comparable MTurk pipeline (Z. He et al. 2024)). Similarly, augmenting or replacing human participants with LLM-generated virtual participants would reduce recruitment effort (Madampe et al. 2024). This efficiency unlocks scalability: qualitative research traditionally does not scale well to large samples, but LLMs allow researchers to analyze larger datasets (Bano et al. 2024; Barros et al. 2025; Morais Leça et al. 2025) and support larger judgment datasets.
+
+LLMs can also *automate* tasks such as coding qualitative data, assessing artifact quality, and generating summaries, reducing cognitive demands and resources required for qualitative research. Some studies suggest that LLMs may improve *consistency*: ChatGPT’s accuracy exceeded crowd workers by approximately 25%, and LLMs can achieve higher inter-rater agreement than crowd workers and trained annotators (Gilardi, Alizadeh, and Kubli 2023). However, no compelling evidence supports claims that LLMs are less biased than human annotators (Gilardi, Alizadeh, and Kubli 2023).
+
+LLMs could potentially provide *access to otherwise-inaccessible research contexts*. *If* virtual participants’ behavior is sufficiently similar to human participants, LLMs could access underrepresented and hard-to-reach populations, strengthen generalizability and inclusiveness, impute missing data (see [*LLMs for Synthesis*](../study-types/llms-for-synthesis.md)), and enable research that is ethically problematic with real humans (e.g., questions that would force a human to relive past trauma do not harm an LLM).
+
+Studying real-world LLM-based tools allows researchers to *understand the state of practice*, uncovering usage patterns, adoption rates, and contextual factors, and *generate hypotheses* about how LLMs affect developer productivity, collaboration, and decision-making. From an engineering perspective, developing LLM-based tools *requires less task-specific engineering* than traditional SE approaches such as static analysis or symbolic execution, because a single model can handle diverse inputs without language-specific parsers or hand-crafted rules. Good benchmarks provide *standardized evaluation and model comparison*, reducing research effort and supporting open science by providing common ground for sharing data and results. Benchmarks built for specific SE tasks can help identify LLM weaknesses and support optimization and fine-tuning.
+
+## Challenges
+
+The stochastic nature of LLM responses, where identical prompts may yield different outputs, *undermines replicability* across all study types, complicating interpretation of experimental results and test-retest reliability. More broadly, *reliability* is a persistent concern: conceptualizing an LLM-as-judge or LLM-as-annotator as a measurement instrument, researchers should expect validity, test-retest reliability, inter-rater reliability, minimal error, and measurement invariance (Ralph et al. 2024). However, LLMs show substantial variability depending on the dataset and task (Pangakis, Wolken, and Fasching 2023), are sensitive to prompt variations (Reiss 2023) and option order (Pezeshkpour and Hruschka 2024), can behave differently when reviewing their own outputs (Panickssery, Bowman, and Feng 2024), and can be unreliable for high-stakes labeling (X. Wang et al. 2024). Crucially, *reliability does not imply validity*: a reliable LLM might be reliably inaccurate (Zhou, Chen, and Yu 2024), and for tasks with no single correct answer, the statistical framework pushes outputs toward the most likely answer, which may not be the best one (Bavaresco et al. 2024). See [*Version and Configuration*](../guidelines/report-model-version-configuration-and-customizations.md) and [*Limitations and Mitigations*](../guidelines/report-limitations-and-mitigations.md) for reporting guidance on replicability and reliability.
+
+The *rapid evolution* of LLMs and LLM-based tools, combined with professionals rapidly learning how to employ them, complicates longitudinal comparisons and may quickly render study findings obsolete (e.g., GPT-4’s accuracy on a simple mathematical task dropped from 84% to 51% within three months (Chen, Zaharia, and Zou 2024)).
+
+The prevalence of *proprietary tools and opaque training data* limits researchers’ ability to assess and mitigate biases, and enables benchmark contamination (Ahuja, Gumma, and Sitaram 2024). LLMs exhibit *bias* in multiple forms: tendencies to overestimate certain labels (Zhu et al. 2023), well-documented fairness issues (Gallegos et al. 2024), and the potential to reinforce prejudices. When simulating human participants, LLMs are “*likely to both misportray and flatten the representations of demographic groups*” (A. Wang, Morgenstern, and Dickerson 2025). See [*Open LLMs*](../guidelines/use-an-open-llm-as-a-baseline.md) and [*Limitations and Mitigations*](../guidelines/report-limitations-and-mitigations.md) for mitigation strategies.
+
+*Evaluation difficulty* is inherent in studying LLM-based tools and benchmarks. Benchmarks may lack construct validity (Ralph et al. 2024), usually do not capture the full complexity of software engineering work (Chandra 2025), and may lead to *overconfidence* and overfitting (Wan et al. 2024). LLMs are also susceptible to adversarial manipulation where semantics-preserving changes may deceive them into accepting flawed artifacts (J. He et al. 2026). See [*Benchmarks and Metrics*](../guidelines/use-suitable-baselines-benchmarks-and-metrics.md) for detailed guidance on benchmark design, including Cao et al. (2026)’s (Cao et al. 2026) guidelines for coding task benchmarks.
+
+A fundamental challenge is *philosophical and methodological incongruence* with qualitative research. In a recent open letter, 419 experienced qualitative researchers argued “*that analytic approaches such as reflexive thematic analysis are human research practices requiring a subjective, positioned, and reflexive researcher and therefore the use of GenAI in such approaches is not methodologically congruent*” (Jowsey et al. 2025). LLMs lack the capacity for genuinely reflexive qualitative analysis because they operate on statistical prediction without understanding the meaning of the data being analyzed (Jowsey et al. 2025; Bano, Zowghi, and Whittle 2023; Montes et al. 2025). Effective use requires structured prompts and careful human oversight (Barros et al. 2025); see [*Human Validation*](../guidelines/use-human-validation-for-llm-outputs.md) and [*Limitations and Mitigations*](../guidelines/report-limitations-and-mitigations.md) for guidance.
+
+There is *insufficient evidence* for the effectiveness of LLMs in most research roles. No compelling evidence exists that LLMs can accurately simulate human participants (Schröder et al. 2025) or reliably judge most relevant properties of SE artifacts; gathering such evidence for each specific usage may be quite difficult (Harding et al. 2024). LLMs may be better suited for augmenting rather than replacing human researchers (S. Wang et al. 2021; Z. He et al. 2024), but even then, limited evidence exists that augmentation increases *effectiveness* as well as *efficiency* (Schröder et al. 2025). When LLM outputs are incorrect, they can negatively *affect human judgment* (Huang, Kwak, and An 2023; Pan et al. 2024); see [*Human Validation*](../guidelines/use-human-validation-for-llm-outputs.md) for mitigation strategies.
+
+Majority voting across multiple outputs improves reliability but increases *cost and environmental impact* (Reiss 2023; S. Wang et al. 2021). While open models are available, the most capable ones require substantial hardware; relying on *cloud-based APIs* introduces concerns related to data privacy, security, and replicability. See [*Limitations and Mitigations*](../guidelines/report-limitations-and-mitigations.md) for sustainability considerations.
+
+Field study findings face *generalizability* challenges because outcomes may be highly sensitive to individual differences, usage patterns, goals, and contexts. Field studies must be “dependable” (Sullivan and Sargeant 2011) beyond traditional validity criteria, which complicates methodology; see [*Limitations and Mitigations*](../guidelines/report-limitations-and-mitigations.md) for a detailed threat taxonomy.
+
+## References
+
+Ahuja, Sanchit, Varun Gumma, and Sunayana Sitaram. 2024. “Contamination Report for Multilingual Benchmarks.” *CoRR* abs/2410.16186. <https://doi.org/10.48550/ARXIV.2410.16186>.
+
+Bano, Muneera, Rashina Hoda, Didar Zowghi, and Christoph Treude. 2024. “Large Language Models for Qualitative Research in Software Engineering: Exploring Opportunities and Challenges.” *Autom. Softw. Eng.* 31 (1): 8. <https://doi.org/10.1007/S10515-023-00407-8>.
+
+Bano, Muneera, Didar Zowghi, and Jon Whittle. 2023. “Exploring Qualitative Research Using LLMs.” *CoRR* abs/2306.13298. <https://doi.org/10.48550/ARXIV.2306.13298>.
+
+Barros, Cauã Ferreira, Bruna Borges Azevedo, Valdemar Vicente Graciano Neto, Mohamad Kassab, Marcos Kalinowski, Hugo Alexandre Dantas do Nascimento, and Michelle C. G. S. P. Bandeira. 2025. “Large Language Model for Qualitative Research: A Systematic Mapping Study.” In *IEEE/ACM International Workshop on Methodological Issues with Empirical Studies in Software Engineering, WSESE@ICSE 2025, Ottawa, ON, Canada, May 3, 2025*, 48–55. IEEE. <https://doi.org/10.1109/WSESE66602.2025.00015>.
+
+Bavaresco, Anna, Raffaella Bernardi, Leonardo Bertolazzi, Desmond Elliott, Raquel Fernández, Albert Gatt, Esam Ghaleb, et al. 2024. “LLMs Instead of Human Judges? A Large Scale Empirical Study Across 20 NLP Evaluation Tasks.” *CoRR* abs/2406.18403. <https://doi.org/10.48550/ARXIV.2406.18403>.
+
+Cao, Jialun, Yuk-Kit Chan, Zixuan Ling, Wenxuan Wang, Shuqing Li, Mingwei Liu, Ruixi Qiao, et al. 2026. “Rigor, Reliability, and Reproducibility Matter: A Decade-Scale Survey of 572 Code Benchmarks.” *CoRR* abs/2501.10711. <https://arxiv.org/abs/2501.10711>.
+
+Chandra, Satish. 2025. “<span class="nocase">Benchmarks for AI in Software Engineering (BLOG@CACM)</span>.” <https://cacm.acm.org/blogcacm/benchmarks-for-ai-in-software-engineering/>.
+
+Chen, Lingjiao, Matei Zaharia, and James Zou. 2024. “How Is ChatGPT’s Behavior Changing over Time?” *Harvard Data Science Review* 6 (2). <https://doi.org/10.1162/99608f92.5317da47>.
+
+Gallegos, Isabel O., Ryan A. Rossi, Joe Barrow, Md. Mehrab Tanjim, Sungchul Kim, Franck Dernoncourt, Tong Yu, Ruiyi Zhang, and Nesreen K. Ahmed. 2024. “Bias and Fairness in Large Language Models: A Survey.” *Comput. Linguistics* 50 (3): 1097–1179. [https://doi.org/10.1162/COLI\\A\\00524](https://doi.org/10.1162/COLI\_A\_00524).
+
+Gilardi, Fabrizio, Meysam Alizadeh, and Maël Kubli. 2023. “ChatGPT Outperforms Crowd Workers for Text-Annotation Tasks.” *Proceedings of the National Academy of Sciences* 120 (30): e2305016120. <https://doi.org/10.1073/pnas.2305016120>.
+
+Harding, Jacqueline, William D’Alessandro, N. G. Laskowski, and Robert Long. 2024. “AI Language Models Cannot Replace Human Research Participants.” *AI Soc.* 39 (5): 2603–5. <https://doi.org/10.1007/S00146-023-01725-X>.
+
+He, Junda, Jieke Shi, Terry Yue Zhuo, Christoph Treude, Jiamou Sun, Zhenchang Xing, Xiaoning Du, and David Lo. 2026. “LLM-as-a-Judge for Software Engineering: Literature Review, Vision, and the Road Ahead.” *ACM Transactions on Software Engineering and Methodology*. <https://doi.org/10.1145/3797276>.
+
+He, Zeyu, Chieh-Yang Huang, Chien-Kuang Cornelia Ding, Shaurya Rohatgi, and Ting-Hao Kenneth Huang. 2024. “If in a Crowdsourced Data Annotation Pipeline, a GPT-4.” In *Proceedings of the CHI Conference on Human Factors in Computing Systems, CHI 2024*, edited by Florian ’Floyd’Mueller, Penny Kyburz, Julie R. Williamson, Corina Sas, Max L. Wilson, Phoebe O. Toups Dugas, and Irina Shklovski, 1040:1–25. ACM. <https://doi.org/10.1145/3613904.3642834>.
+
+Huang, Fan, Haewoon Kwak, and Jisun An. 2023. “Is ChatGPT Better Than Human Annotators? Potential and Limitations of ChatGPT in Explaining Implicit Hate Speech.” In *Companion Proceedings of the ACM Web Conference 2023, WWW 2023*, edited by Ying Ding, Jie Tang, Juan F. Sequeda, Lora Aroyo, Carlos Castillo, and Geert-Jan Houben, 294–97. ACM. <https://doi.org/10.1145/3543873.3587368>.
+
+Jowsey, Tanisha, Virginia Braun, Victoria Clarke, Victoria Clarke, Deborah Lupton, and Michelle Fine. 2025. “We Reject the Use of Generative Artificial Intelligence for Reflexive Qualitative Research.” *SSRN*. <https://doi.org/10.2139/ssrn.5676462>.
+
+Madampe, Kashumi, John Grundy, Rashina Hoda, and Humphrey O. Obie. 2024. “The Struggle Is Real! The Agony of Recruiting Participants for Empirical Software Engineering Studies.” In *2024 IEEE Symposium on Visual Languages and Human-Centric Computing (VL/HCC), Liverpool, UK, September 2-6, 2024*, 417–22. IEEE. <https://doi.org/10.1109/VL/HCC60511.2024.00065>.
+
+Montes, Cristina Martinez, Robert Feldt, Cristina Miguel Martos, Sofia Ouhbi, Shweta Premanandan, and Daniel Graziotin. 2025. “Large Language Models in Thematic Analysis: Prompt Engineering, Evaluation, and Guidelines for Qualitative Software Engineering Research.” *CoRR* abs/2510.18456. <https://doi.org/10.48550/ARXIV.2510.18456>.
+
+Morais Leça, Matheus de, Lucas Valença, Reydne Santos, and Ronnie de Souza Santos. 2025. “Applications and Implications of Large Language Models in Qualitative Analysis: A New Frontier for Empirical Software Engineering.” In *IEEE/ACM International Workshop on Methodological Issues with Empirical Studies in Software Engineering, WSESE@ICSE 2025, Ottawa, ON, Canada, May 3, 2025*, 36–43. IEEE. <https://doi.org/10.1109/WSESE66602.2025.00013>.
+
+Pan, Qian, Zahra Ashktorab, Michael Desmond, Martin Santillan Cooper, James Johnson, Rahul Nair, Elizabeth Daly, and Werner Geyer. 2024. “Human-Centered Design Recommendations for <span class="nocase">LLM-as-a-Judge</span>.” In *ACL 2024 Workshop HuCLLM*. arXiv. <https://doi.org/10.48550/arXiv.2407.03479>.
+
+Pangakis, Nicholas, Samuel Wolken, and Neil Fasching. 2023. “Automated Annotation with Generative AI Requires Validation.” *CoRR* abs/2306.00176. <https://doi.org/10.48550/ARXIV.2306.00176>.
+
+Panickssery, Arjun, Samuel R. Bowman, and Shi Feng. 2024. “LLM Evaluators Recognize and Favor Their Own Generations.” In *Advances in Neural Information Processing Systems 38: Annual Conference on Neural Information Processing Systems 2024, NeurIPS 2024, Vancouver, BC, Canada, December 10 - 15, 2024*, edited by Amir Globersons, Lester Mackey, Danielle Belgrave, Angela Fan, Ulrich Paquet, Jakub M. Tomczak, and Cheng Zhang. [http://papers.nips.cc/paper\\files/paper/2024/hash/7f1f0218e45f5414c79c0679633e47bc-Abstract-Conference.html](http://papers.nips.cc/paper\_files/paper/2024/hash/7f1f0218e45f5414c79c0679633e47bc-Abstract-Conference.html).
+
+Pezeshkpour, Pouya, and Estevam Hruschka. 2024. “Large Language Models Sensitivity to the Order of Options in Multiple-Choice Questions.” In *Findings of the Association for Computational Linguistics: NAACL 2024, Mexico City, Mexico, June 16-21, 2024*, edited by Kevin Duh, Helena Gómez-Adorno, and Steven Bethard, NAACL 2024:2006–17. Findings of ACL. Association for Computational Linguistics. <https://doi.org/10.18653/V1/2024.FINDINGS-NAACL.130>.
+
+Ralph, Paul, Miikka Kuutila, Hera Arif, and Bimpe Ayoola. 2024. “Teaching Software Metrology: The Science of Measurement for Software Engineering.” In *Handbook on Teaching Empirical Software Engineering*, edited by Daniel Méndez, Paris Avgeriou, Marcos Kalinowski, and Nauman Bin Ali, 101–54. Springer Nature Switzerland. [https://doi.org/10.1007/978-3-031-71769-7\\5](https://doi.org/10.1007/978-3-031-71769-7\_5).
+
+Reiss, Michael V. 2023. “Testing the Reliability of ChatGPT for Text Annotation and Classification: A Cautionary Remark.” *CoRR* abs/2304.11085. <https://doi.org/10.48550/ARXIV.2304.11085>.
+
+Schröder, Sarah, Thekla Morgenroth, Ulrike Kuhl, Valerie Vaquet, and Benjamin Paaßen. 2025. “Large Language Models Do Not Simulate Human Psychology.” *CoRR* abs/2508.06950. <https://doi.org/10.48550/ARXIV.2508.06950>.
+
+Sullivan, Gail M, and Joan Sargeant. 2011. “Qualities of Qualitative Research: Part I.” *J Grad Med Educ* 3 (4): 449–52.
+
+Wan, Mengting, Tara Safavi, Sujay Kumar Jauhar, Yujin Kim, Scott Counts, Jennifer Neville, Siddharth Suri, et al. 2024. “TnT-LLM: Text Mining at Scale with Large Language Models.” In *Proceedings of the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining, KDD 2024*, edited by Ricardo Baeza-Yates and Francesco Bonchi, 5836–47. ACM. <https://doi.org/10.1145/3637528.3671647>.
+
+Wang, Angelina, Jamie Morgenstern, and John P. Dickerson. 2025. “Large Language Models That Replace Human Participants Can Harmfully Misportray and Flatten Identity Groups.” *Nat. Mac. Intell.* 7 (3): 400–411. <https://doi.org/10.1038/S42256-025-00986-Z>.
+
+Wang, Shuohang, Yang Liu, Yichong Xu, Chenguang Zhu, and Michael Zeng. 2021. “Want to Reduce Labeling Cost? GPT-3 Can Help.” In *Findings of the Association for Computational Linguistics: EMNLP 2021, Virtual Event / Punta Cana, Dominican Republic, 16-20 November, 2021*, edited by Marie-Francine Moens, Xuanjing Huang, Lucia Specia, and Scott Wen-tau Yih, EMNLP 2021:4195–205. Findings of ACL. Association for Computational Linguistics. <https://doi.org/10.18653/V1/2021.FINDINGS-EMNLP.354>.
+
+Wang, Xinru, Hannah Kim, Sajjadur Rahman, Kushan Mitra, and Zhengjie Miao. 2024. “Human-LLM Collaborative Annotation Through Effective Verification of LLM Labels.” In *Proceedings of the CHI Conference on Human Factors in Computing Systems, CHI 2024*, edited by Florian ’Floyd’Mueller, Penny Kyburz, Julie R. Williamson, Corina Sas, Max L. Wilson, Phoebe O. Toups Dugas, and Irina Shklovski, 303:1–21. ACM. <https://doi.org/10.1145/3613904.3641960>.
+
+Zhou, Ruiyang, Lu Chen, and Kai Yu. 2024. “Is LLM a Reliable Reviewer? A Comprehensive Evaluation of LLM on Automatic Paper Reviewing Tasks.” In *Proceedings of the 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation, LREC/COLING 2024, 20-25 May, 2024, Torino, Italy*, edited by Nicoletta Calzolari, Min-Yen Kan, Véronique Hoste, Alessandro Lenci, Sakriani Sakti, and Nianwen Xue, 9340–51. ELRA; ICCL. <https://aclanthology.org/2024.lrec-main.816>.
+
+Zhu, Yiming, Peixian Zhang, Ehsan ul Haq, Pan Hui, and Gareth Tyson. 2023. “Can ChatGPT Reproduce Human-Generated Labels? A Study of Social Computing Tasks.” *CoRR* abs/2304.10145. <https://doi.org/10.48550/ARXIV.2304.10145>.
+
