@@ -1,12 +1,19 @@
 # LLM Guidelines Skill
 
-An [Agent Skill](https://agentskills.io/home) that applies the community guidelines for empirical software engineering studies involving LLMs to a paper draft and its supplementary material. Agent Skills is an open standard originally developed by Anthropic. The format is now read by Cursor, GitHub Copilot, OpenAI Codex, Gemini CLI, Claude Code, and JetBrains Junie, among others; see the [client list](https://agentskills.io/clients).
+An [Agent Skill](https://agentskills.io/home) bundle that applies the community guidelines for empirical software engineering studies involving LLMs to a paper draft and its supplementary material. Agent Skills is an open standard originally developed by Anthropic. The format is now read by Cursor, GitHub Copilot, OpenAI Codex, Gemini CLI, Claude Code, and JetBrains Junie, among others; see the [client list](https://agentskills.io/clients).
+
+The bundle exposes two skills: **explore** for discussing the guidelines and planning a study, and **review** for assessing a concrete draft against the eight guidelines and writing a report.
 
 The guideline content is published at <https://llm-guidelines.org> and authored in the companion paper repository <https://github.com/se-uhd/llm-guidelines-paper>. The Markdown files in this repository are generated from those LaTeX sources; see <https://github.com/se-uhd/llm-guidelines-website> for the conversion pipeline. **Do not edit the generated files in this repository directly.**
 
 ## Versioning
 
-Skill releases use the same CalVer (`YYYY.MM`) tag as the paper and the website. The current version is recorded in `VERSION` and embedded in `.claude-plugin/plugin.json` and `skills/llm-guidelines/SKILL.md`.
+The bundle uses two-part versioning: a guideline version (CalVer `YYYY.MM`, matching the paper and website tag) and an optional skill revision suffix.
+
+- Initial release for a guideline version: bare `YYYY.MM` (e.g., `2026.05`).
+- Skill-only revisions for the same guideline version: `YYYY.MM_revN` (e.g., `2026.05_rev1`, `2026.05_rev2`).
+
+The current version is recorded in `VERSION` and embedded in `.claude-plugin/marketplace.json`, `plugins/llm-guidelines/.claude-plugin/plugin.json`, and the two `SKILL.md` files.
 
 ## Install as a Claude Code plugin
 
@@ -15,69 +22,46 @@ Skill releases use the same CalVer (`YYYY.MM`) tag as the paper and the website.
 /plugin install llm-guidelines
 ```
 
-Invoke from Claude Code with a LaTeX source:
+Two slash commands become available. Use `/llm-guidelines:explore` to discuss the guidelines or plan a study (no arguments). Use `/llm-guidelines:review` to assess a draft:
 
 ```
-/llm-guidelines:llm-guidelines path/to/paper.tex
-```
-
-Or with a PDF:
-
-```
-/llm-guidelines:llm-guidelines path/to/paper.pdf
+/llm-guidelines:explore
+/llm-guidelines:review path/to/paper.tex
+/llm-guidelines:review path/to/paper.pdf
 ```
 
 Supplementary-material paths are optional, and you can pass more than one when artifacts live in separate locations (e.g., code on GitHub, data on Zenodo):
 
 ```
-/llm-guidelines:llm-guidelines path/to/paper.tex path/to/code-repo path/to/dataset
+/llm-guidelines:review path/to/paper.tex path/to/code-repo path/to/dataset
 ```
 
-To pick up a new release after a `YYYY.MM` tag is pushed, refresh the marketplace catalog and update the installed plugin:
+To pick up a new release, refresh the marketplace catalog and reload plugins:
 
 ```
 /plugin marketplace update llm-guidelines
-/plugin update llm-guidelines
 /reload-plugins
 ```
 
-## Install as a user skill (no plugin)
-
-```bash
-git clone https://github.com/se-uhd/llm-guidelines-skill.git
-mkdir -p ~/.claude/skills
-cp -r llm-guidelines-skill/plugins/llm-guidelines/skills/llm-guidelines ~/.claude/skills/
-```
-
-Invoke from Claude Code with a LaTeX source:
-
-```
-/llm-guidelines path/to/paper.tex
-```
-
-Or with a PDF:
-
-```
-/llm-guidelines path/to/paper.pdf
-```
-
-Supplementary-material paths are optional, and you can pass more than one when artifacts live in separate locations (e.g., code on GitHub, data on Zenodo):
-
-```
-/llm-guidelines path/to/paper.tex path/to/code-repo path/to/dataset
-```
+The marketplace update reports `(1 plugin bumped)` when a new version is found and installs it; `/reload-plugins` activates the new commands and skills in the running session.
 
 ## Use in other Agent Skills clients
 
-The directory `skills/llm-guidelines/` is a self-contained Agent Skill. Copy it into the skills location of the client you use; each client's docs are linked from the [Agent Skills client list](https://agentskills.io/clients).
+Each `SKILL.md` under `plugins/llm-guidelines/skills/` references the shared bundled content via `../../shared/...`. To consume the bundle outside Claude Code's plugin loader, place `plugins/llm-guidelines/skills/<mode>/` and `plugins/llm-guidelines/shared/` so that the relative path is preserved (i.e., reproduce the `plugins/llm-guidelines/` subtree under your client's skills directory). Each client's docs are linked from the [Agent Skills client list](https://agentskills.io/clients).
 
-## What the skill does
+## What the skills do
 
-Given a paper (LaTeX source or PDF) and any supplementary material directories, the skill:
+### `/llm-guidelines:explore`
 
-1. Identifies the study type(s) using the taxonomy in `study-types/`.
-2. Confirms the work is in scope using `scope.md`.
-3. Runs a per-guideline assessment using the eight files under `plugins/llm-guidelines/skills/llm-guidelines/guidelines/`.
+A conversational skill for authors planning or discussing an empirical study involving an LLM. It answers questions about the guidelines, walks through design choices, helps decide which study type a project falls under, and draws on the scope statement and the reporting checklist before any draft exists. It does not write any files unless the user asks.
+
+### `/llm-guidelines:review`
+
+A structured skill for assessing a concrete draft. Given a paper (LaTeX source or PDF) and any supplementary material directories, it:
+
+1. Identifies the study type(s) using the taxonomy in `shared/study-types/`.
+2. Confirms the work is in scope using `shared/scope.md`.
+3. Runs a per-guideline assessment using the eight files under `shared/guidelines/`.
 4. Writes a Markdown report to `llm-guidelines-report.md` in the current working directory and prints it to the console.
 
 The report frames findings as opportunities to clarify or strengthen reporting. It is intended as a self-check for authors. Reviewers may use it for inspiration but should not treat it as a rejection rubric.
@@ -91,14 +75,20 @@ plugins/
   llm-guidelines/
     .claude-plugin/
       plugin.json      plugin manifest
+    commands/
+      explore.md       /llm-guidelines:explore slash command
+      review.md        /llm-guidelines:review slash command
     skills/
-      llm-guidelines/
-        SKILL.md       skill entry point and workflow
-        scope.md       in-scope / out-of-scope definition
-        guidelines/    eight standalone guideline files
-        study-types/   seven study-type files plus parent groupings
-        checklist.md   consolidated reporting checklist
-VERSION                CalVer version, mirrors paper and website
+      explore/
+        SKILL.md       explore-mode skill (planning, discussion)
+      review/
+        SKILL.md       review-mode skill (assessing a draft)
+    shared/            content shared by both skills
+      scope.md         in-scope / out-of-scope definition
+      guidelines/      eight standalone guideline files
+      study-types/     seven study-type files plus parent groupings
+      checklist.md     consolidated reporting checklist
+VERSION                YYYY.MM or YYYY.MM_revN
 ```
 
 ## Maintainer notes
