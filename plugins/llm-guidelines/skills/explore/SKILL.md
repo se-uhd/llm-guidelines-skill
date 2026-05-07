@@ -60,14 +60,14 @@ The eight guidelines are stored as standalone files under `../../shared/guidelin
 Stored under `../../shared/study-types/`. Load only the files relevant to the question.
 
 - [LLMs as Tools for Software Engineering Researchers](../../shared/study-types/llms-as-tools-for-software-engineering-researchers.md)
-- [LLMs as Annotators](../../shared/study-types/llms-as-annotators.md)
-- [LLMs as Judges](../../shared/study-types/llms-as-judges.md)
-- [LLMs for Synthesis](../../shared/study-types/llms-for-synthesis.md)
-- [LLMs as Subjects](../../shared/study-types/llms-as-subjects.md)
+    - [LLMs as Annotators](../../shared/study-types/llms-as-annotators.md)
+    - [LLMs as Judges](../../shared/study-types/llms-as-judges.md)
+    - [LLMs for Synthesis](../../shared/study-types/llms-for-synthesis.md)
+    - [LLMs as Subjects](../../shared/study-types/llms-as-subjects.md)
 - [LLMs as Tools for Software Engineers](../../shared/study-types/llms-as-tools-for-software-engineers.md)
-- [Studying LLM Usage in Software Engineering](../../shared/study-types/studying-llm-usage-in-software-engineering.md)
-- [LLMs for New Software Engineering Tools](../../shared/study-types/llms-for-new-software-engineering-tools.md)
-- [Benchmarking LLMs for Software Engineering Tasks](../../shared/study-types/benchmarking-llms-for-software-engineering-tasks.md)
+    - [Studying LLM Usage in Software Engineering](../../shared/study-types/studying-llm-usage-in-software-engineering.md)
+    - [LLMs for New Software Engineering Tools](../../shared/study-types/llms-for-new-software-engineering-tools.md)
+    - [Benchmarking LLMs for Software Engineering Tasks](../../shared/study-types/benchmarking-llms-for-software-engineering-tasks.md)
 - [Advantages and Challenges](../../shared/study-types/advantages-and-challenges.md)
 
 ## Other resources

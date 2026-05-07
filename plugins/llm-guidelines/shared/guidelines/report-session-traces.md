@@ -22,7 +22,7 @@ Researchers **should** report the full interaction logs (prompts sent to the LL
 
 ### Runtime Traces:
 
-When an LLM calls out to external tools (subagents, MCP servers, file systems, APIs, databases) or activates configured artifacts (context files, skills, sub-agents reported under [*System and Prompt Design*](../guidelines/report-system-and-prompt-design.md)), this runtime activity forms a *runtime trace* distinct from the interaction log. Researchers **should** report the complete runtime trace as *supplementary material*, including for each entry the tool or artifact name, arguments (if any), result, and ordering relative to surrounding interaction-log entries. This lets readers attribute task success to the model, the external tools, or their interaction pattern, and distinguish artifacts that were configured from those that actually influenced a given run.
+When an LLM calls out to external tools (subagents, MCP servers, file systems, APIs, databases) or activates configured artifacts (context files, skills, sub-agents reported under [*System and Prompt Design*](../guidelines/report-system-and-prompt-design.md)), this runtime activity forms a *runtime trace* distinct from the interaction log. Researchers **should** report the complete runtime trace as *supplementary material*, including for each entry the tool or artifact name, arguments (if any), result, and ordering relative to surrounding interaction-log entries. This lets readers attribute task success to the model, the external tools, or their interaction pattern, and distinguish artifacts that were configured from those that actually influenced a given run. Researchers **should** record runtime traces in an open format compatible with the OpenTelemetry Protocol (OTLP), such as the OpenTelemetry GenAI semantic conventions (OpenTelemetry Authors 2026) or OpenInference (Arize AI 2026), and report the version used, rather than a study-specific schema.
 
 ### Agentic Plans:
 
@@ -66,9 +66,13 @@ As with other guidelines, missing trace information is typically a minor revisio
 
 ## References
 
+Arize AI. 2026. “OpenInference: AI Observability and Evaluation Specification.” <https://github.com/Arize-ai/openinference>.
+
 Bouzenia, Islem, and Michael Pradel. 2025. “Understanding Software Engineering Agents: A Study of Thought-Action-Result Trajectories.” In *40th IEEE/ACM International Conference on Automated Software Engineering, ASE 2025, Seoul, Korea, Republic of, November 16-20, 2025*, 2846–57. IEEE. <https://doi.org/10.1109/ASE63991.2025.00234>.
 
 Chann, Sherman. 2023. “<span class="nocase">Non-determinism in GPT-4 is caused by Sparse MoE</span>.” <https://152334h.github.io/blog/non-determinism-in-gpt-4/>.
+
+OpenTelemetry Authors. 2026. “OpenTelemetry Semantic Conventions for Generative AI.” <https://opentelemetry.io/docs/specs/semconv/gen-ai/>.
 
 Ronanki, Krishna, Christian Berger, and Jennifer Horkoff. 2023. “Investigating ChatGPT’s Potential to Assist in Requirements Elicitation Processes.” In *2023 49th Euromicro Conference on Software Engineering and Advanced Applications (SEAA)*, 354–61. IEEE.
 
