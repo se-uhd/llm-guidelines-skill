@@ -32,9 +32,9 @@ All reported traces **must** be made publicly available as *supplementary mater
 
 ## Examples
 
-An example of reporting full interaction logs is the study by Ronanki, Berger, and Horkoff (2023) (Ronanki, Berger, and Horkoff 2023), for which the authors reported the full answers of ChatGPT and uploaded them to [Zenodo](https://zenodo.org/records/8124936).
+An example of reporting full interaction logs is the study by Ronanki, Berger, and Horkoff (2023), for which the authors reported the full answers of ChatGPT and uploaded them to [Zenodo](https://zenodo.org/records/8124936).
 
-For agentic systems, Bouzenia and Pradel (2025) (Bouzenia and Pradel 2025) unified the runtime trajectories of three SE agents (*RepairAgent*, *AutoCodeRover*, *OpenHands*) into a common format and released the resulting 120 trajectories with 2,822 LLM interactions as a public dataset.
+For agentic systems, Bouzenia and Pradel (2025) unified the runtime trajectories of three SE agents (*RepairAgent*, *AutoCodeRover*, *OpenHands*) into a common format and released the resulting 120 trajectories with 2,822 LLM interactions as a public dataset.
 
 ## Benefits
 

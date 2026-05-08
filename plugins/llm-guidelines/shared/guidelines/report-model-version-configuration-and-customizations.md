@@ -37,13 +37,13 @@ Based on the documentation that OpenAI and Azure provide (OpenAI 2025; Microsof
 
 > *“We integrated a `gpt-4` model in version `0125-Preview` via the Azure OpenAI Service, and configured it with a temperature of 0.7, top\_p set to 0.8, a maximum token length of 512, and the seed value `23487`. We ran our experiment on 10th January 2025. The system fingerprint was `fp_6b68a8204b`.*
 
-Kang, Yoon, and Yoo (2023) provide a similar statement in their paper on exploring LLM-based bug reproduction (Kang, Yoon, and Yoo 2023):
+Kang, Yoon, and Yoo (2023) provide a similar statement in their paper on exploring LLM-based bug reproduction:
 
 > *“We access OpenAI Codex via its closed beta API, using the code-davinci-002 model. For Codex, we set the temperature to 0.7, and the maximum number of tokens to 256.”*
 
 Our guidelines additionally recommend reporting a checksum/fingerprint and exact dates; otherwise, this example is close to our recommendations.
 
-Dhar, Vaidhyanathan, and Varma (2024) (Dhar, Vaidhyanathan, and Varma 2024) assessed whether LLMs can generate architectural design decisions, detailing the system architecture and the LLM’s role within it. They provide information on the fine-tuning approach and datasets, including the source of architectural decision records, preprocessing methods, and data selection criteria.
+Dhar, Vaidhyanathan, and Varma (2024) assessed whether LLMs can generate architectural design decisions, detailing the system architecture and the LLM’s role within it. They provide information on the fine-tuning approach and datasets, including the source of architectural decision records, preprocessing methods, and data selection criteria.
 
 For self-hosted models, the *supplementary material* can become a true replication package. For example, for models provisioned using [ollama](https://ollama.com/library/), one can report the specific tag and checksum, e.g., *“llama3.3, tag 70b-instruct-q8\_0, checksum d5b5e1b84868.”* Given suitable hardware, running the model is then as easy as executing the following command: `ollama run llama3.3:70b-instruct-q8_0`
 

@@ -16,7 +16,7 @@ When the LLM is central to the study (e.g., as the main tool being evaluated or 
 
 ## Examples
 
-The *ACM Policy on Authorship* (Association for Computing Machinery 2023) suggests disclosing GenAI usage in the acknowledgments section of the *paper*, advising to “err on the side of caution, and include a disclosure in the acknowledgments section of the Work” when uncertain about the need (Association for Computing Machinery 2023). For double-blind review, researchers can add a temporary “AI Disclosure” section where the acknowledgments would appear. An example of an LLM disclosure beyond writing support can be found in a recent paper by Lubos et al. (2024) (Lubos et al. 2024), in which they write in the methodology section:
+The *ACM Policy on Authorship* (Association for Computing Machinery 2023) suggests disclosing GenAI usage in the acknowledgments section of the *paper*, advising to “err on the side of caution, and include a disclosure in the acknowledgments section of the Work” when uncertain about the need (Association for Computing Machinery 2023). For double-blind review, researchers can add a temporary “AI Disclosure” section where the acknowledgments would appear. An example of an LLM disclosure beyond writing support can be found in a recent paper by Lubos et al. (2024), in which they write in the methodology section:
 
 > *“We conducted an LLM-based evaluation of requirements utilizing the Llama 2 language model with 70 billion parameters, fine-tuned to complete chat responses...”*
 
