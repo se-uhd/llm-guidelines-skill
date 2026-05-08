@@ -1,7 +1,7 @@
 ---
 name: explore
 description: Discuss the community LLM reporting guidelines for empirical SE studies. Use this when the user is planning a study, wants to walk through design choices for an empirical study whose method involves an LLM, asks how the guidelines apply to a planned or in-progress project, asks which study type their work falls under (LLMs as annotators, judges, synthesis, or subjects; studying LLM usage in software engineering; LLMs for new SE tools; benchmarking LLMs for SE tasks), or asks about the scope statement, the study-type taxonomy, the eight reporting guidelines, or the reporting checklist before any draft exists.
-version: 2026.05_rev3
+version: 2026.05_rev5
 homepage: https://llm-guidelines.org
 license: CC-BY-4.0
 ---

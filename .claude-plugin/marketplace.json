@@ -10,7 +10,7 @@
       "name": "llm-guidelines",
       "source": "./plugins/llm-guidelines",
       "description": "Community guidelines for empirical SE studies involving LLMs. Use /llm-guidelines:review to check a paper draft and its supplementary material against the eight guidelines, or /llm-guidelines:explore to discuss the guidelines and your study design.",
-      "version": "2026.05_rev3",
+      "version": "2026.05_rev5",
       "homepage": "https://llm-guidelines.org",
       "license": "CC-BY-4.0"
     }
