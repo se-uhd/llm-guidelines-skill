@@ -30,11 +30,9 @@ Our guidelines are intended to help SE researchers design, plan, conduct, and re
 
 We use *paper* to refer to the manuscript PDF, including any appendices bound with it. We use *supplementary material* to refer to any artifact, replication package, dataset, or other resource external to the manuscript PDF (e.g., hosted on Zenodo or Figshare). What belongs in the main body versus an appendix is a presentation choice for authors and venues; what belongs inside the manuscript versus outside it is the reporting-location decision the guidelines make. When a recommendation does not specify a location, either *paper* or *supplementary material* is acceptable.
 
-### How to Navigate this Paper
+### Navigating These Guidelines
 
-This paper is structured to support different reading strategies depending on the reader’s goal. *Researchers planning a new study* may start with the taxonomy of study types (see [*Study Types*](./study-types/)) to identify which types apply to their planned work, then consult the [applicability matrix](./guidelines/#guidelines-by-study-type) to determine which guidelines are requirements (**must**) and which are recommendations (**should**) for those study types. Each guideline section opens with a brief summary in a shaded box, allowing readers to quickly assess relevance before reading the full text. *Researchers writing up results* may prefer to start with the [checklist](./checklist.md), which organizes actionable items by typical paper sections (Introduction, Research Design and Methods, Results, etc.).
-
-*Reviewers* can use the *Advice for Reviewers* subsection at the end of each guideline for targeted guidance on assessing manuscripts.
+These guidelines are structured to support different reading strategies depending on the reader’s goal. *Researchers planning a new study* may start with the taxonomy of study types (see [*Study Types*](./study-types/)) to identify which types apply to their planned work, then consult the [applicability matrix](./guidelines/#guidelines-by-study-type) to determine which guidelines are requirements (**must**) and which are recommendations (**should**) for those study types. Each guideline section opens with a brief summary in a shaded box, allowing readers to quickly assess relevance before reading the full text. *Researchers writing up results* may prefer to start with the [checklist](./checklist.md), which organizes actionable items by typical paper sections (Introduction, Research Design and Methods, Results, etc.). *Reviewers* can use the *Advice for Reviewers* subsection at the end of each guideline for targeted guidance on assessing manuscripts.
 
 ## References
 
