@@ -6,7 +6,7 @@
 
 LLM-based studies rest on artifacts that researchers design, author, or configure before any model is invoked: *software layers* that pre-process data, prepare prompts, filter user requests, or post-process responses, and the *context* those layers feed into each call (Galster et al. 2026). Context includes prompt templates, context files, tool and skill schemas, and retrieval mechanisms that bring external data into the call. For example, ChatGPT and GitHub Copilot use the same underlying models, but their outputs differ substantially because Copilot automatically adds project context. Researchers can also build tools using models directly via APIs.
 
-Prompts are central to any LLM-based study (Sclar et al. 2024). A *prompt* is a concrete input to an LLM that guides its output (Schulhoff et al. 2024). Depending on the task, a prompt may include instructions (e.g., “*classify the following bug report*”), background information, input data, and output format specifications (e.g., “*respond as JSON with fields ‘category’ and ‘justification’*”), with outputs ranging from unstructured text to structured formats such as JSON (DAIR.AI 2024). A *prompt template* is a parameterized structure containing static elements (e.g., instructions, output format specifications) and placeholders for dynamic content (e.g., source code under analysis) that are filled in at runtime to construct concrete prompts (Schulhoff et al. 2024). In automated studies, researchers typically design prompt templates from which individual prompts are then instantiated. Prompts substantially influence a model’s output, so how they are formatted and integrated into an LLM-based study is essential for transparency, verifiability, and reproducibility. Sclar et al. (2024) (Sclar et al. 2024) question the methodological validity of comparing models with “*an arbitrarily chosen, fixed prompt format*”, because their research has shown that the performance of different prompt formats only weakly correlates between different models.
+Prompts are central to any LLM-based study (Sclar et al. 2024). A *prompt* is a concrete input to an LLM that guides its output (Schulhoff et al. 2024). Depending on the task, a prompt may include instructions (e.g., “*classify the following bug report*”), background information, input data, and output format specifications (e.g., “*respond as JSON with fields ‘category’ and ‘justification’*”), with outputs ranging from unstructured text to structured formats such as JSON (DAIR.AI 2024). A *prompt template* is a parameterized structure containing static elements (e.g., instructions, output format specifications) and placeholders for variable content (e.g., source code under analysis) that are filled in at runtime to construct concrete prompts (Schulhoff et al. 2024). In automated studies, researchers typically design prompt templates from which individual prompts are then instantiated. Prompts substantially influence a model’s output, so how they are formatted and integrated into an LLM-based study is essential for transparency, verifiability, and reproducibility. Sclar et al. (2024) (Sclar et al. 2024) question the methodological validity of comparing models with “*an arbitrarily chosen, fixed prompt format*”, because their research has shown that the performance of different prompt formats only weakly correlates between different models.
 
 This section addresses everything researchers put in place before runs begin, complementing [*Version and Configuration*](../guidelines/report-model-version-configuration-and-customizations.md), which focuses on model-specific details, and [*Session Traces*](../guidelines/report-session-traces.md), which covers what happens at runtime.
 
@@ -26,7 +26,7 @@ Researchers **must** report all prompts used in an empirical study, including i
 
 Researchers **should** explain in the *paper* how they developed the prompts and why they decided to follow certain prompting strategies. If prompts from the early phases of a research project are unavailable, researchers **should** at least summarize the prompt evolution.
 
-Prompt development is often iterative, involving collaboration between human researchers and AI tools. Researchers **should** report any instances in which LLMs were used to suggest prompt refinements and how these suggestions were incorporated. A prompt changelog can track prompt evolution, including key revisions and reasons for changes (e.g., v1.0: initial prompt; v2.0: incorporated examples of ideal responses). Because prompt effectiveness varies between models and model versions, researchers **must** make clear which prompts were used for which models in which versions and with which configuration.
+Prompt development is often iterative, involving collaboration between human researchers and AI tools. Researchers **should** report any instances in which LLMs were used to suggest prompt refinements and how these suggestions were incorporated. A prompt changelog can track prompt evolution, including revisions and reasons for changes (e.g., v1.0: initial prompt; v2.0: incorporated examples of ideal responses). Because prompt effectiveness varies between models and model versions, researchers **must** make clear which prompts were used for which models in which versions and with which configuration.
 
 ### Prompting Strategy and Input Handling:
 
@@ -96,11 +96,11 @@ A challenging aspect of prompt reporting is the description of prompt developmen
 
 ## References
 
-Anthropic. 2025. “<span class="nocase">Demystifying Evals for AI Agents</span>.” <https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents>.
+Anthropic. 2025. “Demystifying Evals for AI Agents.” <https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents>.
 
 ———. 2026. “Claude Code Tools Reference.” <https://code.claude.com/docs/en/tools-reference>.
 
-DAIR.AI. 2024. “<span class="nocase">Elements of a Prompt</span>.” <https://www.promptingguide.ai/introduction/elements>.
+DAIR.AI. 2024. “Elements of a Prompt.” <https://www.promptingguide.ai/introduction/elements>.
 
 Galster, Matthias, Seyedmoein Mohsenimofidi, Jai Lal Lulla, Muhammad Auwal Abubakar, Christoph Treude, and Sebastian Baltes. 2026. “Configuring Agentic AI Coding Tools: An Exploratory Study.” In *Proceedings of the 3rd ACM International Conference on AI-Powered Software (AIware 2026)*.
 
@@ -118,7 +118,7 @@ Schulhoff, Sander, Michael Ilie, Nishant Balepur, Konstantine Kahadze, Amanda Li
 
 Sclar, Melanie, Yejin Choi, Yulia Tsvetkov, and Alane Suhr. 2024. “Quantifying Language Models’ Sensitivity to Spurious Features in Prompt Design or: How I Learned to Start Worrying about Prompt Formatting.” In *The Twelfth International Conference on Learning Representations, ICLR 2024, Vienna, Austria, May 7-11, 2024*. OpenReview.net. <https://openreview.net/forum?id=RIu5lyNXjT>.
 
-Willison, Simon. 2026. “<span class="nocase">Opus system prompt</span>.” <https://simonwillison.net/2026/Apr/18/opus-system-prompt/>.
+Willison, Simon. 2026. “Opus system prompt.” <https://simonwillison.net/2026/Apr/18/opus-system-prompt/>.
 
 Yan, Litao, Alyssa Hwang, Zhiyuan Wu, and Andrew Head. 2024. “Ivie: Lightweight Anchored Explanations of Just-Generated Code.” In *Proceedings of the CHI Conference on Human Factors in Computing Systems, CHI 2024*, edited by Florian ’Floyd’Mueller, Penny Kyburz, Julie R. Williamson, Corina Sas, Max L. Wilson, Phoebe O. Toups Dugas, and Irina Shklovski, 140:1–15. ACM. <https://doi.org/10.1145/3613904.3642239>.
 

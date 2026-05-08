@@ -1,6 +1,6 @@
 # Declare LLM Usage and Role
 
-> ***Summary***: Researchers **must** disclose any use of LLMs to support empirical studies in their *paper*, specifying which LLM was used, how it was used, and where in the research process it was employed. They **should** report the exact purpose, the tasks that were automated, and the expected benefits in the *paper*. When the LLM plays a central role, the declaration **should** be prominent and detailed in the methodology section; for tangential uses, a brief statement in the methodology or acknowledgments suffices.
+> ***Summary***: Researchers **must** disclose any use of LLMs to support empirical studies in their *paper*, specifying which LLM was used, how it was used, and where in the research process it was employed. They **should** report the exact purpose, the tasks that were automated, and the expected benefits in the *paper*. When the LLM is central to the study, the declaration **should** be prominent and detailed in the methodology section; for tangential uses, a brief statement in the methodology or acknowledgments suffices.
 
 ## Rationale
 
@@ -12,7 +12,7 @@ When conducting any kind of empirical study involving LLMs, researchers **must**
 
 Beyond generic declarations, researchers **should** report the exact purpose of using an LLM in a study, the tasks it was used to automate, and the expected benefits in the *paper*. A sufficient declaration specifies not only *that* an LLM was used, but also *which* LLM (name and version), *how* it was used (e.g., as an annotator, code generator, or judge), and *where* in the research process it was employed (e.g., data collection, analysis, or synthesis).
 
-When the LLM plays a central role in the study (e.g., as the main tool being evaluated or as a core component of the research method), the declaration **should** be prominent and detailed, appearing in the methodology section with cross-references to the specific guidelines that apply (e.g., Sections [*Version and Configuration*](../guidelines/report-model-version-configuration-and-customizations.md), [*System and Prompt Design*](../guidelines/report-system-and-prompt-design.md), and [*Session Traces*](../guidelines/report-session-traces.md)). When the LLM’s role is more tangential (e.g., used for a single preprocessing step), a brief but explicit statement in the methodology or acknowledgments section is sufficient. In either case, the disclosure **must** be specific enough for readers to assess how the LLM’s involvement may affect the study’s validity and reproducibility.
+When the LLM is central to the study (e.g., as the main tool being evaluated or as a core component of the research method), the declaration **should** be prominent and detailed, appearing in the methodology section with cross-references to the specific guidelines that apply (e.g., Sections [*Version and Configuration*](../guidelines/report-model-version-configuration-and-customizations.md), [*System and Prompt Design*](../guidelines/report-system-and-prompt-design.md), and [*Session Traces*](../guidelines/report-session-traces.md)). When the LLM’s role is more tangential (e.g., used for a single preprocessing step), a brief but explicit statement in the methodology or acknowledgments section is sufficient. In either case, the disclosure **must** be specific enough for readers to assess how the LLM’s involvement may affect the study’s validity and reproducibility.
 
 ## Examples
 
@@ -52,7 +52,7 @@ If undisclosed LLM use is suspected, the reviewer should similarly consult their
 
 ## References
 
-Association for Computing Machinery. 2023. “<span class="nocase">ACM Policy on Authorship</span>.” <https://www.acm.org/publications/policies/new-acm-policy-on-authorship>.
+Association for Computing Machinery. 2023. “ACM Policy on Authorship.” <https://www.acm.org/publications/policies/new-acm-policy-on-authorship>.
 
 Lubos, Sebastian, Alexander Felfernig, Thi Ngoc Trang Tran, Damian Garber, Merfat El Mansi, Seda Polat Erdeniz, and Viet-Man Le. 2024. “Leveraging LLMs for the Quality Assurance of Software Requirements.” In *32nd IEEE International Requirements Engineering Conference, RE 2024, Reykjavik, Iceland, June 24-28, 2024*, edited by Grischa Liebel, Irit Hadar, and Paola Spoletini, 389–97. IEEE. <https://doi.org/10.1109/RE59067.2024.00046>.
 

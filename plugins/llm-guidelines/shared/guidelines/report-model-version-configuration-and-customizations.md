@@ -81,7 +81,7 @@ Missing version, configuration, or parameter information is typically a minor re
 
 Angermeir, Florian, Maximilian Amougou, Mark Kreitz, Andreas Bauer, Matthias Linhuber, Davide Fucci, Fabiola Moyón Constante, Daniel Méndez, and Tony Gorschek. 2025. “Reflections on the Reproducibility of Commercial LLM Performance in Empirical Software Engineering Studies.” *CoRR* abs/2510.25506. <https://doi.org/10.48550/ARXIV.2510.25506>.
 
-Chann, Sherman. 2023. “<span class="nocase">Non-determinism in GPT-4 is caused by Sparse MoE</span>.” <https://152334h.github.io/blog/non-determinism-in-gpt-4/>.
+Chann, Sherman. 2023. “Non-determinism in GPT-4 is caused by Sparse MoE.” <https://152334h.github.io/blog/non-determinism-in-gpt-4/>.
 
 Chen, Lingjiao, Matei Zaharia, and James Zou. 2024. “How Is ChatGPT’s Behavior Changing over Time?” *Harvard Data Science Review* 6 (2). <https://doi.org/10.1162/99608f92.5317da47>.
 
@@ -91,9 +91,9 @@ Holtzman, Ari, Jan Buys, Li Du, Maxwell Forbes, and Yejin Choi. 2020. “The Cur
 
 Kang, Sungmin, Juyeon Yoon, and Shin Yoo. 2023. “Large Language Models Are Few-Shot Testers: Exploring LLM-Based General Bug Reproduction.” In *45th IEEE/ACM International Conference on Software Engineering, ICSE 2023*, 2312–23. IEEE. <https://doi.org/10.1109/ICSE48619.2023.00194>.
 
-Microsoft. 2025. “<span class="nocase">Azure OpenAI Service models</span>.” <https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models>.
+Microsoft. 2025. “Azure OpenAI Service models.” <https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models>.
 
-OpenAI. 2023. “<span class="nocase">How to make your completions outputs consistent with the new seed parameter</span>.” <https://cookbook.openai.com/examples/reproducible_outputs_with_the_seed_parameter>.
+OpenAI. 2023. “How to make your completions outputs consistent with the new seed parameter.” <https://cookbook.openai.com/examples/reproducible_outputs_with_the_seed_parameter>.
 
 ———. 2025. “OpenAI API Introduction.” <https://platform.openai.com/docs/api-reference/chat/streaming>.
 

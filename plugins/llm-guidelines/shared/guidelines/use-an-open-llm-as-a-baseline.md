@@ -20,7 +20,7 @@ Researchers can also explore open-source tools such as Continue, Cline, and open
 
 ## Examples
 
-An increasing number of studies have adopted open LLMs as baseline models. For example, Wang et al. (2024) evaluated seven advanced LLMs, six of which were open-source, testing 145 API mappings drawn from eight popular Python libraries across 28,125 completion prompts aimed at detecting deprecated API usage in code completion (Wang et al. 2024). Moumoula et al. (2024) compared four LLMs on a cross-language code clone detection task (Moumoula et al. 2024). Three evaluated models were open-source. Gonçalves et al. (2025) fine-tuned the open LLM *LLaMA* 3.2 on a refined version of the *DiverseVul* dataset to benchmark vulnerability detection performance (Gonçalves et al. 2025). *CodeBERT*, a bimodal transformer pre-trained by Microsoft Research, has been widely used as an open baseline (Yang et al. 2023; Xia, Shao, and Deng 2024; Sonnekalb et al. 2022; Cai et al. 2024), with model weights, source code, and data-processing scripts published on GitHub (Microsoft 2023).
+An increasing number of studies have adopted open LLMs as baseline models. For example, Wang et al. (2024) evaluated seven advanced LLMs, six of which were open-source, testing 145 API mappings drawn from eight popular Python libraries across 28,125 completion prompts aimed at detecting deprecated API usage in code completion (Wang et al. 2024). Moumoula et al. (2024) compared four LLMs on a cross-language code clone detection task (Moumoula et al. 2024). Three evaluated models were open-source. Gonçalves et al. (2025) fine-tuned the open LLM *LLaMA* 3.2 on a refined version of the *DiverseVul* dataset to benchmark vulnerability detection performance (Gonçalves et al. 2025). *CodeBERT*, a bimodal transformer pre-trained by Microsoft Research, is published with model weights, source code, and data-processing scripts on GitHub (Microsoft 2023). It has been used as an open baseline across diverse SE tasks, including exploit code generation (Yang et al. 2023), vulnerability detection (Xia, Shao, and Deng 2024), code clone detection (Sonnekalb et al. 2022), and programming assistance for exception handling (Cai et al. 2024).
 
 ## Benefits
 
@@ -49,7 +49,7 @@ Reviewers should distinguish between LLM use that is central to the research (e.
 
 Cai, Yuchen, Aashish Yadavally, Abhishek Mishra, Genesis Montejo, and Tien N. Nguyen. 2024. “Programming Assistant for Exception Handling with CodeBERT.” In *Proceedings of the 46th IEEE/ACM International Conference on Software Engineering, ICSE 2024, Lisbon, Portugal, April 14-20, 2024*, 94:1–13. ACM. <https://doi.org/10.1145/3597503.3639188>.
 
-Gibney, Elizabeth. 2024. “<span class="nocase">Not all ‘open source’ AI models are actually open</span>.” *Nature News*. <https://doi.org/10.1038/d41586-024-02012-5>.
+Gibney, Elizabeth. 2024. “Not all ‘open source’ AI models are actually open.” *Nature News*. <https://doi.org/10.1038/d41586-024-02012-5>.
 
 Gonçalves, José, Miguel Silva, Bernardo Cabral, Tiago Dias, Eva Maia, Isabel Praça, Ricardo Severino, and Luı́s Lino Ferreira. 2025. “Evaluating LLaMA 3.2 for Software Vulnerability Detection.” In *Cybersecurity - 9th European Interdisciplinary Cybersecurity Conference, EICC 2025, Rennes, France, June 18-19, 2025, Proceedings*, edited by Isabel Praça, Simona Bernardi, and Pedro R. M. Inácio, 38–51. Communications in Computer and Information Science. Springer. [https://doi.org/10.1007/978-3-031-94855-8\\3](https://doi.org/10.1007/978-3-031-94855-8\_3).
 

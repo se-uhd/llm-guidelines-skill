@@ -70,7 +70,7 @@ Arize AI. 2026. “OpenInference: AI Observability and Evaluation Specification.
 
 Bouzenia, Islem, and Michael Pradel. 2025. “Understanding Software Engineering Agents: A Study of Thought-Action-Result Trajectories.” In *40th IEEE/ACM International Conference on Automated Software Engineering, ASE 2025, Seoul, Korea, Republic of, November 16-20, 2025*, 2846–57. IEEE. <https://doi.org/10.1109/ASE63991.2025.00234>.
 
-Chann, Sherman. 2023. “<span class="nocase">Non-determinism in GPT-4 is caused by Sparse MoE</span>.” <https://152334h.github.io/blog/non-determinism-in-gpt-4/>.
+Chann, Sherman. 2023. “Non-determinism in GPT-4 is caused by Sparse MoE.” <https://152334h.github.io/blog/non-determinism-in-gpt-4/>.
 
 OpenTelemetry Authors. 2026. “OpenTelemetry Semantic Conventions for Generative AI.” <https://opentelemetry.io/docs/specs/semconv/gen-ai/>.
 

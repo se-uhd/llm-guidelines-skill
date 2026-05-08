@@ -1,7 +1,7 @@
 ---
 name: review
 description: Review a paper draft (and any supplementary material) against the community LLM reporting guidelines for empirical SE studies. Use this when the user names a paper, hands you a path to a `.tex` or `.pdf`, asks to check, audit, or review a draft, or when they share a replication package and want it assessed against the eight guidelines (LLMs as annotators, judges, synthesis, or subjects; studying LLM usage in software engineering; LLMs for new SE tools; benchmarking LLMs for SE tasks). Writes a structured report.
-version: 2026.05_rev1
+version: 2026.05_rev2
 homepage: https://llm-guidelines.org
 license: CC-BY-4.0
 ---

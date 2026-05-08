@@ -44,7 +44,7 @@ Bavaresco, Anna, Raffaella Bernardi, Leonardo Bertolazzi, Desmond Elliott, Raque
 
 Cao, Jialun, Yuk-Kit Chan, Zixuan Ling, Wenxuan Wang, Shuqing Li, Mingwei Liu, Ruixi Qiao, et al. 2026. “Rigor, Reliability, and Reproducibility Matter: A Decade-Scale Survey of 572 Code Benchmarks.” *CoRR* abs/2501.10711. <https://arxiv.org/abs/2501.10711>.
 
-Chandra, Satish. 2025. “<span class="nocase">Benchmarks for AI in Software Engineering (BLOG@CACM)</span>.” <https://cacm.acm.org/blogcacm/benchmarks-for-ai-in-software-engineering/>.
+Chandra, Satish. 2025. “Benchmarks for AI in Software Engineering (BLOG@CACM).” <https://cacm.acm.org/blogcacm/benchmarks-for-ai-in-software-engineering/>.
 
 Chen, Lingjiao, Matei Zaharia, and James Zou. 2024. “How Is ChatGPT’s Behavior Changing over Time?” *Harvard Data Science Review* 6 (2). <https://doi.org/10.1162/99608f92.5317da47>.
 
@@ -68,7 +68,7 @@ Montes, Cristina Martinez, Robert Feldt, Cristina Miguel Martos, Sofia Ouhbi, Sh
 
 Morais Leça, Matheus de, Lucas Valença, Reydne Santos, and Ronnie de Souza Santos. 2025. “Applications and Implications of Large Language Models in Qualitative Analysis: A New Frontier for Empirical Software Engineering.” In *IEEE/ACM International Workshop on Methodological Issues with Empirical Studies in Software Engineering, WSESE@ICSE 2025, Ottawa, ON, Canada, May 3, 2025*, 36–43. IEEE. <https://doi.org/10.1109/WSESE66602.2025.00013>.
 
-Pan, Qian, Zahra Ashktorab, Michael Desmond, Martin Santillan Cooper, James Johnson, Rahul Nair, Elizabeth Daly, and Werner Geyer. 2024. “Human-Centered Design Recommendations for <span class="nocase">LLM-as-a-Judge</span>.” In *ACL 2024 Workshop HuCLLM*. arXiv. <https://doi.org/10.48550/arXiv.2407.03479>.
+Pan, Qian, Zahra Ashktorab, Michael Desmond, Martin Santillan Cooper, James Johnson, Rahul Nair, Elizabeth Daly, and Werner Geyer. 2024. “Human-Centered Design Recommendations for LLM-as-a-Judge.” In *ACL 2024 Workshop HuCLLM*. arXiv. <https://doi.org/10.48550/arXiv.2407.03479>.
 
 Pangakis, Nicholas, Samuel Wolken, and Neil Fasching. 2023. “Automated Annotation with Generative AI Requires Validation.” *CoRR* abs/2306.00176. <https://doi.org/10.48550/ARXIV.2306.00176>.
 
