@@ -10,9 +10,7 @@ Two kinds of session trace are important to capture. An *interaction log* captur
 
 Even with the exact same prompts, decoding strategies, and parameters, LLMs can behave non-deterministically. Non-determinism can arise from probabilistic sampling and, even with greedy decoding (temperature = 0), from batching, input preprocessing, and floating-point arithmetic on GPUs (Chann 2023). For other researchers to verify the conclusions drawn from LLM interactions, the traces of what happened at runtime are often as important as the design of the system itself. This matters particularly for studies targeting commercial software-as-a-service (SaaS) solutions such as ChatGPT, and for agentic runs where behavior depends on how the model chose among many possible tool calls.
 
-The rationale is similar to reporting interview transcripts in qualitative research. Just as a human participant might give different answers to the same question asked two months apart, the responses from tools such as ChatGPT can also vary over time, and the trace of an agent’s decisions on any given run is often not reproducible at a later date.
-
-This section addresses runtime reporting and complements [*System and Prompt Design*](../guidelines/report-system-and-prompt-design.md), which covers the static artifacts that determine what the model sees.
+The rationale is similar to reporting interview transcripts in qualitative research. Just as a human participant might give different answers to the same question asked two months apart, the responses from tools such as ChatGPT can also vary over time, and the trace of an agent’s decisions on any given run is often not reproducible at a later date. This guideline addresses runtime reporting and complements [*System and Prompt Design*](../guidelines/report-system-and-prompt-design.md), which covers the static artifacts that determine what the model sees.
 
 ## Recommendations
 
@@ -32,9 +30,7 @@ All reported traces **must** be made publicly available as *supplementary mater
 
 ## Examples
 
-An example of reporting full interaction logs is the study by Ronanki, Berger, and Horkoff (2023), for which the authors reported the full answers of ChatGPT and uploaded them to [Zenodo](https://zenodo.org/records/8124936).
-
-For agentic systems, Bouzenia and Pradel (2025) unified the runtime trajectories of three SE agents (*RepairAgent*, *AutoCodeRover*, *OpenHands*) into a common format and released the resulting 120 trajectories with 2,822 LLM interactions as a public dataset.
+An example of reporting full interaction logs is the study by Ronanki, Berger, and Horkoff (2023), for which the authors reported the full answers of ChatGPT and uploaded them to [Zenodo](https://zenodo.org/records/8124936). For agentic systems, Bouzenia and Pradel (2025) unified the runtime trajectories of three SE agents (*RepairAgent*, *AutoCodeRover*, *OpenHands*) into a common format and released the resulting 120 trajectories with 2,822 LLM interactions as a public dataset.
 
 ## Benefits
 
@@ -48,7 +44,7 @@ Not all systems allow reporting of complete interaction logs with ease, and this
 
 ## Study Types
 
-Runtime trace reporting requirements depend heavily on the study type and on the accessibility of the underlying system.
+Runtime trace reporting requirements depend heavily on the study type and on the accessibility of the underlying system. The general expectation is that interaction logs are reported as *supplementary material* whenever feasible; runtime traces are additionally expected when agentic execution or evaluation harnesses go beyond direct API calls.
 
 For [*Studying LLM Usage*](../study-types/studying-llm-usage-in-software-engineering.md), especially observational studies targeting commercial tools, researchers **must** report the full interaction logs except when transcripts might identify anonymous participants or reveal personal or confidential information. If complete interaction logs cannot be shared (e.g., because they contain confidential information), the prompts and responses **must** at least be summarized and described in the *paper*. For [*LLMs for Tools*](../study-types/llms-for-new-software-engineering-tools.md) that use agentic execution, researchers **should** report runtime traces for the runs used to evaluate the tool. For [*Benchmarking LLMs*](../study-types/benchmarking-llms-for-software-engineering-tasks.md) that use agent-based harnesses, researchers **should** report runtime traces for representative runs, letting readers understand how task success depends on the agent’s decision sequence rather than the model’s raw output alone. For [*LLMs as Annotators*](../study-types/llms-as-annotators.md), [*LLMs as Judges*](../study-types/llms-as-judges.md), [*LLMs for Synthesis*](../study-types/llms-for-synthesis.md), and [*LLMs as Subjects*](../study-types/llms-as-subjects.md), when the research setup involves multi-turn interaction or agentic orchestration, researchers **should** report the corresponding interaction logs and, where applicable, runtime traces.
 

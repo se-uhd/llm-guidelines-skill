@@ -1,4 +1,4 @@
-# Motivation and Scope
+# Scope and Conventions
 
 ## Motivation
 
