@@ -6,7 +6,7 @@ In empirical studies, data is collected from participants through methods such a
 
 ## Examples
 
-Xu et al. (2024) compiled a list of ways LLMs can support social science research, some of which transfer to empirical SE research. For example, LLMs can emulate human responses and behaviors in simulated interviews and focus groups (Gerosa et al. 2024). Similarly, Bano, Gunatilake, and Hoda (2025), investigated biases in LLM-generated candidate profiles in SE recruitment processes. They found biases favoring male candidates, lighter skin tones, and slim physiques, particularly for senior roles. LLMs may be able to simulate end-user feedback and behavior in usability studies, identify usability issues and offering suggestions for improvement based on predefined user personas.
+Xu et al. (2024) compiled a list of ways LLMs can support social science research, some of which transfer to empirical SE research. For example, LLMs can emulate human responses and behaviors in simulated interviews and focus groups (Gerosa et al. 2024). Similarly, Bano, Gunatilake, and Hoda (2025), investigated biases in LLM-generated candidate profiles in SE recruitment processes. They found biases favoring male candidates, lighter skin tones, and slim physiques, particularly for senior roles. LLMs may be able to simulate end-user feedback and behavior in usability studies, identify usability issues, and offer suggestions for improvement based on predefined user personas.
 
 ## References
 

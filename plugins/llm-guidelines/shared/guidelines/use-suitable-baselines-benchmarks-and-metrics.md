@@ -8,15 +8,13 @@ Meaningful evaluation requires well-understood, valid measurement instruments. W
 
 ## Recommendations
 
-Benchmark and metric selection requires understanding the benchmark tasks, what exactly is being measured, and how it relates to the (often latent) variables researchers actually care about. If one or more metrics or benchmarks are used, researchers:
+Benchmark and metric selection requires understanding the benchmark tasks, what exactly is being measured, and how it relates to the (often latent) variables researchers actually care about. When one or more metrics or benchmarks are used, researchers **must** briefly justify in the *paper* why each selected benchmark and metric is suitable for the given task or study, and **must** discuss the reliability and validity (especially construct validity) of those choices. Beyond these requirements, researchers **should**:
 
-- **must** briefly justify (in the *paper*) why selected benchmarks and metrics are suitable for the given task or study;
-- **must** discuss the reliability and validity (especially construct validity) of selected metrics and benchmarks;
-- **should** provide an operational definition of the phenomenon the benchmark is intended to measure (e.g., functional correctness, code maintainability, vulnerability detection), including its scope and any sub-components (Bean et al. 2025);
-- **should** summarize the structure and tasks of the selected benchmark(s), including the programming language(s) and descriptive statistics such as the number of contained tasks and test cases;
-- **should** describe and justify the sampling strategy used to select problems for inclusion in the benchmark (e.g., function-completion problems in *HumanEval*, GitHub issues in *SWE-bench*, vulnerable functions in *DiverseVul*); if non-probability sampling (e.g., convenience) is used, discuss its implications for the generalizability of conclusions (Baltes and Ralph 2022; Bean et al. 2025);
-- **should** discuss the limitations of the selected benchmark(s) (e.g. widely used benchmarks such as *HumanEval* (M. Chen et al. 2021) and *MBPP* (Austin et al. 2021) only test short Python functions, which is not representative of the full breadth of SE work (Chandra 2025));
-- **should** include an example of a task and the corresponding test case(s) to illustrate the structure of the benchmark.
+- provide an operational definition of the phenomenon the benchmark is intended to measure (e.g., functional correctness, code maintainability, vulnerability detection), including its scope and any sub-components (Bean et al. 2025);
+- summarize the structure and tasks of the selected benchmark(s), including the programming language(s) and descriptive statistics such as the number of contained tasks and test cases;
+- describe and justify the sampling strategy used to select problems for inclusion in the benchmark (e.g., function-completion problems in *HumanEval*, GitHub issues in *SWE-bench*, vulnerable functions in *DiverseVul*); if non-probability sampling (e.g., convenience) is used, discuss its implications for the generalizability of conclusions (Baltes and Ralph 2022; Bean et al. 2025);
+- discuss the limitations of the selected benchmark(s) (e.g., widely used benchmarks such as *HumanEval* (M. Chen et al. 2021) and *MBPP* (Austin et al. 2021) only test short Python functions, which is not representative of the full breadth of SE work (Chandra 2025));
+- include an example of a task and the corresponding test case(s) to illustrate the structure of the benchmark.
 
 If multiple benchmarks exist for the same task, researchers **should** compare both performance and design choices (e.g., which tasks are included, how outputs are scored, what aspect of the phenomenon is covered) across benchmarks (Bean et al. 2025). When selecting only a subset of all available benchmarks, researchers **should** use the most specific benchmarks given the context. When adapting an existing benchmark, researchers **should** document what was changed and why, and **should** report performance on both the original and the adapted version where feasible (Bean et al. 2025).
 
@@ -64,7 +62,7 @@ Common problem types for LLM-based studies are classification, recommendation, a
 
 ### Benchmark Examples:
 
-Benchmarks used for code generation include *HumanEval* (available on [GitHub](https://github.com/openai/human-eval)) (M. Chen et al. 2021), *MBPP* (available on [Hugging Face](https://huggingface.co/datasets/google-research-datasets/mbpp)) (Austin et al. 2021), *ClassEval* (available on [GitHub](https://github.com/FudanSELab/ClassEval)) (Du et al. 2023), *LiveCodeBench* (available on [GitHub](https://github.com/LiveCodeBench/LiveCodeBench)) (Jain et al. 2024), and *SWE-bench* (available on [GitHub](https://github.com/swe-bench/SWE-bench)) (Jimenez et al. 2024). An example of a code translation benchmark is *TransCoder* (Rozière et al. 2020) (available on [GitHub](https://github.com/facebookresearch/CodeGen)).
+Benchmarks used for code generation include *HumanEval* (available on [GitHub](https://github.com/openai/human-eval)) (M. Chen et al. 2021), *MBPP* (available on [Hugging Face](https://huggingface.co/datasets/google-research-datasets/mbpp)) (Austin et al. 2021), *ClassEval* (available on [GitHub](https://github.com/FudanSELab/ClassEval)) (Du et al. 2024), *LiveCodeBench* (available on [GitHub](https://github.com/LiveCodeBench/LiveCodeBench)) (Jain et al. 2024), and *SWE-bench* (available on [GitHub](https://github.com/swe-bench/SWE-bench)) (Jimenez et al. 2024). An example of a code translation benchmark is *TransCoder* (Rozière et al. 2020) (available on [GitHub](https://github.com/facebookresearch/CodeGen)).
 
 Most benchmarks focus on generation tasks, but benchmarks for classification and recommendation also exist. For classification, *DiverseVul* (available on [GitHub](https://github.com/wagner-group/diversevul)) (Y. Chen et al. 2023) provides vulnerable and non-vulnerable functions evaluated using standard classification metrics. For recommendation, *CodeSearchNet* (available on [GitHub](https://github.com/github/CodeSearchNet)) (Husain et al. 2019) contains code-documentation pairs evaluated using *Mean Reciprocal Rank*.
 
@@ -98,13 +96,7 @@ For [*Benchmarking LLMs*](../study-types/benchmarking-llms-for-software-engineer
 
 ## Advice for Reviewers
 
-Reviewers should expect manuscripts to:
-
-1. clearly identify the constructs or variables the study aims to measure (e.g., LLM performance, quality of generated code), including independent, dependent, and control variables;
-2. present their measurement model, i.e., which metrics, benchmarks, or baselines are used and how they relate to the target constructs;
-3. justify the selection of any metrics, benchmarks, and baselines used;
-4. discuss *in detail* the assumptions, reliability, and validity (*especially construct validity*) of each benchmark and metric;
-5. articulate any limitations regarding construct and measurement validity.
+Reviewers should expect manuscripts to: (1) clearly identify the constructs or variables the study aims to measure (e.g., LLM performance, quality of generated code), including independent, dependent, and control variables; (2) present their measurement model, i.e., which metrics, benchmarks, or baselines are used and how they relate to the target constructs; (3) justify the selection of metrics, benchmarks, and baselines; (4) discuss *in detail* the assumptions, reliability, and validity (*especially construct validity*) of each benchmark and metric; (5) articulate any limitations regarding construct and measurement validity.
 
 As with other guidelines, missing information about baselines or metrics is typically a revision request. However, vague descriptions that conflate broad concerns (e.g., effectiveness, quality) with specific counting methods should be questioned. Ubiquity of a benchmark or metric does not imply validity or appropriateness for a given context. Manuscripts should convey a solid understanding of construct and measurement validity by explaining and justifying their measurement models.
 
@@ -144,7 +136,7 @@ Choi, Hyeong Kyu, Maxim Khanov, Hongxin Wei, and Yixuan Li. 2025. “How Contami
 
 Cohen, Jacob. 1992. “A Power Primer.” *Psychological Bulletin* 112 (1): 155–59. <https://doi.org/10.1037/0033-2909.112.1.155>.
 
-Du, Xueying, Mingwei Liu, Kaixin Wang, Hanlin Wang, Junwei Liu, Yixuan Chen, Jiayi Feng, Chaofeng Sha, Xin Peng, and Yiling Lou. 2023. “ClassEval: A Manually-Crafted Benchmark for Evaluating LLMs on Class-Level Code Generation.” *CoRR* abs/2308.01861. <https://doi.org/10.48550/ARXIV.2308.01861>.
+Du, Xueying, Mingwei Liu, Kaixin Wang, Hanlin Wang, Junwei Liu, Yixuan Chen, Jiayi Feng, Chaofeng Sha, Xin Peng, and Yiling Lou. 2024. “Evaluating Large Language Models in Class-Level Code Generation.” In *Proceedings of the 46th IEEE/ACM International Conference on Software Engineering, ICSE 2024, Lisbon, Portugal, April 14-20, 2024*, 81:1–13. ACM. <https://doi.org/10.1145/3597503.3639219>.
 
 Eghbali, Aryaz, and Michael Pradel. 2022. “CrystalBLEU: Precisely and Efficiently Measuring the Similarity of Code.” In *37th IEEE/ACM International Conference on Automated Software Engineering, ASE 2022*, 28:1–12. ACM. <https://doi.org/10.1145/3551349.3556903>.
 

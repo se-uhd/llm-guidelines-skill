@@ -8,7 +8,7 @@ Transparency about LLM involvement is a prerequisite for informed assessment of 
 
 ## Recommendations
 
-When conducting any kind of empirical study involving LLMs, researchers **must** clearly declare that an LLM was used (see [*Scope*](../scope.md) for what we consider relevant research support). This **should** be done in a suitable section of the *paper*, for example, in the introduction or research methods section. For authoring scientific articles, this transparency is, for example, required by the ACM Policy on Authorship: “*The use of generative AI tools and technologies to create content is permitted but must be fully disclosed in the Work*” (Association for Computing Machinery 2023).
+When conducting any kind of empirical study involving LLMs, researchers **must** clearly declare that an LLM was used (see [*Scope*](../scope.md) for what we consider relevant research support). This **should** be done in a suitable section of the *paper*, for example, in the introduction or research methods section; Cheng, Calhoun, and Reedy (2025) argue specifically for the methods section, since acknowledgments are easily missed at the end of a paper. For authoring scientific articles, this transparency is, for example, required by the ACM Policy on Authorship: “*The use of generative AI tools and technologies to create content is permitted but must be fully disclosed in the Work*” (Association for Computing Machinery 2023).
 
 Beyond generic declarations, researchers **should** report the exact purpose of using an LLM in a study, the tasks it was used to automate, and the expected benefits in the *paper*. A sufficient declaration specifies not only *that* an LLM was used, but also *which* LLM (name and version), *how* it was used (e.g., as an annotator, code generator, or judge), and *where* in the research process it was employed (e.g., data collection, analysis, or synthesis).
 
@@ -53,6 +53,8 @@ If undisclosed LLM use is suspected, the reviewer should similarly consult their
 ## References
 
 Association for Computing Machinery. 2023. “ACM Policy on Authorship.” <https://www.acm.org/publications/policies/new-acm-policy-on-authorship>.
+
+Cheng, Adam, Aaron Calhoun, and Gabriel Reedy. 2025. “Artificial Intelligence-Assisted Academic Writing: Recommendations for Ethical Use.” *Advances in Simulation* 10 (1): 26. <https://doi.org/10.1186/s41077-025-00350-6>.
 
 Lubos, Sebastian, Alexander Felfernig, Thi Ngoc Trang Tran, Damian Garber, Merfat El Mansi, Seda Polat Erdeniz, and Viet-Man Le. 2024. “Leveraging LLMs for the Quality Assurance of Software Requirements.” In *32nd IEEE International Requirements Engineering Conference, RE 2024, Reykjavik, Iceland, June 24-28, 2024*, edited by Grischa Liebel, Irit Hadar, and Paola Spoletini, 389–97. IEEE. <https://doi.org/10.1109/RE59067.2024.00046>.
 

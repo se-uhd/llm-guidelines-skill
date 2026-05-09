@@ -37,7 +37,7 @@ Besides generating and modifying content, agentic software development tools suc
 
 Ahmed et al. (2025) proposed a systematic method for deciding whether LLMs can replace human annotators on a given task, using model-to-model agreement as an initial screening criterion (with a threshold of *α* &gt; 0.5) and model confidence for sample-level decisions. However, their threshold is well below the levels generally considered acceptable for inter-rater agreement. Krippendorff (2018) recommends discarding data with *α* &lt; 0.667, considers 0.667 ≤ *α* &lt; 0.8 sufficient only for tentative conclusions, and requires *α* ≥ 0.8 for reliable data (Krippendorff 2018). Researchers adopting similar screening approaches should apply thresholds consistent with these established standards. Notably, while three LLMs exhibited higher inter-model agreement than human annotators on some tasks, human-model agreement remained low on others. This illustrates that high model-model reliability does not guarantee alignment with human judgment, reinforcing the need for human validation before assuming that LLM annotations are valid. Moreover, a high model-model agreement could merely indicate that the models share systematic biases and hence reliably agree on the wrong answer.
 
-Hymel and Johnson (2025) evaluated ChatGPT’s capability to generate requirements documents by comparing an LLM-generated and a human-generated document based on the same business use case. Domain experts reviewed both documents and attempted to distinguish their origin.
+Hymel and Johnson (2025) evaluated ChatGPT’s capability to generate requirements documents by comparing an LLM-generated and a human-generated document based on the same business use case. Domain experts reviewed both documents and attempted to distinguish their origin. For agentic tools, Takerngsaksiri et al. (2025) report acceptance and modification rates from real users for *HULA*, an agentic plan-and-code system deployed in Atlassian JIRA.
 
 ## Benefits
 
@@ -58,6 +58,14 @@ This guideline applies to all study types, although the need for human validatio
 ## Advice for Reviewers
 
 Human validation may be the most challenging of our guidelines to assess because it often requires evaluating conceptual arguments. If LLM output is validated only by comparison with other LLMs, reviewers should look for *quantitative empirical evidence* that such comparison is reliable *and* valid. High inter-model agreement alone is insufficient, as reliability does not imply validity. Similarly, reviewers should expect evidence that any employed benchmarks are reliable and valid. Absent such evidence, human validation is warranted. A single human judge is appropriate only when judgments depend on widely accepted theories and involve limited value conflict (e.g., tagging method names containing abbreviations). For multiple judges, reviewers should expect IRA/IRR improvement techniques as described in the recommendations above (experienced raters, organized rounds, consensus meetings, updated decision rules). Low IRA or IRR (e.g., Krippendorff’s *α* &lt; 0.8) without these techniques is a concern. Conversely, if authors have followed best practices and still obtained mediocre results (e.g., 0.66 &lt; *α* &lt; 0.8), this should be noted as a limitation. Beyond reliability, reviewers should expect authors to explain conceptually why their human judgments should be valid, considering construct definitions, decision rules, and judge expertise. As with other guidelines, missing information is typically a revision request. Absent judge instructions, instruments, decision rules, or construct definitions may prevent assessment of rigor and validity, while missing recruitment details are less critical. Clarification requests about construct definitions are routine and should not alone warrant rejection.
+
+## See Also
+
+- [Use Suitable Baselines, Benchmarks, and Metrics](../guidelines/use-suitable-baselines-benchmarks-and-metrics.md): Human evaluation complements automated metrics where benchmarks cannot sufficiently capture the target construct.
+- [Report Model Version, Configuration, and Customizations](../guidelines/report-model-version-configuration-and-customizations.md): Human-validation findings characterize only the specific model and configuration that produced the outputs.
+- [Report System and Prompt Design](../guidelines/report-system-and-prompt-design.md): Prompt and architecture choices produce the outputs that humans then validate.
+- [Report Session Traces](../guidelines/report-session-traces.md): Stored interaction logs and runtime traces are the artifacts human reviewers examine.
+- [Report Limitations and Mitigations](../guidelines/report-limitations-and-mitigations.md): Rater demographics, threshold choices, and the validity of human judgments are limitations to discuss.
 
 ## References
 
@@ -84,6 +92,8 @@ Ralph, Paul, and Ewan D. Tempero. 2018. “Construct Validity in Software Engine
 Schneider, Kurt, Farnaz Fotrousi, and Rebekka Wohlrab. 2025. “A Reference Model for Empirically Comparing LLMs with Humans.” In *47th IEEE/ACM International Conference on Software Engineering: Software Engineering in Society, ICSE-SEIS 2025, Ottawa, ON, Canada, April 27 - May 3, 2025*, 130–34. IEEE. <https://doi.org/10.1109/ICSE-SEIS66351.2025.00018>.
 
 Sjøberg, Dag I. K., and Gunnar Rye Bergersen. 2023. “Construct Validity in Software Engineering.” *IEEE Trans. Software Eng.* 49 (3): 1374–96. <https://doi.org/10.1109/TSE.2022.3176725>.
+
+Takerngsaksiri, Wannita, Jirat Pasuksmit, Patanamon Thongtanunam, Chakkrit Tantithamthavorn, Ruixiong Zhang, Fan Jiang, Jing Li, Evan Cook, Kun Chen, and Ming Wu. 2025. “Human-in-the-Loop Software Development Agents.” In *47th IEEE/ACM International Conference on Software Engineering: Software Engineering in Practice, SEIP@ICSE 2025, Ottawa, ON, Canada, April 27 - May 3, 2025*, 342–52. IEEE. <https://doi.org/10.1109/ICSE-SEIP66354.2025.00036>.
 
 Tam, Thomas Yu Chow, Sonish Sivarajkumar, Sumit Kapoor, Alisa V. Stolyar, Katelyn Polanska, Karleigh R. McCarthy, Hunter Osterhoudt, et al. 2024. “A Framework for Human Evaluation of Large Language Models in Healthcare Derived from Literature Review.” *Npj Digit. Medicine* 7 (1). <https://doi.org/10.1038/S41746-024-01258-7>.
 

@@ -10,24 +10,9 @@ LLMs and LLM-based tools are frequently updated, and configuration parameters su
 
 Researchers **must** document in the *paper* which model or tool version they used in their study, along with the date when the experiments were carried out and the configured parameters that affect output generation. Since default values might change over time, researchers **should** report all configuration values, even if they used the defaults. Checksums and fingerprints **should** be reported since they identify specific versions and configurations. Depending on the study context, other properties such as the context window size (number of tokens) **should** be reported. When using quantized models, researchers **should** report the quantization level (e.g., 4-bit, 8-bit) and method (e.g., GPTQ or AWQ), as different quantization approaches produce different outputs, affecting both output quality and reproducibility. Researchers **should** motivate in the *paper* why they selected certain models, versions, and configurations. Reasons may be monetary, technical, or methodological (e.g., planned comparison to previous work). Depending on the specific study context, additional information regarding the experiment or tool architecture **should** be reported.
 
-A common customization approach for existing LLMs is fine-tuning. If a model was fine-tuned, researchers **must** describe the fine-tuning goal (e.g., improving the performance for a specific task), the fine-tuning procedure (e.g., full fine-tuning vs. Low-Rank Adaptation (LoRA), selected hyperparameters, loss function, learning rate, batch size, etc.), and the fine-tuning dataset (e.g., data sources, the preprocessing pipeline, dataset size) in the *paper*. Researchers **should** either share the fine-tuning dataset as part of the *supplementary material* or explain in the *paper* why the data cannot be shared (e.g., because it contains confidential or personal data that could not be anonymized). The same applies to the fine-tuned model weights. Suitable benchmarks and metrics **should** be used to compare the base model with the fine-tuned model.
+A common customization approach for existing LLMs is fine-tuning. If a model was fine-tuned, researchers **must** describe the fine-tuning goal (e.g., improving the performance for a specific task), the fine-tuning procedure (e.g., full fine-tuning versus Low-Rank Adaptation (LoRA), selected hyperparameters, loss function, learning rate, and batch size), and the fine-tuning dataset (e.g., data sources, the preprocessing pipeline, dataset size) in the *paper*. Researchers **should** either share the fine-tuning dataset as part of the *supplementary material* or explain in the *paper* why the data cannot be shared (e.g., because it contains confidential or personal data that could not be anonymized). The same applies to the fine-tuned model weights. Suitable benchmarks and metrics **should** be used to compare the base model with the fine-tuned model.
 
-In summary, our recommendation is to report:
-
-1. Model/tool name and version (**must** in *paper*);
-2. All relevant configured parameters that affect output generation (**must** in *paper*);
-3. Default values of all available parameters (**should**);
-4. Checksum/fingerprint of used model version and configuration (**should**);
-5. Additional properties such as context window size (**should**);
-6. Model quantization level and method, if applicable (**should**).
-
-For fine-tuned models, additional recommendations apply:
-
-1. Fine-tuning goal (**must** in *paper*);
-2. Fine-tuning dataset creation and characterization (**must** in *paper*);
-3. Fine-tuning parameters and procedure (**must** in *paper*);
-4. Fine-tuning dataset and fine-tuned model weights (**should**);
-5. Validation metrics and benchmarks (**should**).
+In summary, researchers **must** report in the *paper* at minimum (1) the exact model or tool name and version, (2) all configured parameters that affect output generation, (3) the experiment date, and, for fine-tuned models, (4) the fine-tuning goal, dataset characterization, and parameters and procedure. Beyond these requirements, researchers **should** additionally report default parameter values, checksums or fingerprints, model properties relevant to the study (e.g., context-window size), and quantization level and method where applicable; for fine-tuned models, they **should** share the dataset and model weights as *supplementary material* (unless legal or privacy constraints prevent disclosure) and report validation metrics and benchmarks.
 
 Commercial models (e.g., GPT-5) or LLM-based tools (e.g., ChatGPT) might not give researchers access to all required information. For these tools, researchers **should** report what is available and openly acknowledge limitations that hinder reproducibility.
 

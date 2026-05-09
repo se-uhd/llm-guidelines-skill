@@ -10,11 +10,11 @@ When using LLMs for empirical studies in SE, researchers face unique challenges 
 
 Researchers **must** clearly present the limitations of their work without defensiveness or obfuscation. These limitations may concern diverse topics including generalizability, internal validity (e.g. data leakage), reliability (i.e. non-determinism), and reproducibility (e.g. resource requirements). When deterministic reproducibility is structurally unattainable (e.g., SaaS-based models with opaque versioning), researchers **should** adopt trustworthiness criteria from qualitative research to substantiate dependability and confirmability of findings. LLM-based studies may involve many kinds of generalization including the following:
 
-1. From tested LLMs to others; that is, do the performance characteristics of the LLM(s) studied generalize to LLM(s) not included in the study.
-2. From tested configurations to others; that is, how sensitive are the results to the specific configuration(s) of the LLM under test.
-3. From research to practice; for instance, just because researchers can get a certain level of code generation performance under ideal conditions does not mean software developers, given the same tools, will get similar results without having the researchers present to show them exactly what to do.
-4. From a sample of people (e.g. human validators; human participants) to a larger population of people.
-5. From one time period to another; i.e., does the same LLM, or other versions of the same LLM, produce similar results at a different point in time?
+1. From tested LLMs to others; i.e., whether the performance characteristics of the LLM(s) studied transfer to LLM(s) not included in the study.
+2. From tested configurations to others; i.e., how sensitive results are to the specific configuration(s) of the LLM under test.
+3. From research to practice; i.e., whether developers using the same tools obtain results comparable to those reported under researcher-supervised conditions.
+4. From a sampled population to a larger one; i.e., whether findings from a specific group of human validators or participants apply to a broader population.
+5. From one time period to another; i.e., whether the same LLM, or other versions of it, produce similar results at a different point in time.
 
 The following concerns present an overview that has to be tailored to the individual study context. This section does not repeat requirements from other recommendations.
 
@@ -22,9 +22,9 @@ The following concerns present an overview that has to be tailored to the indivi
 
 The primary threats to internal validity are:
 
-- Data leakage and contamination, including inter-dataset duplication, potentially resulting in a training–evaluation overlaps, leading to overly optimistic evaluation results.
-- Unintended inclusion of evaluation data in model-improvement pipelines, contributing to data leakage. This is especially relevant for longitudinal studies including LLMs.
-- Incomplete architecture, prompt, or pipeline reporting, posing hidden confounding factors.
+- *Data leakage and contamination.* Inter-dataset duplication can produce training-evaluation overlap, yielding overly optimistic results.
+- *Evaluation data entering model-improvement pipelines.* Evaluation samples can unintentionally feed retraining or fine-tuning, especially in longitudinal studies involving LLMs.
+- *Incomplete architecture, prompt, or pipeline reporting.* Undisclosed components introduce hidden confounders.
 
 Inter-dataset duplication is prevalent in SE, particularly for code-related benchmarks. As transparency on training data is limited for LLMs, researchers **must** discuss potential data leakage effects and their impact on results.
 
@@ -32,9 +32,9 @@ Inter-dataset duplication is prevalent in SE, particularly for code-related benc
 
 The primary threats to construct validity are:
 
-- Metric–construct mismatch (e.g., BLEU/ROUGE vs. functional correctness). More traditional metrics might not capture all relevant SE-specific aspects.
-- Over-reliance on benchmark-specific metrics. Optimizing for a single benchmark might result in dataset-specific heuristics rather than the intended construct, overstating real-world utility.
-- Benchmark scope limitations. Benchmarks commonly ignore runtime behaviors, security implications, readability, testability, and maintainability, yielding results that may not transfer to realistic development settings.
+- *Metric-construct mismatch.* Traditional metrics such as BLEU or ROUGE may miss SE-specific aspects such as functional correctness or behavioral equivalence.
+- *Over-reliance on benchmark-specific metrics.* Optimizing for a single benchmark may produce dataset-specific shortcuts that pass the benchmark without exhibiting the capability it was designed to test, overstating real-world utility.
+- *Benchmark scope limitations.* Benchmarks commonly ignore runtime behaviors, security implications, readability, testability, and maintainability, yielding results that may not transfer to realistic development settings.
 
 If constructs are based on subjective interpretations, purely automated metrics are insufficient. Researchers **must** discuss how they ensured quality of subjective results, similarly to qualitative research.
 
@@ -42,11 +42,11 @@ If constructs are based on subjective interpretations, purely automated metrics 
 
 The primary threats to external validity are:
 
-- Cross-model transfer limitations. Results obtained with one LLM (or family of LLMs) may not generalize to others due to differences in training data, architecture, and capabilities.
-- Tool-architecture specificity. Tools built around a specific LLM’s API or capabilities may not transfer to other models without substantial re-engineering.
-- Limited domain coverage. Studies often focus on a narrow set of programming languages, task types, or application domains, limiting generalizability to other SE contexts.
-- Limited participant diversity. Study participants (e.g., human validators, developers) may not represent the broader population in terms of expertise, geographic location, or cultural background.
-- Cross-time instability (model evolution). Performance of proprietary models can change over time, leading to non-generalizable study outcomes (Chen, Zaharia, and Zou 2024; Li et al. 2024).
+- *Cross-model transfer limitations.* Results obtained with one LLM or family of LLMs may not generalize to others due to differences in training data, architecture, and post-training procedures (e.g., fine-tuning and RLHF).
+- *Tool-architecture specificity.* Tools built around vendor-specific APIs or features (e.g., function calling, structured output, or context-window size) may not transfer to other models without substantial re-engineering.
+- *Limited domain coverage.* Studies often focus on a narrow set of programming languages, task types, or application domains, limiting generalizability to other SE contexts.
+- *Limited participant diversity.* Study participants such as human validators or developers may not represent the broader population in terms of expertise, geographic location, or cultural background.
+- *Cross-time instability.* Performance of proprietary models can change over time, leading to non-generalizable study outcomes (Chen, Zaharia, and Zou 2024; Li et al. 2024).
 
 Generalizability is particularly critical for proprietary and non-deterministic systems whose behavior is subject to drift (i.e., silent changes in model output over time) (Chen, Zaharia, and Zou 2024). Researchers **must** discuss the limitations and mitigations of external validity.
 
@@ -54,9 +54,9 @@ Generalizability is particularly critical for proprietary and non-deterministic 
 
 The primary threats to reliability and reproducibility are:
 
-- Non-deterministic outputs. Identical prompts and configurations can yield different outputs across runs due to factors such as floating-point arithmetic, batching, and stochastic decoding strategies.
-- Infrastructure dependence. Results may vary depending on the hardware, software stack, and hosting environment used, making exact replication challenging across different infrastructure setups.
-- Resource inequality preventing replication. LLM research is resource-intensive and hence remains predominantly in the domain of private companies or well-funded research institutions (Schwartz et al. 2020; Ahmed, Wahed, and Thompson 2023), excluding researchers from under-resourced institutions.
+- *Non-deterministic outputs.* Identical prompts and configurations can yield different outputs across runs due to factors such as floating-point arithmetic, batching, and stochastic decoding strategies.
+- *Infrastructure dependence.* Results may vary depending on the hardware, software stack, and hosting environment used; vendor-imposed quotas, throttling, or pricing changes can further prevent re-running experiments at the original scale, making exact replication challenging across different infrastructure setups.
+- *Resource inequality.* LLM research is resource-intensive and remains predominantly in the domain of private companies or well-funded research institutions (Schwartz et al. 2020; Ahmed, Wahed, and Thompson 2023), excluding researchers from under-resourced institutions.
 
 Researchers **must** discuss the measures taken to increase reliability and reproducibility. However, non-deterministic reproducibility is not inherently disqualifying. Qualitative traditions such as ethnography, grounded theory, and action research ensure trustworthiness through *credibility*, *transferability*, *dependability*, and *confirmability* (Guba 1981). The same applies to SaaS-based LLM research, where providers frequently deprecate model versions without guaranteeing stable behavior.
 
@@ -64,16 +64,16 @@ Researchers **must** discuss the measures taken to increase reliability and rep
 
 The primary concerns for ethical and regulatory matters are:
 
-- Use of sensitive or proprietary data. Studies involving proprietary code, confidential business data, or personally identifiable information may face restrictions on data sharing that limit reproducibility.
-- Jurisdictional obligations. Data protection regulations (e.g., GDPR, CCPA) and institutional policies may impose constraints on data collection, processing, and sharing in LLM-based studies.
-- Implicit model bias. Especially for qualitative research LLM might “*reinforce dominant paradigms and biases*” and “*identify, replicate and reinforce dominant language and patterns*” (Jowsey et al. 2025).
+- *Use of sensitive or proprietary data.* Studies involving proprietary code, confidential business data, or personally identifiable information may face restrictions on data sharing that limit reproducibility.
+- *Jurisdictional obligations.* Data protection regulations such as GDPR or CCPA and institutional policies may impose constraints on data collection, processing, and sharing in LLM-based studies.
+- *Implicit model bias.* Especially for qualitative research, LLMs might “*reinforce dominant paradigms and biases*” and “*identify, replicate and reinforce dominant language and patterns*” (Jowsey et al. 2025).
 
 Studies involving sensitive data **must** discuss data governance mechanisms tailored towards LLM environments, compliant with applicable juristical obligations. If applicable, researchers **should** discuss how model biases potentially impact the study outcomes and how those biases were evaluated.
 
 ### Environmental & Sustainability Constraints:
 
-- Energy consumption. With growing model size, the environmental impact of experiments with LLMs increases. Considering the environmental impact in the study design is important given the substantial energy costs of LLM experiments (Strubell, Ganesh, and McCallum 2019).
-- Trade-off between repetition and sustainability. Repeating experiments increases reliability but also energy consumption, requiring trade-offs during study design.
+- *Energy consumption.* With growing model size, the environmental impact of experiments with LLMs increases, and the substantial energy costs of LLM experiments warrant consideration in study design (Strubell, Ganesh, and McCallum 2019).
+- *Trade-off between repetition and sustainability.* Repeating experiments increases reliability but also energy consumption, requiring trade-offs during study design.
 
 Researchers **should** justify the LLM’s resource consumption against the benefits over traditional approaches.
 
@@ -81,15 +81,27 @@ Researchers **should** justify the LLM’s resource consumption against the ben
 
 The following mitigation strategies can help address the threats described above, depending on the study scope and feasibility.
 
-- *Replication Packages* covering prompt and architecture specifications, model outputs, and representative examples for partial replicability, accompanied by an implementation using an open model for long-term stability.
-- *Human Validation* of subjective constructs, following quality criteria known from qualitative research.
-- *Longitudinal Re-Runs* to repeat experiments with LLMs over time, complemented by statistical analyses.
+- *Replication Packages.* Cover prompt and architecture specifications, model outputs, and representative examples for partial replicability, accompanied by an implementation using an open model for long-term stability.
+- *Human Validation.* Validate subjective constructs following quality criteria known from qualitative research.
+- *Longitudinal Re-Runs.* Repeat experiments with LLMs over time, complemented by statistical analyses.
 - *Methodological Trustworthiness Measures.* Researchers **should** consider triangulation, reflexivity, audit trails, and peer debriefing as complementary measures when deterministic reproduction is structurally impossible.
-- *Triangulation* via multiple models (e.g., proprietary and open models), multiple independent datasets, and multiple complementary metrics.
-- *Cost Accounting* through reporting of input/output tokens, token and service costs, or hardware specifications.
-- *Energy Preservation* by selecting smaller or newer less resource-intensive models and employing techniques such as input/output token reduction, model pruning, quantization, or knowledge distillation (Mitu and Mitu 2024) where feasible. Carbon footprint estimation is desirable, but still difficult.
-- *Ethical and Regulatory Considerations* through data governance mechanisms, ethical reviews, and bias assessment procedures.
-- *Sensitivity Analysis* through variation of LLM configurations, prompts, architecture decisions, datasets, and if applicable human participant backgrounds.
+- *Triangulation.* Use multiple models (e.g., proprietary and open), multiple independent datasets, and multiple complementary metrics.
+- *Cost Accounting.* Report input and output tokens, token and service costs, or hardware specifications.
+- *Energy Preservation.* Select smaller or newer less resource-intensive models and apply techniques such as input/output token reduction, model pruning, quantization, or knowledge distillation (Mitu and Mitu 2024) where feasible. Carbon footprint estimation is desirable, but still difficult.
+- *Ethical and Regulatory Considerations.* Apply data governance mechanisms, ethical reviews, and bias assessment procedures.
+- *Sensitivity Analysis.* Vary LLM configurations, prompts, architecture decisions, datasets, and where applicable human participant backgrounds.
+
+## Examples
+
+Sallou, Durieux, and Panichella (2024) catalog three categories of LLM-specific threats to validity (i.e., closed-source models, implicit data leakage, and reproducibility) and pair each with concrete mitigation strategies (e.g., versioned model archives, metamorphic test data, multiple replication runs with variability metrics, and detailed execution metadata). Du et al. (2024) pair each threat in their *ClassEval* evaluation with a concrete mitigation: manually constructing the benchmark with multiple annotators to limit data leakage, piloting prompts on held-out tasks to control for prompt sensitivity, and reporting greedy-decoding results to control for non-determinism.
+
+## Benefits
+
+Transparent reporting of limitations and mitigations helps readers calibrate confidence in the findings, makes explicit which threats were addressed and which remain open, and documents design decisions that other authors can borrow or refine. Transparent threat discussion also keeps a paper’s claims proportionate to its evidence.
+
+## Challenges
+
+Identifying limitations one is not already aware of is the hardest part of writing a threats section, particularly for methodological threats outside the team’s primary expertise. Publication and reviewing norms can pressure authors to downplay weaknesses, while page limits make exhaustive treatment impractical. Threat lists that recite generic LLM-research issues (e.g., model bias, non-determinism, or contamination) without showing how each one applies to specific design choices in this study leave reviewers unable to tell which risks actually applied.
 
 ## Study Types
 
@@ -112,6 +124,8 @@ Reviewers should verify that the limitation section is comprehensive and appropr
 Ahmed, Nur, Muntasir Wahed, and Neil C. Thompson. 2023. “The Growing Influence of Industry in AI Research.” *Science* 379 (6635): 884–86. <https://doi.org/10.1126/science.ade2420>.
 
 Chen, Lingjiao, Matei Zaharia, and James Zou. 2024. “How Is ChatGPT’s Behavior Changing over Time?” *Harvard Data Science Review* 6 (2). <https://doi.org/10.1162/99608f92.5317da47>.
+
+Du, Xueying, Mingwei Liu, Kaixin Wang, Hanlin Wang, Junwei Liu, Yixuan Chen, Jiayi Feng, Chaofeng Sha, Xin Peng, and Yiling Lou. 2024. “Evaluating Large Language Models in Class-Level Code Generation.” In *Proceedings of the 46th IEEE/ACM International Conference on Software Engineering, ICSE 2024, Lisbon, Portugal, April 14-20, 2024*, 81:1–13. ACM. <https://doi.org/10.1145/3597503.3639219>.
 
 Guba, Egon G. 1981. “Criteria for Assessing the Trustworthiness of Naturalistic Inquiries.” *ECTJ* 29 (2): 75–91. <https://doi.org/10.1007/BF02766777>.
 

@@ -14,7 +14,7 @@ Open models allow other researchers to verify research results and build upon th
 
 Open LLMs are available on platforms such as [*Hugging Face*](https://huggingface.co/) and can be hosted locally using frameworks such as [*Ollama*](https://ollama.com/) or [*LM Studio*](https://lmstudio.ai/), or on cloud services such as [*Together AI*](https://together.ai/), AWS, Azure, and Google Cloud.
 
-The term “open” can have different meanings in the context of LLMs. Widder, Whittaker, and West (2024) discuss three types of openness (transparency, reusability, and extensibility) and what openness can and cannot provide (Widder, Whittaker, and West 2024). The *Open Source Initiative* (OSI) (Open Source Initiative (OSI) 2025) defines open-source AI as having access to everything needed to understand, modify, share, retrain, and recreate the model.
+The term “open” can have different meanings in the context of LLMs. Widder, Whittaker, and West (2024) discuss three types of openness (i.e., transparency, reusability, and extensibility) and what openness can and cannot provide (Widder, Whittaker, and West 2024). The *Open Source Initiative* (OSI) (Open Source Initiative (OSI) 2025) defines open-source AI as having access to everything needed to understand, modify, share, retrain, and recreate the model.
 
 Researchers can also explore open-source tools such as Continue, Cline, and opencode as alternatives to commercial tools like GitHub Copilot and Claude Code, enabling instrumentation, architectural transparency, and detailed telemetry collection.
 
