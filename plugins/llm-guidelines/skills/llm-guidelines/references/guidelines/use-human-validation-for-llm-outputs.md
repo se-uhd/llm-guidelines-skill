@@ -94,4 +94,3 @@ Sjøberg, Dag I. K., and Gunnar Rye Bergersen. 2023. “Construct Validity in So
 Takerngsaksiri, Wannita, Jirat Pasuksmit, Patanamon Thongtanunam, Chakkrit Tantithamthavorn, Ruixiong Zhang, Fan Jiang, Jing Li, Evan Cook, Kun Chen, and Ming Wu. 2025. “Human-in-the-Loop Software Development Agents.” In *47th IEEE/ACM International Conference on Software Engineering: Software Engineering in Practice, SEIP@ICSE 2025, Ottawa, ON, Canada, April 27 - May 3, 2025*, 342–52. IEEE. <https://doi.org/10.1109/ICSE-SEIP66354.2025.00036>.
 
 Tam, Thomas Yu Chow, Sonish Sivarajkumar, Sumit Kapoor, Alisa V. Stolyar, Katelyn Polanska, Karleigh R. McCarthy, Hunter Osterhoudt, et al. 2024. “A Framework for Human Evaluation of Large Language Models in Healthcare Derived from Literature Review.” *Npj Digit. Medicine* 7 (1). <https://doi.org/10.1038/S41746-024-01258-7>.
-

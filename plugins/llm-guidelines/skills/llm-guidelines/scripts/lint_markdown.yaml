@@ -1,0 +1,44 @@
+extensions:
+  front-matter:
+    enabled: true
+  markdown-tables:
+    enabled: true
+  markdown-task-list-items:
+    enabled: true
+  markdown-strikethrough:
+    enabled: true
+  markdown-extended-autolinks:
+    enabled: true
+
+plugins:
+  md013:
+    enabled: false
+  md005:
+    # Sub-bullets under numbered items in the templates use 3-space
+    # indent under one parent (CommonMark-aligned to content after `4. `)
+    # and 4-space under another. Both render identically; md005 flags the
+    # mixture as inconsistent. Disabling rather than rewriting the
+    # templates keeps the prose layout that reads most naturally.
+    enabled: false
+  md007:
+    # The bundle's templates and pandoc-converted lists use 4-space
+    # sub-bullet indent (and 5-space under numbered parents); both are
+    # valid markdown but disagree with md007's default 2-space expectation.
+    # Letting the templates keep their existing indentation reads more
+    # naturally than rewriting them to satisfy the rule.
+    enabled: false
+  md026:
+    # Drop `?` and `:` from the punctuation set. Question-form headings
+    # ("What to report?", "When does this apply?") and list-introducer
+    # headings ("Internal Validity:", "Recommendations:") in the
+    # guideline files — converted from LaTeX by pandoc — both carry
+    # grammatical meaning and the rule's default would force them away.
+    punctuation: ".,;!"
+  md033:
+    enabled: false
+  md036:
+    # Bold paragraph leads (`**Guideline:**`, `**Note:**`) are an
+    # intentional prose device in the LaTeX source, not failed headings.
+    enabled: false
+  md041:
+    enabled: false

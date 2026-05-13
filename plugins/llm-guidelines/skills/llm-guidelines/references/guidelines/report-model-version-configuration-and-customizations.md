@@ -85,4 +85,3 @@ OpenAI. 2023. “How to make your completions outputs consistent with the new se
 Song, Yifan, Guoyin Wang, Sujian Li, and Bill Yuchen Lin. 2025. “The Good, the Bad, and the Greedy: Evaluation of LLMs Should Not Ignore Non-Determinism.” In *Proceedings of the 2025 Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics: Human Language Technologies, NAACL 2025 - Volume 1: Long Papers*, edited by Luis Chiruzzo, Alan Ritter, and Lu Wang, 4195–4206. Association for Computational Linguistics. <https://doi.org/10.18653/V1/2025.NAACL-LONG.211>.
 
 Yuan, Jiayi, Hao Li, Xinheng Ding, Wenya Xie, Yu-Jhe Li, Wentian Zhao, Kun Wan, Jing Shi, Xia Hu, and Zirui Liu. 2025. “Understanding and Mitigating Numerical Sources of Nondeterminism in LLM Inference.” In *Advances in Neural Information Processing Systems 38: Annual Conference on Neural Information Processing Systems 2025, NeurIPS 2025*. <https://openreview.net/forum?id=Q3qAsZAEZw>.
-

@@ -19,4 +19,3 @@ Jimenez, Carlos E., John Yang, Alexander Wettig, Shunyu Yao, Kexin Pei, Ofir Pre
 Silva, André, and Martin Monperrus. 2025. “RepairBench: Leaderboard of Frontier Models for Program Repair.” In *IEEE/ACM International Workshop on Large Language Models for Code, LLM4Code@ICSE 2025, Ottawa, ON, Canada, May 3, 2025*, 9–16. IEEE. <https://doi.org/10.1109/LLM4CODE66737.2025.00006>.
 
 Yang, Yifan, Jiho Shin, Byeonggyu Choi, Minjun Park, Dayun Ju, Changmin Lee, Sanghyuk Chun, Dongjin Kang, Jiin Kim, and Sungroh Yoon. 2025. “From Code Foundation Models to Agents and Applications: A Comprehensive Survey and Practical Guide to Code Intelligence.” *arXiv Preprint arXiv:2502.11827*.
-

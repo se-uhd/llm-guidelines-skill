@@ -71,4 +71,3 @@ Chann, Sherman. 2023. “Non-determinism in GPT-4 is caused by Sparse MoE.” <h
 OpenTelemetry Authors. 2026. “OpenTelemetry Semantic Conventions for Generative AI.” <https://opentelemetry.io/docs/specs/semconv/gen-ai/>.
 
 Ronanki, Krishna, Christian Berger, and Jennifer Horkoff. 2023. “Investigating ChatGPT’s Potential to Assist in Requirements Elicitation Processes.” In *2023 49th Euromicro Conference on Software Engineering and Advanced Applications (SEAA)*, 354–61. IEEE.
-

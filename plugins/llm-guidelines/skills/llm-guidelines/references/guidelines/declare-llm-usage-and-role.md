@@ -63,4 +63,3 @@ Golnari, Pareesa Ameneh, Adarsh Kumarappan, Wen Wen, Xiaoyu Liu, Gabriel Ryan, Y
 Lubos, Sebastian, Alexander Felfernig, Thi Ngoc Trang Tran, Damian Garber, Merfat El Mansi, Seda Polat Erdeniz, and Viet-Man Le. 2024. “Leveraging LLMs for the Quality Assurance of Software Requirements.” In *32nd IEEE International Requirements Engineering Conference, RE 2024, Reykjavik, Iceland, June 24-28, 2024*, edited by Grischa Liebel, Irit Hadar, and Paola Spoletini, 389–97. IEEE. <https://doi.org/10.1109/RE59067.2024.00046>.
 
 Schilke, Oliver, and Martin Reimann. 2025. “The Transparency Dilemma: How AI Disclosure Erodes Trust.” *Organizational Behavior and Human Decision Processes* 188: 104405. <https://doi.org/10.1016/j.obhdp.2025.104405>.
-

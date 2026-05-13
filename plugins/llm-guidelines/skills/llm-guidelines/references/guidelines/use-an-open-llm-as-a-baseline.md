@@ -70,4 +70,3 @@ Widder, David Gray, Meredith Whittaker, and Sarah Myers West. 2024. “Why ‘Op
 Xia, Yuying, Haijian Shao, and Xing Deng. 2024. “VulCoBERT: A CodeBERT-Based System for Source Code Vulnerability Detection.” In *2024 International Conference on Generative Artificial Intelligence and Information Security, GAIIS 2024, Kuala Lumpur, Malaysia, May 10-12, 2024*. ACM. <https://doi.org/10.1145/3665348.3665391>.
 
 Yang, Guang, Yu Zhou, Xiang Chen, Xiangyu Zhang, Tingting Han, and Taolue Chen. 2023. “ExploitGen: Template-Augmented Exploit Code Generation Based on CodeBERT.” *J. Syst. Softw.* 197: 111577. <https://doi.org/10.1016/J.JSS.2022.111577>.
-

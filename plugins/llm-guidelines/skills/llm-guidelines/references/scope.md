@@ -69,4 +69,3 @@ Song, Yifan, Guoyin Wang, Sujian Li, and Bill Yuchen Lin. 2025. “The Good, the
 Wagner, Stefan, Marvin Muñoz Barón, Davide Falessi, and Sebastian Baltes. 2025. “Towards Evaluation Guidelines for Empirical Studies Involving LLMs.” In *IEEE/ACM International Workshop on Methodological Issues with Empirical Studies in Software Engineering, WSESE@ICSE 2025, May 3, 2025*, 24–27. IEEE. <https://doi.org/10.1109/WSESE66602.2025.00011>.
 
 Wohlin, Claes, Per Runeson, Martin Höst, Magnus C. Ohlsson, Björn Regnell, and Anders Wesslén. 2024. *Experimentation in Software Engineering, Second Edition*. Springer. <https://doi.org/10.1007/978-3-662-69306-3>.
-

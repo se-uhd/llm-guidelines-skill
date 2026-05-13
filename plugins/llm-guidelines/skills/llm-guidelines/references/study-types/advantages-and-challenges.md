@@ -95,4 +95,3 @@ Wang, Xinru, Hannah Kim, Sajjadur Rahman, Kushan Mitra, and Zhengjie Miao. 2024.
 Zhou, Ruiyang, Lu Chen, and Kai Yu. 2024. “Is LLM a Reliable Reviewer? A Comprehensive Evaluation of LLM on Automatic Paper Reviewing Tasks.” In *Proceedings of the 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation, LREC/COLING 2024, 20-25 May, 2024, Torino, Italy*, edited by Nicoletta Calzolari, Min-Yen Kan, Véronique Hoste, Alessandro Lenci, Sakriani Sakti, and Nianwen Xue, 9340–51. ELRA; ICCL. <https://aclanthology.org/2024.lrec-main.816>.
 
 Zhu, Yiming, Peixian Zhang, Ehsan ul Haq, Pan Hui, and Gareth Tyson. 2023. “Can ChatGPT Reproduce Human-Generated Labels? A Study of Social Computing Tasks.” *CoRR* abs/2304.10145. <https://doi.org/10.48550/ARXIV.2304.10145>.
-

@@ -17,4 +17,3 @@ Bano, Muneera, Rashina Hoda, Didar Zowghi, and Christoph Treude. 2024. “Large 
 He, Zeyu, Chieh-Yang Huang, Chien-Kuang Cornelia Ding, Shaurya Rohatgi, and Ting-Hao Kenneth Huang. 2024. “If in a Crowdsourced Data Annotation Pipeline, a GPT-4.” In *Proceedings of the CHI Conference on Human Factors in Computing Systems, CHI 2024*, edited by Florian ’Floyd’Mueller, Penny Kyburz, Julie R. Williamson, Corina Sas, Max L. Wilson, Phoebe O. Toups Dugas, and Irina Shklovski, 1040:1–25. ACM. <https://doi.org/10.1145/3613904.3642834>.
 
 Huang, Jiangping, Bochen Yi, Weisong Sun, Bangrui Wan, Yang Xu, Yebo Feng, Wenguang Ye, and Qinjun Qin. 2024. “Enhancing Review Classification via LLM-Based Data Annotation and Multi-Perspective Feature Representation Learning.” *SSRN Electronic Journal*, 1–15. <https://doi.org/10.2139/ssrn.5002351>.
-

@@ -17,14 +17,14 @@ The current version is recorded in `VERSION` and embedded in `.claude-plugin/mar
 
 ## Install as a Claude Code plugin
 
-```
+```text
 /plugin marketplace add se-uhd/llm-guidelines-skill
 /plugin install llm-guidelines
 ```
 
 Two slash commands become available. Use `/llm-guidelines:explore` to discuss the guidelines or plan a study (no arguments). Use `/llm-guidelines:review` to assess a draft:
 
-```
+```text
 /llm-guidelines:explore
 /llm-guidelines:review path/to/paper.tex
 /llm-guidelines:review path/to/paper.pdf
@@ -32,13 +32,13 @@ Two slash commands become available. Use `/llm-guidelines:explore` to discuss th
 
 Supplementary-material paths are optional, and you can pass more than one when artifacts live in separate locations (e.g., code on GitHub, data on Zenodo):
 
-```
+```text
 /llm-guidelines:review path/to/paper.tex path/to/code-repo path/to/dataset
 ```
 
 To pick up a new release, refresh the marketplace catalog and reload plugins:
 
-```
+```text
 /plugin marketplace update llm-guidelines
 /reload-plugins
 ```
@@ -68,7 +68,7 @@ The report frames findings as opportunities to clarify or strengthen reporting. 
 
 ## Repository layout
 
-```
+```text
 .claude-plugin/
   marketplace.json                marketplace entry (single-plugin)
 plugins/

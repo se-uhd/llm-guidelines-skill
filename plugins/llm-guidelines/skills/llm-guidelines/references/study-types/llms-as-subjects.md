@@ -21,4 +21,3 @@ Kong, Aobo, Shiwan Zhao, Hao Chen, Qicheng Li, Yong Qin, Ruiqi Sun, Xin Zhou, En
 Xu, Ruoxi, Yingfei Sun, Mengjie Ren, Shiguang Guo, Ruotong Pan, Hongyu Lin, Le Sun, and Xianpei Han. 2024. “AI for Social Science and Social Science of AI: A Survey.” *Inf. Process. Manag.* 61 (2): 103665. <https://doi.org/10.1016/J.IPM.2024.103665>.
 
 Zhao, Chenguang, Meirewuti Habule, and Wei Zhang. 2025. “Large Language Models (LLMs) as Research Subjects: Status, Opportunities and Challenges.” *New Ideas in Psychology* 79: 101167. <https://doi.org/10.1016/j.newideapsych.2025.101167>.
-

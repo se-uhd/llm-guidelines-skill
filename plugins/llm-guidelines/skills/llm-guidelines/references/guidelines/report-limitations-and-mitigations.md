@@ -140,4 +140,3 @@ Sallou, June, Thomas Durieux, and Annibale Panichella. 2024. “Breaking the Sil
 Schwartz, Roy, Jesse Dodge, Noah A. Smith, and Oren Etzioni. 2020. “Green AI.” *Communications of the ACM* 63 (12): 54–63. <https://doi.org/10.1145/3381831>.
 
 Strubell, Emma, Ananya Ganesh, and Andrew McCallum. 2019. “Energy and Policy Considerations for Deep Learning in NLP.” In *Proceedings of the 57th Conference of the Association for Computational Linguistics, ACL 2019, Florence, Italy, July 28- August 2, 2019, Volume 1: Long Papers*, edited by Anna Korhonen, David R. Traum, and Lluı́s Màrquez, 3645–50. Association for Computational Linguistics. <https://doi.org/10.18653/V1/P19-1355>.
-

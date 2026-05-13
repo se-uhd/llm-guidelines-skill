@@ -5,4 +5,3 @@ LLM-based assistants have become a widely adopted tool for software engineers (
 ## References
 
 Stack Overflow. 2025. “2025 Developer Survey.” <https://survey.stackoverflow.co/2025/>.
-

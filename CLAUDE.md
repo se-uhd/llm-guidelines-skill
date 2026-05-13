@@ -23,11 +23,13 @@ The following files are **generated** by `generate-skill.sh` and overwritten on 
 | `plugins/llm-guidelines/skills/llm-guidelines/references/**` (guidelines, study-types, scope.md, checklist.md) | converted Markdown pages in the website repo |
 | `README.md` | `_skill/README.md.template` + `_skill/commands.env` |
 
-The remaining files in this repo — `LICENSE`, `.gitignore`, `CLAUDE.md` (this file), `.claude-plugin/marketplace.json` (catalog fields other than `version`), `plugins/llm-guidelines/.claude-plugin/plugin.json` (fields other than `version`), the slash-command files under `plugins/llm-guidelines/commands/`, and the CI infrastructure under `.github/workflows/` and `scripts/tests/` — are hand-curated and may be edited here directly.
+The remaining files in this repo — `LICENSE`, `.gitignore`, `CLAUDE.md` (this file), `.claude-plugin/marketplace.json` (catalog fields other than `version`), `plugins/llm-guidelines/.claude-plugin/plugin.json` (fields other than `version`), the slash-command files under `plugins/llm-guidelines/commands/`, the lint scaffolding under `plugins/llm-guidelines/skills/llm-guidelines/scripts/` (vendored PyMarkdown tree, `lint_markdown.py`, `lint_markdown.yaml`, `refresh_vendor.py`), and the CI infrastructure under `.github/workflows/` and `scripts/tests/` — are hand-curated and may be edited here directly. The vendored tree under `scripts/_vendor/` is updated by running `python3 plugins/llm-guidelines/skills/llm-guidelines/scripts/refresh_vendor.py` (maintainer-only); the generator leaves it alone.
 
 ## Smoke tests
 
 `scripts/tests/run_smoke.py` validates that the generated bundle is internally consistent: the `version` field agrees across `VERSION`, `marketplace.json`, `plugin.json`, and `skills/llm-guidelines/SKILL.md` (under `metadata.version`); exactly one skill (`llm-guidelines`) and two slash commands (`explore`, `review`) are present and both commands name the `llm-guidelines` skill in their body; the expected set of files under `references/` is present; internal `references/...` links from `SKILL.md` and sideways `./...` / `../...` links from `references/{explore,review}.md` all resolve; and no absolute website paths leaked through the generator's rewrite step. CI runs it on every push and pull request via `.github/workflows/smoke.yml`. Run it locally with `python3 scripts/tests/run_smoke.py` after `generate-skill.sh` finishes, before tagging a release — it catches exactly the desync that broke `2026.05_rev10`.
+
+The companion file `plugins/llm-guidelines/skills/llm-guidelines/scripts/tests/run_smoke.py` exercises the Markdown linter (`lint_markdown.py`) end-to-end — vendored PyMarkdown loads, pre-pass and schema findings fire on the right inputs, `--fix` mode normalizes auto-fixable rules. The same CI workflow runs it.
 
 ## Releasing a new revision
 

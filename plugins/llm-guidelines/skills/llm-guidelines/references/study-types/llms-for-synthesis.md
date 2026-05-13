@@ -23,4 +23,3 @@ Morais Leça, Matheus de, Lucas Valença, Reydne Santos, and Ronnie de Souza San
 Ornelas, Tatiane, Allysson Allex Araújo, Júlia Araújo, Marina Araújo, Bianca Trinkenreich, and Marcos Kalinowski. 2025. “LLM-Assisted Thematic Analysis: Opportunities, Limitations, and Recommendations.” *CoRR* abs/2511.14528. <https://doi.org/10.48550/ARXIV.2511.14528>.
 
 Rasheed, Zeeshan, Muhammad Waseem, Aakash Ahmad, Kai-Kristian Kemell, Xiaofeng Wang, Anh Nguyen-Duc, and Pekka Abrahamsson. 2024. “Can Large Language Models Serve as Data Analysts? A Multi-Agent Assisted Approach for Qualitative Data Analysis.” *CoRR* abs/2402.01386. <https://doi.org/10.48550/ARXIV.2402.01386>.
-

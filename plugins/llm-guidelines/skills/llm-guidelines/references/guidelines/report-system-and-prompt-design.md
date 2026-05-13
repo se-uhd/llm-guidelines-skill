@@ -115,4 +115,3 @@ Sclar, Melanie, Yejin Choi, Yulia Tsvetkov, and Alane Suhr. 2024. “Quantifying
 Willison, Simon. 2026. “Opus system prompt.” <https://simonwillison.net/2026/Apr/18/opus-system-prompt/>.
 
 Yan, Litao, Alyssa Hwang, Zhiyuan Wu, and Andrew Head. 2024. “Ivie: Lightweight Anchored Explanations of Just-Generated Code.” In *Proceedings of the CHI Conference on Human Factors in Computing Systems, CHI 2024*, edited by Florian ’Floyd’Mueller, Penny Kyburz, Julie R. Williamson, Corina Sas, Max L. Wilson, Phoebe O. Toups Dugas, and Irina Shklovski, 140:1–15. ACM. <https://doi.org/10.1145/3613904.3642239>.
-

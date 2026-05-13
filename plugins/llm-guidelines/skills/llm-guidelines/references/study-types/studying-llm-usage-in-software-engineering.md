@@ -23,4 +23,3 @@ Rabbi, Md. Fazle, Arifa I. Champa, Minhaz Fahim Zibran, and Md. Rakibul Islam. 2
 Russo, Daniel. 2024. “Navigating the Complexity of Generative AI Adoption in Software Engineering.” *ACM Trans. Softw. Eng. Methodol.* 33 (5): 135:1–50. <https://doi.org/10.1145/3652154>.
 
 Xiao, Tao, Christoph Treude, Hideaki Hata, and Kenichi Matsumoto. 2024. “DevGPT: Studying Developer-ChatGPT Conversations.” In *21st IEEE/ACM International Conference on Mining Software Repositories, MSR 2024, Lisbon, Portugal, April 15-16, 2024*, edited by Diomidis Spinellis, Alberto Bacchelli, and Eleni Constantinou, 227–30. ACM. <https://doi.org/10.1145/3643991.3648400>.
-

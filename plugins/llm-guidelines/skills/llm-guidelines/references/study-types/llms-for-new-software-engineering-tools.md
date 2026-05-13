@@ -25,4 +25,3 @@ Yan, Litao, Alyssa Hwang, Zhiyuan Wu, and Andrew Head. 2024. “Ivie: Lightweigh
 Yang, Yifan, Jiho Shin, Byeonggyu Choi, Minjun Park, Dayun Ju, Changmin Lee, Sanghyuk Chun, Dongjin Kang, Jiin Kim, and Sungroh Yoon. 2025. “From Code Foundation Models to Agents and Applications: A Comprehensive Survey and Practical Guide to Code Intelligence.” *arXiv Preprint arXiv:2502.11827*.
 
 Zhou, Wangchunshu, Yuchen Eleanor Jiang, Long Li, Jialong Wu, Tiannan Wang, Shi Qiu, Jintian Zhang, et al. 2023. “Agents: An Open-Source Framework for Autonomous Language Agents.” *CoRR* abs/2309.07870. <https://doi.org/10.48550/ARXIV.2309.07870>.
-

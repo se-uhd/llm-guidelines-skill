@@ -185,4 +185,3 @@ Rozière, Baptiste, Marie-Anne Lachaux, Lowik Chanussot, and Guillaume Lample. 2
 Xu, Cheng, Shuhao Guan, Derek Greene, and M. Tahar Kechadi. 2024. “Benchmark Data Contamination of Large Language Models: A Survey.” *CoRR* abs/2406.04244. <https://doi.org/10.48550/ARXIV.2406.04244>.
 
 Yang, Yifan, Jiho Shin, Byeonggyu Choi, Minjun Park, Dayun Ju, Changmin Lee, Sanghyuk Chun, Dongjin Kang, Jiin Kim, and Sungroh Yoon. 2025. “From Code Foundation Models to Agents and Applications: A Comprehensive Survey and Practical Guide to Code Intelligence.” *arXiv Preprint arXiv:2502.11827*.
-

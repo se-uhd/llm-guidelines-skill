@@ -9,7 +9,6 @@ The following checklist, inspired by CONSORT (Schulz, Altman, and Moher 2010), 
 
 ## Research Design and Methods
 
-
 ### Model Selection and Configuration
 
 - **must** Report in the *paper* the exact LLM model or tool version, the configuration, and the experiment date ([Model Version](./guidelines/report-model-version-configuration-and-customizations.md)).
@@ -99,4 +98,3 @@ The following checklist, inspired by CONSORT (Schulz, Altman, and Moher 2010), 
 ## References
 
 Schulz, Kenneth F., Douglas G. Altman, and David Moher. 2010. “CONSORT 2010 Statement: Updated Guidelines for Reporting Parallel Group Randomised Trials.” *BMJ* 340: c332. <https://doi.org/10.1136/bmj.c332>.
-
