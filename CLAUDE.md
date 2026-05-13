@@ -22,7 +22,11 @@ The following files are **generated** by `generate-skill.sh` and overwritten on 
 | `plugins/llm-guidelines/shared/**` | converted Markdown pages in the website repo |
 | `README.md` | `_skill/README.md.template` + `_skill/commands.env` |
 
-The remaining files in this repo — `LICENSE`, `.gitignore`, `CLAUDE.md` (this file), `.claude-plugin/marketplace.json` (catalog fields other than `version`), `plugins/llm-guidelines/.claude-plugin/plugin.json` (fields other than `version`), and the slash-command files under `plugins/llm-guidelines/commands/` — are hand-curated and may be edited here directly.
+The remaining files in this repo — `LICENSE`, `.gitignore`, `CLAUDE.md` (this file), `.claude-plugin/marketplace.json` (catalog fields other than `version`), `plugins/llm-guidelines/.claude-plugin/plugin.json` (fields other than `version`), the slash-command files under `plugins/llm-guidelines/commands/`, and the CI infrastructure under `.github/workflows/` and `scripts/tests/` — are hand-curated and may be edited here directly.
+
+## Smoke tests
+
+`scripts/tests/run_smoke.py` validates that the generated bundle is internally consistent: the `version` field agrees across `VERSION`, `marketplace.json`, `plugin.json`, and both `SKILL.md` files; the `skills/` and `commands/` directories align; the expected set of shared files is present; internal `../../shared/...` links resolve; and no absolute website paths leaked through the generator's rewrite step. CI runs it on every push and pull request via `.github/workflows/smoke.yml`. Run it locally with `python3 scripts/tests/run_smoke.py` after `generate-skill.sh` finishes, before tagging a release — it catches exactly the desync that broke `2026.05_rev10`.
 
 ## Releasing a new revision
 
