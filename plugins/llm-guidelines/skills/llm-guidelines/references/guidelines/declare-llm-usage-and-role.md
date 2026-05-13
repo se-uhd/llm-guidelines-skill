@@ -12,7 +12,7 @@ When conducting any kind of empirical study involving LLMs, researchers **must**
 
 Beyond generic declarations, researchers **should** report the exact purpose of using an LLM in a study, the tasks it was used to automate, and the expected benefits in the *paper*. A sufficient declaration specifies not only *that* an LLM was used, but also *which* LLM (name and version), *how* it was used (e.g., as an annotator, code generator, or judge), and *where* in the research process it was employed (e.g., data collection, analysis, or synthesis).
 
-When the LLM is central to the study (e.g., as the main tool being evaluated or as a core component of the research method), the declaration **should** be prominent and detailed, appearing in the methodology section with cross-references to the specific guidelines that apply (e.g., Sections [*Version and Configuration*](../guidelines/report-model-version-configuration-and-customizations.md), [*System and Prompt Design*](../guidelines/report-system-and-prompt-design.md), and [*Session Traces*](../guidelines/report-session-traces.md)). When the LLM’s role is more tangential (e.g., used for a single preprocessing step), a brief but explicit statement in the methodology or acknowledgments section is sufficient. In either case, the disclosure **must** be specific enough for readers to assess how the LLM’s involvement may affect the study’s validity and reproducibility.
+When the LLM is central to the study (e.g., as the main tool being evaluated or as a core component of the research method), the declaration **should** be prominent and detailed, appearing in the methodology section with cross-references to the specific guidelines that apply (e.g., Sections [*Version and Configuration*](../guidelines/report-model-version-configuration-and-customizations.md), [*System and Prompt Design*](../guidelines/report-system-and-prompt-design.md), and [*Session Traces*](../guidelines/report-session-traces.md)). When the LLM’s role is more tangential (e.g., used for a single preprocessing step), a brief but explicit statement in the methodology or acknowledgments section is sufficient. When a study assigns multiple distinct roles to LLMs (e.g., one model generates evaluation data while another scores outputs), each role **should** be declared separately. In each case, the disclosure **must** be specific enough for readers to assess how the LLM’s involvement may affect the study’s validity and reproducibility.
 
 ## Examples
 
@@ -23,6 +23,8 @@ The *ACM Policy on Authorship* (Association for Computing Machinery 2023) sugge
 A more contemporary declaration could similarly state:
 
 > *“We used Claude Opus 4.7 via the Anthropic API to synthesize themes from interview transcripts, with all prompts and conversation logs published as supplementary material.”*
+
+Golnari et al. (2026)’s DevBench paper illustrates separate disclosure of multiple LLM roles: *GPT-4o* generates the synthetic benchmark instances, nine models (including *Claude 4 Sonnet*, *GPT-4.1*, *DeepSeek-V3*, and *Ministral-3B*) are the evaluation subjects, and *o3-mini* is the LLM judge that scores completions for relevance and helpfulness (Golnari et al. 2026).
 
 ## Benefits
 
@@ -55,6 +57,8 @@ If undisclosed LLM use is suspected, the reviewer should similarly consult their
 Association for Computing Machinery. 2023. “ACM Policy on Authorship.” <https://www.acm.org/publications/policies/new-acm-policy-on-authorship>.
 
 Cheng, Adam, Aaron Calhoun, and Gabriel Reedy. 2025. “Artificial Intelligence-Assisted Academic Writing: Recommendations for Ethical Use.” *Advances in Simulation* 10 (1): 26. <https://doi.org/10.1186/s41077-025-00350-6>.
+
+Golnari, Pareesa Ameneh, Adarsh Kumarappan, Wen Wen, Xiaoyu Liu, Gabriel Ryan, Yuting Sun, Shengyu Fu, and Elsie Nallipogu. 2026. “DevBench: A Realistic, Developer-Informed Benchmark for Code Generation Models.” *CoRR* abs/2601.11895. <https://doi.org/10.48550/ARXIV.2601.11895>.
 
 Lubos, Sebastian, Alexander Felfernig, Thi Ngoc Trang Tran, Damian Garber, Merfat El Mansi, Seda Polat Erdeniz, and Viet-Man Le. 2024. “Leveraging LLMs for the Quality Assurance of Software Requirements.” In *32nd IEEE International Requirements Engineering Conference, RE 2024, Reykjavik, Iceland, June 24-28, 2024*, edited by Grischa Liebel, Irit Hadar, and Paola Spoletini, 389–97. IEEE. <https://doi.org/10.1109/RE59067.2024.00046>.
 
