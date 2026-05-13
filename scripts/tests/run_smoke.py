@@ -22,7 +22,8 @@ ROOT = Path(__file__).resolve().parent.parent.parent
 PLUGIN_DIR = ROOT / 'plugins' / 'llm-guidelines'
 SKILLS_DIR = PLUGIN_DIR / 'skills'
 COMMANDS_DIR = PLUGIN_DIR / 'commands'
-SHARED_DIR = PLUGIN_DIR / 'shared'
+SKILL_DIR = SKILLS_DIR / 'llm-guidelines'
+REFS_DIR = SKILL_DIR / 'references'
 
 VERSION_RE = re.compile(r'^\d{4}\.\d{2}(_rev\d+)?$')
 
@@ -30,8 +31,11 @@ VERSION_RE = re.compile(r'^\d{4}\.\d{2}(_rev\d+)?$')
 def read_frontmatter(path):
     """Return dict of frontmatter keys from a Markdown file.
 
-    Supports the simple `key: value` form the bundle uses. Raises
-    AssertionError if the file is missing a frontmatter block.
+    Supports the simple `key: value` form the bundle uses, plus one level
+    of indented nesting for mapping values (used for the Agent Skills
+    spec's `metadata:` block). Quoted scalars have their surrounding
+    quotes stripped. Raises AssertionError if the file is missing a
+    frontmatter block.
     """
     text = path.read_text(encoding='utf-8')
     assert text.startswith('---\n'), f"{path}: missing opening '---' fence"
@@ -39,13 +43,30 @@ def read_frontmatter(path):
     assert end != -1, f"{path}: missing closing '---' fence"
     block = text[4:end]
     fm = {}
+    current_parent = None
     for line in block.split('\n'):
         if not line.strip():
             continue
         assert ':' in line, f"{path}: malformed frontmatter line {line!r}"
+        if line.startswith((' ', '\t')) and current_parent is not None:
+            k, _, v = line.partition(':')
+            fm[current_parent][k.strip()] = _strip_quotes(v.strip())
+            continue
         k, _, v = line.partition(':')
-        fm[k.strip()] = v.strip()
+        v = v.strip()
+        if v == '':
+            fm[k.strip()] = {}
+            current_parent = k.strip()
+        else:
+            fm[k.strip()] = _strip_quotes(v)
+            current_parent = None
     return fm
+
+
+def _strip_quotes(s):
+    if len(s) >= 2 and s[0] == s[-1] and s[0] in ('"', "'"):
+        return s[1:-1]
+    return s
 
 
 def markdown_links(text):
@@ -91,41 +112,48 @@ def test_marketplace_json_version_matches():
 
 
 def test_skill_md_versions_match():
-    for name in ('explore', 'review'):
-        skill = SKILLS_DIR / name / 'SKILL.md'
-        fm = read_frontmatter(skill)
-        assert fm.get('name') == name, \
-            f"{skill}: frontmatter name {fm.get('name')!r} != {name!r}"
-        assert fm.get('version') == bundle_version(), \
-            f"{skill}: version {fm.get('version')!r} != VERSION {bundle_version()!r}"
-        assert fm.get('description'), f"{skill}: missing description"
-        assert fm.get('license'), f"{skill}: missing license"
+    skill = SKILL_DIR / 'SKILL.md'
+    fm = read_frontmatter(skill)
+    assert fm.get('name') == 'llm-guidelines', \
+        f"{skill}: frontmatter name {fm.get('name')!r} != 'llm-guidelines'"
+    metadata = fm.get('metadata') or {}
+    assert metadata.get('version') == bundle_version(), \
+        f"{skill}: metadata.version {metadata.get('version')!r} != VERSION {bundle_version()!r}"
+    assert fm.get('description'), f"{skill}: missing description"
+    assert fm.get('license'), f"{skill}: missing license"
 
 
 # ---------- structural completeness ----------
 
-def test_skills_and_commands_align():
+def test_skills_and_commands_present():
+    """One skill (`llm-guidelines`) backed by two slash commands (`explore`,
+    `review`). The slash commands route into modes of the single skill."""
     skill_names = {p.name for p in SKILLS_DIR.iterdir() if (p / 'SKILL.md').is_file()}
+    assert skill_names == {'llm-guidelines'}, \
+        f"expected exactly {{llm-guidelines}}, got {sorted(skill_names)}"
     command_names = {p.stem for p in COMMANDS_DIR.glob('*.md')}
-    assert skill_names == command_names, \
-        f"skills/ ({sorted(skill_names)}) and commands/ ({sorted(command_names)}) " \
-        f"do not align — every command needs a backing skill and vice versa"
-    assert skill_names == {'explore', 'review'}, \
-        f"expected exactly {{explore, review}}, got {sorted(skill_names)}"
+    assert command_names == {'explore', 'review'}, \
+        f"expected exactly {{explore, review}}, got {sorted(command_names)}"
+    for cmd_name in ('explore', 'review'):
+        body = (COMMANDS_DIR / f'{cmd_name}.md').read_text(encoding='utf-8')
+        assert '`llm-guidelines`' in body, \
+            f"commands/{cmd_name}.md: does not name the llm-guidelines skill"
 
 
-def test_shared_required_files_exist():
+def test_references_required_files_exist():
     required = [
-        SHARED_DIR / 'scope.md',
-        SHARED_DIR / 'checklist.md',
+        REFS_DIR / 'scope.md',
+        REFS_DIR / 'checklist.md',
+        REFS_DIR / 'explore.md',
+        REFS_DIR / 'review.md',
     ]
     for p in required:
-        assert p.is_file(), f"missing shared file: {p.relative_to(ROOT)}"
-    guidelines = list((SHARED_DIR / 'guidelines').glob('*.md'))
+        assert p.is_file(), f"missing reference file: {p.relative_to(ROOT)}"
+    guidelines = list((REFS_DIR / 'guidelines').glob('*.md'))
     assert len(guidelines) == 8, \
         f"expected 8 guideline files, got {len(guidelines)}: " \
         f"{[g.name for g in guidelines]}"
-    study_types = list((SHARED_DIR / 'study-types').glob('*.md'))
+    study_types = list((REFS_DIR / 'study-types').glob('*.md'))
     # 7 study types + advantages-and-challenges + two umbrella entries
     # ("llms-as-tools-for-software-engineering-researchers" and
     # "llms-as-tools-for-software-engineers") = 10 files total.
@@ -137,39 +165,43 @@ def test_shared_required_files_exist():
 # ---------- link health (internal only — no network) ----------
 
 def test_skill_md_internal_links_resolve():
-    """Every `../../shared/...` link in a SKILL.md must point to a real file."""
+    """Every `references/...` link from SKILL.md, and every `./...` or
+    `../...` link from a references/*.md, must point to a real file."""
     broken = []
-    for name in ('explore', 'review'):
-        skill = SKILLS_DIR / name / 'SKILL.md'
-        text = skill.read_text(encoding='utf-8')
-        for label, target in markdown_links(text):
-            # Strip optional anchor.
+
+    # SKILL.md links point into references/.
+    skill = SKILL_DIR / 'SKILL.md'
+    text = skill.read_text(encoding='utf-8')
+    for label, target in markdown_links(text):
+        path_part = target.split('#', 1)[0]
+        if not path_part.startswith('references/'):
+            continue
+        resolved = (skill.parent / path_part).resolve()
+        if not resolved.is_file():
+            broken.append(f"{skill.relative_to(ROOT)}: [{label}]({target}) -> "
+                          f"{resolved} (not found)")
+
+    # references/{explore,review}.md link sideways (./guidelines/..., ./scope.md, ../SKILL.md).
+    for mode_name in ('explore', 'review'):
+        mode_file = REFS_DIR / f'{mode_name}.md'
+        mtext = mode_file.read_text(encoding='utf-8')
+        for label, target in markdown_links(mtext):
             path_part = target.split('#', 1)[0]
-            if not path_part.startswith('../../shared/'):
+            if not (path_part.startswith('./') or path_part.startswith('../')):
                 continue
-            resolved = (skill.parent / path_part).resolve()
+            resolved = (mode_file.parent / path_part).resolve()
             if not resolved.is_file():
-                broken.append(f"{skill.relative_to(ROOT)}: [{label}]({target}) -> "
+                broken.append(f"{mode_file.relative_to(ROOT)}: [{label}]({target}) -> "
                               f"{resolved} (not found)")
-        # Also check the bare paths referenced in prose (backtick-quoted).
-        # Only flag file references — directory pointers like
-        # `../../shared/guidelines/` are valid prose, not links.
-        for m in re.finditer(r'`(\.\./\.\./shared/[^`]+)`', text):
-            ref = m.group(1)
-            if '<' in ref or '*' in ref or ref.endswith('/'):
-                continue
-            resolved = (skill.parent / ref).resolve()
-            if not resolved.is_file():
-                broken.append(f"{skill.relative_to(ROOT)}: `{ref}` -> "
-                              f"{resolved} (not found)")
+
     assert not broken, "broken internal links:\n  " + "\n  ".join(broken)
 
 
-def test_no_absolute_website_links_leaked_into_shared():
+def test_no_absolute_website_links_leaked_into_references():
     """The generator rewrites `/guidelines/<slug>/` etc. to relative paths
-    inside shared/. A leak here means the rewrite step regressed."""
+    inside references/. A leak here means the rewrite step regressed."""
     leaks = []
-    for md in SHARED_DIR.rglob('*.md'):
+    for md in REFS_DIR.rglob('*.md'):
         text = md.read_text(encoding='utf-8')
         for label, target in markdown_links(text):
             if re.match(r'^/(guidelines|study-types|scope|checklist)/', target):
@@ -184,10 +216,10 @@ TESTS = [
     test_plugin_json_version_matches,
     test_marketplace_json_version_matches,
     test_skill_md_versions_match,
-    test_skills_and_commands_align,
-    test_shared_required_files_exist,
+    test_skills_and_commands_present,
+    test_references_required_files_exist,
     test_skill_md_internal_links_resolve,
-    test_no_absolute_website_links_leaked_into_shared,
+    test_no_absolute_website_links_leaked_into_references,
 ]
 
 

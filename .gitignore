@@ -10,3 +10,7 @@
 
 # Local Claude Code state
 .claude/
+
+# Python bytecode (from running scripts/tests/run_smoke.py locally)
+__pycache__/
+*.py[cod]
