@@ -23,7 +23,12 @@ The following files are **generated** by `generate-skill.sh` and overwritten on 
 | `plugins/llm-guidelines/skills/llm-guidelines/references/**` (guidelines, study-types, scope.md, checklist.md) | converted Markdown pages in the website repo |
 | `README.md` | `_skill/README.md.template` + `_skill/commands.env` |
 
-The remaining files in this repo — `LICENSE`, `.gitignore`, `CLAUDE.md` (this file), `.claude-plugin/marketplace.json` (catalog fields other than `version`), `plugins/llm-guidelines/.claude-plugin/plugin.json` (fields other than `version`), the slash-command files under `plugins/llm-guidelines/commands/`, the lint scaffolding under `plugins/llm-guidelines/skills/llm-guidelines/scripts/` (vendored PyMarkdown tree, `lint_markdown.py`, `lint_markdown.yaml`, `refresh_vendor.py`), and the CI infrastructure under `.github/workflows/` and `scripts/tests/` — are hand-curated and may be edited here directly. The vendored tree under `scripts/_vendor/` is updated by running `python3 plugins/llm-guidelines/skills/llm-guidelines/scripts/refresh_vendor.py` (maintainer-only); the generator leaves it alone.
+The remaining files in this repo — `LICENSE`, `.gitignore`, `CLAUDE.md` (this file), `.claude-plugin/marketplace.json` (catalog fields other than `version`), `plugins/llm-guidelines/.claude-plugin/plugin.json` (fields other than `version`), the slash-command files under `plugins/llm-guidelines/commands/`, the lint scaffolding under `plugins/llm-guidelines/skills/llm-guidelines/scripts/`, and the CI infrastructure under `.github/workflows/` and `scripts/tests/` — are hand-curated and may be edited here directly.
+
+Inside `plugins/llm-guidelines/skills/llm-guidelines/scripts/`, files split into two groups:
+
+- **Hand-curated** (edit here): `schema_checks.py` (llm-guidelines-specific schema rules), `lint_markdown.yaml` (per-skill PyMarkdown config), `tests/`.
+- **Synced from [pymarkdown-skill](https://github.com/se-uhd/pymarkdown-skill)** (do not edit here; the next sync will overwrite): `lint_markdown.py`, `refresh_vendor.py`, `check_baseline.py`, `_vendor/` (the PyMarkdown tree plus `NOTICE`), `bundled_licenses/`. The upstream SHA is recorded in `scripts/.pymarkdown-skill-version`. To update, pull `pymarkdown-skill` and run its `sync/sync_to_skill.sh --target plugins/llm-guidelines/skills/llm-guidelines/scripts`.
 
 ## Smoke tests
 

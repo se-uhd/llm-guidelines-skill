@@ -1,4 +1,4 @@
-# Scope and Conventions
+# Scope
 
 ## Motivation
 
@@ -8,7 +8,7 @@ Although the SE research community has developed guidelines for conducting and r
 
 Therefore, we present community-developed guidelines for conducting and reporting studies involving LLMs in SE research, co-developed by 22 researchers. After outlining our [*Scope*](./scope.md), we introduce a taxonomy of [*Study Types*](./study-types/), then present eight [*Guidelines*](./guidelines/). We complement these with an applicability matrix mapping guidelines to study types and a reporting checklist for authors and reviewers. For each study type and guideline, we identify relevant examples, both within and outside of SE research. We maintain the guidelines online as a living resource for the community to use and shape ([llm-guidelines.org](https://llm-guidelines.org/)).
 
-## Scope
+## Scope and Conventions
 
 ### Software Engineering as our Target Discipline
 
