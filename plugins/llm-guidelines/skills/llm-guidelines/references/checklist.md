@@ -25,7 +25,7 @@ The following checklist, inspired by CONSORT (Schulz, Altman, and Moher 2010), 
 - **must** Specify in the *paper* whether zero-shot, one-shot, or few-shot prompting was used ([Design](./guidelines/report-system-and-prompt-design.md)).
 - **must** Specify prompt reuse across models and configurations ([Design](./guidelines/report-system-and-prompt-design.md)).
 - **must** Publish all prompts or, when using templates, prompt templates with representative instances, including their structure, content, formatting, and variable components, as *supplementary material* ([Design](./guidelines/report-system-and-prompt-design.md)).
-- **must** Report hosting, hardware setup, and latency implications ([Design](./guidelines/report-system-and-prompt-design.md)).
+- **must** Report hosting and hardware setup ([Design](./guidelines/report-system-and-prompt-design.md)).
 - **must** `[dynamic-prompts]` For dynamically generated prompts, document the generation process thoroughly ([Design](./guidelines/report-system-and-prompt-design.md)).
 - **must** `[context-files]` Describe in the *paper* any context-file mechanisms used (e.g., `AGENTS.md`, `CLAUDE.md`) ([Design](./guidelines/report-system-and-prompt-design.md)).
 - **must** `[tool-use]` Summarize in the *paper* which tools and skills were exposed to the model ([Design](./guidelines/report-system-and-prompt-design.md)).
@@ -54,6 +54,7 @@ The following checklist, inspired by CONSORT (Schulz, Altman, and Moher 2010), 
 
 - **must** Justify in the *paper* all benchmark and metric choices ([Benchmarks](./guidelines/use-suitable-baselines-benchmarks-and-metrics.md)).
 - **must** Explain in the *paper* why the selected metrics are suitable for the specific study ([Benchmarks](./guidelines/use-suitable-baselines-benchmarks-and-metrics.md)).
+- **must** `[latency-sensitive]` Report latency when it can affect study outcomes (e.g., interactive user studies, latency comparisons) ([Benchmarks](./guidelines/use-suitable-baselines-benchmarks-and-metrics.md)).
 - **should** Provide an operational definition of the phenomenon the benchmark is intended to measure, including its scope and any sub-components ([Benchmarks](./guidelines/use-suitable-baselines-benchmarks-and-metrics.md)).
 - **should** Summarize benchmark structure, task types, and limitations ([Benchmarks](./guidelines/use-suitable-baselines-benchmarks-and-metrics.md)).
 - **should** Identify the capabilities a benchmark conflates with the target phenomenon, isolate the target where possible, and acknowledge remaining confounders as construct-validity threats ([Benchmarks](./guidelines/use-suitable-baselines-benchmarks-and-metrics.md)).
@@ -68,7 +69,9 @@ The following checklist, inspired by CONSORT (Schulz, Altman, and Moher 2010), 
 
 - **must** `[human-validation]` If using human validation, define in the *paper* the measured construct (e.g., usability, maintainability) and describe the measurement instrument ([Human Validation](./guidelines/use-human-validation-for-llm-outputs.md)).
 - **must** `[human-validation]` When developing or adapting measurement instruments, share them ([Human Validation](./guidelines/use-human-validation-for-llm-outputs.md)).
+- **must** `[human-validation]` When LLMs replace humans in research tasks, explain in the *paper* whether and how the replacement is justified ([Human Validation](./guidelines/use-human-validation-for-llm-outputs.md)).
 - **should** Consider human validation early in the study design and build on established reference models for human-LLM comparison ([Human Validation](./guidelines/use-human-validation-for-llm-outputs.md)).
+- **should** `[human-validation]` When LLMs replace humans in research tasks, report in the *paper* the systematic approach used to justify the replacement, including model-to-model and model-to-human agreement ([Human Validation](./guidelines/use-human-validation-for-llm-outputs.md)).
 - **should** `[human-validation]` Validate LLM judgments against human judgment, report aggregation methods, and assess human-LLM agreement ([Human Validation](./guidelines/use-human-validation-for-llm-outputs.md)).
 - **should** `[human-validation]` Discuss and, where feasible, control for confounding factors ([Human Validation](./guidelines/use-human-validation-for-llm-outputs.md)).
 - **should** `[human-validation]``[subjective-constructs]` For value-laden or culturally contingent constructs, describe rater demographics beyond expertise and discuss potential demographic biases ([Human Validation](./guidelines/use-human-validation-for-llm-outputs.md)).
