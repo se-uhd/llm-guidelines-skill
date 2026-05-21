@@ -1,8 +1,10 @@
 # LLMs as Judges
 
+In the judge role, LLMs rate or rank artifacts on quality criteria, in contrast to the coding tasks of [*LLMs as Annotators*](../study-types/llms-as-annotators.md).
+
 ## Description
 
-LLMs can rate properties of software artifacts (e.g. assess code readability, adherence to coding standards, or comment quality) or sort multiple solutions by some attribute. These kinds of judgments are distinct from annotating unstructured text (see [*LLMs as Annotators*](../study-types/llms-as-annotators.md)).
+As judges, LLMs rate software artifacts along quality criteria (e.g., code readability, adherence to coding standards, comment quality) or rank candidate solutions against such criteria. The scoring rubric is usually embedded in the prompt, with either a numerical scale or a binary verdict.
 
 ## Examples
 

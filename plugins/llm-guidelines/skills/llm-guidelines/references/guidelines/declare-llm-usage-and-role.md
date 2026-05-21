@@ -16,7 +16,7 @@ When the LLM is central to the study (e.g., as the main tool being evaluated or 
 
 ## Examples
 
-The *ACM Policy on Authorship* (Association for Computing Machinery 2023) suggests disclosing GenAI usage in the acknowledgments section of the *paper*, advising to “err on the side of caution, and include a disclosure in the acknowledgments section of the Work” when uncertain about the need (Association for Computing Machinery 2023). For double-blind review, researchers can add a temporary “AI Disclosure” section where the acknowledgments would appear. An example of an LLM disclosure beyond writing support can be found in a recent paper by Lubos et al. (2024), in which they write in the methodology section:
+The *ACM Policy on Authorship* (Association for Computing Machinery 2023) suggests disclosing GenAI usage in the acknowledgments section of the *paper*, advising to “err on the side of caution, and include a disclosure in the acknowledgments section of the Work” when uncertain about the need. For double-blind review, researchers can add a temporary “AI Disclosure” section where the acknowledgments would appear. An example of an LLM disclosure beyond writing support can be found in a recent paper by Lubos et al. (2024), in which they write in the methodology section:
 
 > *“We conducted an LLM-based evaluation of requirements utilizing the Llama 2 language model with 70 billion parameters, fine-tuned to complete chat responses...”*
 
@@ -28,7 +28,7 @@ Golnari et al. (2026)’s DevBench paper illustrates separate disclosure of mult
 
 ## Benefits
 
-Transparency in the use of LLMs helps other researchers understand the context and scope of the study, supporting better interpretation and comparison of the results. Beyond this declaration, we recommend researchers to be explicit about the LLM version they used (see [*Version and Configuration*](../guidelines/report-model-version-configuration-and-customizations.md)) and the LLM’s exact role.
+Transparency in the use of LLMs helps other researchers understand the context and scope of the study, supporting interpretation and comparison of the results. Realizing these benefits requires reporting the LLM’s exact role and version (see [*Version and Configuration*](../guidelines/report-model-version-configuration-and-customizations.md)).
 
 ## Challenges
 
@@ -42,13 +42,13 @@ Researchers **must** follow this guideline for all study types. The specific fo
 
 The most common problem with disclosure is incompleteness or vagueness about how the LLM was used. If the paper says “we used LLM X to help with task Y” without specifying how, reviewers should request clarification. Such requests are typically minor revisions unless the missing details may reveal methodological problems.
 
-Using an LLM as a copyeditor becomes problematic when authors do not or cannot take responsibility for the resulting text. If a reviewer finds clear evidence that LLM-generated text was not carefully reviewed (e.g., text like “As a Large Language Model, I...”), this may warrant rejection. If a reviewer suspects an author *cannot* take responsibility for AI-generated text, they should raise the concern with their editor or program chair. Due process requires that authors not be accused of misconduct without clear evidence.
+Using an LLM as a copyeditor becomes problematic when authors do not or cannot take responsibility for the resulting text. If a reviewer finds clear evidence that LLM-generated text was not carefully reviewed (e.g., text such as “As a Large Language Model, I...”), this may warrant rejection. If a reviewer suspects an author *cannot* take responsibility for AI-generated text, they should raise the concern with their editor or program chair. Due process requires that authors not be accused of misconduct without clear evidence.
 
 If undisclosed LLM use is suspected, the reviewer should similarly consult their editor or program chair. When the evidence is conclusive, the key question is the degree to which undisclosed use affects the study’s contribution, ranging from negligible (e.g., word choice in a single sentence) to severe (e.g., generating ostensibly empirical data or statistical analyses).
 
 ## See Also
 
-- [Report Model Version, Configuration, and Customizations](../guidelines/report-model-version-configuration-and-customizations.md): Disclosing that an LLM was used is incomplete without naming which model and version.
+- [Report Model Version, Configuration, and Customizations](../guidelines/report-model-version-configuration-and-customizations.md): The disclosure is incomplete without naming the specific model and version.
 - [Report System and Prompt Design](../guidelines/report-system-and-prompt-design.md): When the LLM lives inside a tool or agent, authors must also describe that tool’s architecture and prompts.
 - [Report Session Traces](../guidelines/report-session-traces.md): Session traces show what the LLM did during the study.
 

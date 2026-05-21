@@ -1,8 +1,10 @@
 # Benchmarking LLMs for Software Engineering Tasks
 
+Benchmarking studies measure LLM performance on standardized SE tasks against reference outputs and shared metrics.
+
 ## Description
 
-Benchmarking is the process of evaluating an LLM’s performance on standardized tasks, using standardized metrics, on a standardized dataset. The LLM output is compared to a supposed ground truth from the benchmark dataset. Typical tasks include code generation, code summarization, code completion, and code repair (Yang et al. 2025), but also natural language processing tasks, such as anaphora resolution (i.e., the task of identifying the referring expression of a word or phrase occurring earlier in the text). Metrics may include general metrics for text generation, such as *ROUGE*, *BLEU*, or *METEOR* (Hou et al. 2024), or task-specific metrics, such as *CodeBLEU* for code generation. Benchmarking requires high-quality reference datasets.
+In a benchmark, the reference outputs serve as ground truth, and the metrics measure how well an LLM’s outputs match them. Typical tasks include code generation, code summarization, code completion, and code repair (Yang et al. 2025), but also natural language processing tasks such as anaphora resolution (i.e., the task of identifying the referring expression of a word or phrase occurring earlier in the text). Metrics may include general metrics for text generation, such as *ROUGE*, *BLEU*, or *METEOR* (Hou et al. 2024), or task-specific metrics, such as *CodeBLEU* for code generation. Benchmarking requires high-quality reference datasets.
 
 ## Examples
 

@@ -11,7 +11,7 @@ The following checklist, inspired by CONSORT (Schulz, Altman, and Moher 2010), 
 
 ### Model Selection and Configuration
 
-- **must** Report in the *paper* the exact LLM model or tool version, the configuration, and the experiment date ([Model Version](./guidelines/report-model-version-configuration-and-customizations.md)).
+- **must** Report in the *paper* the exact LLM model or tool version, the configuration, and the date of study execution ([Model Version](./guidelines/report-model-version-configuration-and-customizations.md)).
 - **must** `[fine-tuning]` For fine-tuned models, describe in the *paper* the fine-tuning goal, the dataset, and the procedure ([Model Version](./guidelines/report-model-version-configuration-and-customizations.md)).
 - **should** Report default parameters and explain model and version choices ([Model Version](./guidelines/report-model-version-configuration-and-customizations.md)).
 - **should** Report checksums and additional model properties where available; for commercial tools, openly acknowledge their reproducibility limits ([Model Version](./guidelines/report-model-version-configuration-and-customizations.md)).
@@ -26,12 +26,13 @@ The following checklist, inspired by CONSORT (Schulz, Altman, and Moher 2010), 
 - **must** Specify prompt reuse across models and configurations ([Design](./guidelines/report-system-and-prompt-design.md)).
 - **must** Publish all prompts or, when using templates, prompt templates with representative instances, including their structure, content, formatting, and variable components, as *supplementary material* ([Design](./guidelines/report-system-and-prompt-design.md)).
 - **must** Report hosting and hardware setup ([Design](./guidelines/report-system-and-prompt-design.md)).
-- **must** `[dynamic-prompts]` For dynamically generated prompts, document the generation process thoroughly ([Design](./guidelines/report-system-and-prompt-design.md)).
-- **must** `[context-files]` Describe in the *paper* any context-file mechanisms used (e.g., `AGENTS.md`, `CLAUDE.md`) ([Design](./guidelines/report-system-and-prompt-design.md)).
-- **must** `[tool-use]` Summarize in the *paper* which tools and skills were exposed to the model ([Design](./guidelines/report-system-and-prompt-design.md)).
+- **must** `[dynamic-prompts]` For dynamically generated prompts, document the code or rules that assemble each prompt from runtime inputs ([Design](./guidelines/report-system-and-prompt-design.md)).
+- **must** `[context-files]` Describe in the *paper* any configuration mechanisms used (e.g., context files such as `CLAUDE.md` or `AGENTS.md`, skills, subagents, hooks, settings, rules) ([Design](./guidelines/report-system-and-prompt-design.md)).
+- **must** `[tool-use]` Summarize in the *paper* which tools were exposed to the model ([Design](./guidelines/report-system-and-prompt-design.md)).
 - **must** `[agents]` If autonomous agents are used, specify agent roles, reasoning frameworks, and communication flows ([Design](./guidelines/report-system-and-prompt-design.md)).
-- **must** `[context-augmentation]` For retrieval-augmented generation (RAG) or related methods, describe how external data was retrieved, stored, and integrated ([Design](./guidelines/report-system-and-prompt-design.md)).
-- **should** Justify design decisions ([Design](./guidelines/report-system-and-prompt-design.md)).
+- **must** `[context-augmentation]` For retrieval-augmented generation (RAG) or related methods, describe how external data was retrieved, stored, and selected for inclusion in the model’s context ([Design](./guidelines/report-system-and-prompt-design.md)).
+- **must** `[benchmarking]` Describe the evaluation harness and infrastructure when it goes beyond bare model API calls (e.g., custom sandboxing, orchestration layers, or post-processing pipelines) ([Design](./guidelines/report-system-and-prompt-design.md)).
+- **should** Justify substantive architectural choices where alternatives existed (e.g., agentic framework, tool catalog) ([Design](./guidelines/report-system-and-prompt-design.md)).
 - **should** Describe prompt development rationale and selection process ([Design](./guidelines/report-system-and-prompt-design.md)).
 - **should** Report prompt evolution and any LLM-suggested refinements ([Design](./guidelines/report-system-and-prompt-design.md)).
 - **should** Where legally possible, release the source code of the implementation under an open-source license ([Design](./guidelines/report-system-and-prompt-design.md)).
@@ -40,8 +41,9 @@ The following checklist, inspired by CONSORT (Schulz, Altman, and Moher 2010), 
 - **should** `[restricted-sharing]` If full prompt disclosure is not feasible, provide summaries or examples ([Design](./guidelines/report-system-and-prompt-design.md)).
 - **should** `[ensemble]` For ensemble architectures, explain in the *paper* the coordination logic between models ([Design](./guidelines/report-system-and-prompt-design.md)).
 - **should** `[context-augmentation]` Report data preprocessing, versioning, and update frequency for stored data used for context augmentation ([Design](./guidelines/report-system-and-prompt-design.md)).
-- **should** `[context-files]` Include context-file contents as *supplementary material* ([Design](./guidelines/report-system-and-prompt-design.md)).
-- **should** `[tool-use]` Include the complete list of tools and skills (names with one-line purposes), tool schemas, skill definitions, sub-agent definitions, and connected MCP servers as *supplementary material* ([Design](./guidelines/report-system-and-prompt-design.md)).
+- **should** `[context-files]` Include all configuration artifacts (context files, skill folders, subagent files, hooks, settings, rules) as *supplementary material* ([Design](./guidelines/report-system-and-prompt-design.md)).
+- **should** `[tool-use]` Include the tool catalog (names with purposes), tool schemas, and connected MCP servers as *supplementary material* ([Design](./guidelines/report-system-and-prompt-design.md)).
+- **should** `[benchmarking]` Design the evaluation harness so it is usable with open models ([Design](./guidelines/report-system-and-prompt-design.md)).
 
 ### Session Traces
 
@@ -85,10 +87,10 @@ The following checklist, inspired by CONSORT (Schulz, Altman, and Moher 2010), 
 
 ## Results
 
-- **must** `[comparing-models]` If comparing models or tools, use appropriate inferential statistics (e.g., hypothesis tests, effect sizes) rather than relying solely on summary statistics ([Benchmarks](./guidelines/use-suitable-baselines-benchmarks-and-metrics.md)).
 - **should** Repeat experiments due to the inherent non-determinism of LLMs and report the result distribution using descriptive statistics ([Benchmarks](./guidelines/use-suitable-baselines-benchmarks-and-metrics.md)).
 - **should** Use traditional (non-LLM) baselines for comparison where possible ([Benchmarks](./guidelines/use-suitable-baselines-benchmarks-and-metrics.md)).
 - **should** Report established metrics to make study results comparable; additional metrics may be reported where appropriate ([Benchmarks](./guidelines/use-suitable-baselines-benchmarks-and-metrics.md)).
+- **should** `[comparing-models]` If comparing models or tools, use appropriate inferential statistics (e.g., hypothesis tests, effect sizes) rather than relying solely on summary statistics ([Benchmarks](./guidelines/use-suitable-baselines-benchmarks-and-metrics.md)).
 
 ## Limitations and Threats to Validity
 

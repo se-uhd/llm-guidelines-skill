@@ -14,19 +14,17 @@ The rationale is similar to reporting interview transcripts in qualitative resea
 
 ## Recommendations
 
-### Interaction Logs:
+### Interaction Logs.
 
 Researchers **should** report the full interaction logs (prompts sent to the LLM and responses returned) as part of their *supplementary material*. For agentic systems, interaction logs generalize to cover exchanges between humans and the agent as well as between external tools and the agent, including human-in-the-loop feedback, approval or rejection decisions, and iterative refinements. These **should** also be reported as *supplementary material* so that readers can reconstruct the sequence of exchanges and assess human oversight decisions. For traces containing sensitive information, researchers **must** anonymize personal identifiers, replace proprietary code with placeholders, and clearly highlight modified sections.
 
-### Runtime Traces:
+### Runtime Traces.
 
-When an LLM calls out to external tools (e.g., APIs, file systems, databases, MCP servers, sub-agents) or activates configured artifacts (e.g., context files, skills, sub-agents reported under [*System and Prompt Design*](../guidelines/report-system-and-prompt-design.md)), this runtime activity forms a *runtime trace* distinct from the interaction log. Researchers **should** report the complete runtime trace as *supplementary material*, including for each entry the tool or artifact name, arguments (if any), result, and ordering relative to surrounding interaction-log entries. This lets readers attribute task success to the model, the external tools, or their interaction pattern, and distinguish artifacts that were configured from those that actually influenced a given run. Researchers **should** record runtime traces in an open format compatible with the OpenTelemetry Protocol (OTLP), such as the OpenTelemetry GenAI semantic conventions (OpenTelemetry Authors 2026) or OpenInference (Arize AI 2026), and report the version used, rather than a study-specific schema.
+When an LLM calls out to external tools (e.g., APIs, file systems, databases, MCP servers, sub-agents) or activates configured artifacts (e.g., context files, skills, sub-agents reported under [*System and Prompt Design*](../guidelines/report-system-and-prompt-design.md)), this runtime activity forms a *runtime trace* distinct from the interaction log. Researchers **should** report the complete runtime trace as *supplementary material*, including for each entry the tool or artifact name, arguments (if any), result, and ordering relative to surrounding interaction-log entries. This lets readers attribute task success to the model, the external tools, or their interaction pattern, and distinguish artifacts that were configured from those that actually influenced a given run. Researchers **should** use an open format with a documented schema. Emerging standards such as the OpenTelemetry GenAI semantic conventions (OpenTelemetry Authors 2026) or OpenInference (Arize AI 2026) are preferred where they fit. Where tool-native formats are used (e.g., Claude Code’s session transcripts, LangGraph’s state logs), researchers **must** describe the file format and report the tool version.
 
-### Agentic Plans:
+### Agentic Plans.
 
-For agentic systems that autonomously plan and execute tasks, the developed plans **should** be reported as *supplementary material* if available. In Claude Code, for example, a plan is a short Markdown document the user can open and edit during a session, listing the proposed steps and the files or commands the agent intends to touch. Other frameworks such as LangGraph keep plans inside the agent’s internal execution state.
-
-All reported traces **must** be made publicly available as *supplementary material*, subject to privacy and confidentiality constraints. When full trace logging is not feasible, researchers **should** provide representative examples or anonymized traces.
+For agentic systems that autonomously plan and execute tasks, the developed plans **should** be reported as *supplementary material* if available. In Claude Code, for example, a plan is a short Markdown document the user can open and edit during a session, listing the proposed steps and the files or commands the agent intends to touch. Other frameworks such as LangGraph keep plans inside the agent’s internal execution state. All reported traces **must** be made publicly available as *supplementary material*, subject to privacy and confidentiality constraints. When full trace logging is not feasible, researchers **should** provide representative examples or anonymized traces.
 
 ## Examples
 
@@ -36,11 +34,11 @@ An example of reporting full interaction logs is the study by Ronanki, Berger, a
 
 Unlike human participant conversations, which often cannot be reported because of confidentiality, LLM interaction logs can be shared. This enables reproduction studies, tracking of response changes over time or across model versions, and secondary research on LLM consistency for specific SE tasks.
 
-For agentic systems, reporting runtime traces alongside interaction logs lets readers attribute task outcomes to the right component: the model, the tool, or the orchestration pattern. Usage traces complement the static configuration reported under [*System and Prompt Design*](../guidelines/report-system-and-prompt-design.md) by showing which of the configured artifacts actually influenced a given run.
+For agentic systems, reporting runtime traces alongside interaction logs lets readers follow the model’s reasoning, the tool calls it made, and the order of those calls. Usage traces complement the static configuration reported under [*System and Prompt Design*](../guidelines/report-system-and-prompt-design.md) by showing which of the configured artifacts were activated on a given run.
 
 ## Challenges
 
-Not all systems allow reporting of complete interaction logs with ease, and this hinders transparency and verifiability. For commercial tools, researchers **must** report all available information and acknowledge unknown aspects as limitations. Tool-call traces for commercial SaaS agents are often opaque: the user sees the final response but not the sequence of internal tool calls. When this is the case, authors should document what was and was not observable. For agents running locally or via open-source tools, these traces are usually more accessible and **should** be reported whenever available. Agent frameworks differ in whether and how they log agent-to-agent communication, so reporting practices vary across studies.
+Not all systems allow reporting of complete interaction logs with ease, and this hinders transparency and verifiability. For commercial tools, researchers **must** report all available information and acknowledge unknown aspects as limitations. Tool-call traces for commercial SaaS agents are often opaque: the user sees the final response but not the sequence of internal tool calls. When this is the case, authors **should** document what was and was not observable. For agents running locally or via open-source tools, these traces are usually more accessible and **should** be reported whenever available. Agent frameworks differ in whether and how they log agent-to-agent communication, so reporting practices vary across studies.
 
 ## Study Types
 
@@ -56,7 +54,7 @@ As with other guidelines, missing trace information is typically a minor revisio
 
 - [Report System and Prompt Design](../guidelines/report-system-and-prompt-design.md): Session traces show runtime behavior; system and prompt design covers the static artifacts that produce it.
 - [Report Model Version, Configuration, and Customizations](../guidelines/report-model-version-configuration-and-customizations.md): A trace cannot be reproduced or compared across studies without the model identity that produced it.
-- [Use Human Validation for LLM Outputs](../guidelines/use-human-validation-for-llm-outputs.md): Agentic traces produce outputs that often warrant human evaluation.
+- [Use Human Validation for LLM Outputs](../guidelines/use-human-validation-for-llm-outputs.md): Agentic traces produce outputs that often warrant human validation.
 - [Use an Open LLM as a Baseline](../guidelines/use-an-open-llm-as-a-baseline.md): Open models let other researchers reproduce a reported trace on the exact same model weights.
 - [Report Limitations and Mitigations](../guidelines/report-limitations-and-mitigations.md): When a tool hides parts of the trace, authors must report the gap as a limitation.
 
