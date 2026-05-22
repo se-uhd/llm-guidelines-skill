@@ -48,9 +48,9 @@ The following checklist, inspired by CONSORT (Schulz, Altman, and Moher 2010), 
 ### Session Traces
 
 - **should** Include full interaction logs (prompts and responses) as *supplementary material* if privacy and confidentiality can be ensured ([Traces](./guidelines/report-session-traces.md)).
-- **should** `[agents]` For agentic systems, include interaction logs covering exchanges between humans and the agent and between external tools and the agent (human-in-the-loop feedback, approvals, refinements) as *supplementary material* ([Traces](./guidelines/report-session-traces.md)).
-- **should** `[agents]` For agentic systems, report the complete runtime trace as *supplementary material*, including for each entry the tool or artifact name, arguments, result, and ordering, and which configured artifacts (skills, context files, sub-agents) were activated ([Traces](./guidelines/report-session-traces.md)).
-- **should** `[agents]` For agentic systems, report developed plans as *supplementary material* if available ([Traces](./guidelines/report-session-traces.md)).
+- **should** `[agents]` For agentic systems, include interaction logs covering human-in-the-loop exchanges with the agent (feedback, approvals, refinements) as *supplementary material* ([Traces](./guidelines/report-session-traces.md)).
+- **should** `[agents]` For agentic systems, report the complete runtime trace as *supplementary material*, including for each entry the tool or artifact name, arguments, result, and ordering, and which configured artifacts (skills, context files, subagents) were activated ([Traces](./guidelines/report-session-traces.md)).
+- **should** `[agents]` For agentic systems, report any plans the system exposes as *supplementary material* ([Traces](./guidelines/report-session-traces.md)).
 
 ### Benchmarks and Metrics
 
@@ -82,7 +82,7 @@ The following checklist, inspired by CONSORT (Schulz, Altman, and Moher 2010), 
 
 - **must** `[restricted-sharing]` For studies involving sensitive data, discuss data governance mechanisms compliant with applicable jurisdictional obligations ([Limitations](./guidelines/report-limitations-and-mitigations.md)).
 - **should** Justify LLM usage in light of its resource demands ([Limitations](./guidelines/report-limitations-and-mitigations.md)).
-- **should** Provide a full replication package as *supplementary material*, including step-by-step instructions for verifying and reproducing the results ([Open LLM](./guidelines/use-an-open-llm-as-a-baseline.md)).
+- **should** Provide a full replication package as *supplementary material*, including step-by-step instructions for verifying and reproducing the results ([Limitations](./guidelines/report-limitations-and-mitigations.md)).
 - **should** `[restricted-sharing]` Where full sharing of prompts, traces, or datasets is not feasible, share representative examples for partial replicability ([Limitations](./guidelines/report-limitations-and-mitigations.md)).
 
 ## Results

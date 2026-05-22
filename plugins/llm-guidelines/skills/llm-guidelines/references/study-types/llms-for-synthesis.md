@@ -1,6 +1,6 @@
 # LLMs for Synthesis
 
-In the synthesis role, LLMs integrate and interpret information from multiple sources to produce higher-level findings such as themes, patterns, or conceptual frameworks.
+In the synthesis role, LLMs integrate and interpret information from multiple sources to produce higher-level findings such as themes, patterns, or conceptual frameworks. They can also generate synthetic content (e.g., source code, bug-fix pairs, requirements) for downstream training or evaluation.
 
 ## Description
 

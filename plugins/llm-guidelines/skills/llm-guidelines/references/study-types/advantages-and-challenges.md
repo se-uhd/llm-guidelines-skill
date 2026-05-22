@@ -28,7 +28,7 @@ There is *insufficient evidence* for the effectiveness of LLMs in most research 
 
 Majority voting across multiple outputs improves reliability but increases *cost and environmental impact* (Reiss 2023; S. Wang et al. 2021). While open models are available, the most capable ones require substantial hardware; relying on *cloud-based APIs* introduces concerns related to data privacy, security, and replicability. See [*Limitations and Mitigations*](../guidelines/report-limitations-and-mitigations.md) for sustainability considerations.
 
-Field study findings face *generalizability* challenges because outcomes may be highly sensitive to individual differences, usage patterns, goals, and contexts. Field studies must be “dependable” (Sullivan and Sargeant 2011) beyond traditional validity criteria, which complicates methodology; see [*Limitations and Mitigations*](../guidelines/report-limitations-and-mitigations.md) for a detailed threat taxonomy.
+Field study findings face *generalizability* challenges because outcomes may be highly sensitive to individual differences, usage patterns, goals, and contexts. Field studies must be “*dependable*” (Sullivan and Sargeant 2011) beyond traditional validity criteria, which complicates methodology; see [*Limitations and Mitigations*](../guidelines/report-limitations-and-mitigations.md) for a detailed threat taxonomy.
 
 ## References
 

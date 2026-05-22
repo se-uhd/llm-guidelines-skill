@@ -8,94 +8,77 @@ When using LLMs for empirical studies in SE, researchers face unique challenges 
 
 ## Recommendations
 
-Researchers **must** clearly present the limitations of their work without defensiveness or obfuscation. These limitations may concern diverse topics including generalizability, internal validity (e.g., data leakage), reliability (i.e., non-determinism), and reproducibility (e.g., resource requirements).
+Researchers **must** clearly present the limitations of their work without defensiveness or obfuscation. These limitations may concern external, internal, and construct validity; reliability and reproducibility; and ethical, regulatory, and environmental concerns.
 
-We follow the standard SE convention of organizing limitations by internal, construct, and external validity, plus reliability (Runeson and Höst 2009; Ralph et al. 2021), extended below with ethical, regulatory, and environmental concerns specific to LLM research. For studies that adopt qualitative analytic methods (the use of LLMs in reflexive qualitative analysis is itself contested, see [*LLMs as Annotators*](../study-types/llms-as-annotators.md) and [*LLMs for Research*](../study-types/llms-as-tools-for-software-engineering-researchers.md)), researchers **should** use the trustworthiness criteria of credibility, transferability, dependability, and confirmability instead (Guba 1981). When deterministic reproducibility is structurally unattainable (e.g., SaaS-based models with opaque versioning), researchers **should** adopt the same trustworthiness criteria to substantiate dependability and confirmability of findings. Robillard et al. (2024) propose a further SE alternative in which the discussion is organized around explicit study design trade-offs.
-
-LLM-based studies may involve many kinds of generalization including the following:
-
-1. From tested LLMs to others; i.e., whether the performance characteristics of the LLM(s) studied transfer to LLM(s) not included in the study.
-2. From tested configurations to others; i.e., how sensitive results are to the specific configuration(s) of the LLM under test.
-3. From research to practice; i.e., whether developers using the same tools obtain results comparable to those reported under researcher-supervised conditions.
-4. From a sampled population to a larger one; i.e., whether findings from a specific group of human validators or participants apply to a broader population.
-5. From one time period to another; i.e., whether the same LLM, or other versions of it, produce similar results at a different point in time.
-
-The following concerns present an overview that has to be tailored to the individual study context. This section does not repeat requirements from other recommendations.
-
-### Internal Validity.
-
-The primary threats to internal validity are:
-
-- *Data leakage and contamination.* Inter-dataset duplication can produce training-evaluation overlap, yielding overly optimistic results.
-- *Evaluation data entering model-improvement pipelines.* Evaluation samples can unintentionally feed retraining or fine-tuning, especially in longitudinal studies involving LLMs.
-- *Incomplete architecture, prompt, or pipeline reporting.* Undisclosed components introduce hidden confounders.
-
-Inter-dataset duplication is prevalent in SE, particularly for code-related benchmarks. As transparency on training data is limited for LLMs, researchers **must** discuss potential data leakage effects and their impact on results.
-
-### Construct Validity.
-
-The primary threats to construct validity are:
-
-- *Metric-construct mismatch.* Traditional metrics such as BLEU or ROUGE may miss SE-specific aspects such as functional correctness or behavioral equivalence.
-- *Over-reliance on benchmark-specific metrics.* Optimizing for a single benchmark may produce dataset-specific shortcuts that pass the benchmark without exhibiting the capability it was designed to test, overstating real-world utility.
-- *Benchmark scope limitations.* Benchmarks commonly ignore runtime behaviors, security implications, readability, testability, and maintainability, yielding results that may not transfer to realistic development settings.
-
-If constructs are based on subjective interpretations, purely automated metrics are insufficient. Researchers **must** discuss how they ensured quality of subjective results, similarly to qualitative research.
+We follow the standard SE convention of organizing limitations by external, internal, and construct validity, plus reliability (Runeson and Höst 2009; Ralph et al. 2021), extended below with ethical, regulatory, and environmental concerns specific to LLM research. For studies that adopt qualitative analytic methods (the use of LLMs in reflexive qualitative analysis is itself contested, see [*LLMs as Annotators*](../study-types/llms-as-annotators.md)), researchers **should** use the trustworthiness criteria of credibility, transferability, dependability, and confirmability instead (Guba 1981). When deterministic reproducibility is structurally unattainable (e.g., SaaS-based models with opaque versioning), researchers **should** adopt the same trustworthiness criteria to substantiate dependability and confirmability of findings.
 
 ### External Validity.
 
 The primary threats to external validity are:
 
-- *Cross-model transfer limitations.* Results obtained with one LLM or family of LLMs may not generalize to others due to differences in training data, architecture, and post-training procedures (e.g., fine-tuning and RLHF).
-- *Tool-architecture specificity.* Tools built around vendor-specific APIs or features (e.g., function calling, structured output, or context-window size) may not transfer to other models without substantial re-engineering.
-- *Limited domain coverage.* Studies often focus on a narrow set of programming languages, task types, or application domains, limiting generalizability to other SE contexts.
-- *Limited participant diversity.* Study participants such as human validators or developers may not represent the broader population in terms of expertise, geographic location, or cultural background.
-- *Cross-time instability.* Performance of proprietary models can change over time, leading to non-generalizable study outcomes (Chen, Zaharia, and Zou 2024; Li et al. 2024).
+- *Cross-model transfer limitations*: Results obtained with one LLM or family of LLMs may not generalize to others due to differences in training data, architecture, and post-training procedures (e.g., fine-tuning and reinforcement learning from human feedback); see [*Open LLMs*](../guidelines/use-an-open-llm-as-a-baseline.md) for using an open LLM as a comparison baseline.
+- *Configuration sensitivity*: Results may not generalize beyond the specific configuration(s) tested (e.g., decoding parameters, system prompt, or context settings); see [*System and Prompt Design*](../guidelines/report-system-and-prompt-design.md) for an overview.
+- *Tool-architecture specificity*: Tools built around vendor-specific APIs or features (e.g., function calling, structured output, or context-window size) may not transfer to other models without substantial re-engineering (see [*System and Prompt Design*](../guidelines/report-system-and-prompt-design.md)).
+- *Limited domain coverage*: Studies often focus on a narrow set of programming languages, task types, or application domains, limiting generalizability to other SE contexts.
+- *Limited participant and rater diversity*: Study participants (e.g., developers) and human raters validating LLM outputs may not represent the broader population in terms of expertise, geographic location, or cultural background (see [*Human Validation*](../guidelines/use-human-validation-for-llm-outputs.md) for guidance on rater diversity in value-laden constructs).
+- *Research-to-practice gap*: Developers using the same tools outside researcher-supervised conditions may obtain results that differ from those reported in the study.
+- *Cross-time instability*: Performance of proprietary models can change over time, leading to non-generalizable study outcomes (Chen, Zaharia, and Zou 2024; Li et al. 2024) (see [*Version and Configuration*](../guidelines/report-model-version-configuration-and-customizations.md) for version and fingerprint reporting that enables tracking such drift).
 
-Generalizability is particularly critical for proprietary and non-deterministic systems whose behavior is subject to drift (i.e., silent changes in model output over time) (Chen, Zaharia, and Zou 2024). Researchers **must** discuss the limitations and mitigations of external validity.
+Generalizability is particularly critical for proprietary and non-deterministic systems whose behavior is subject to drift (i.e., silent changes in model output over time). Researchers **must** discuss the limitations and mitigations of external validity. Mitigations include *triangulation* across multiple models (e.g., proprietary and open), independent datasets, and complementary metrics; *sensitivity analysis* that varies LLM configurations, prompts, architecture decisions, datasets, and where applicable participant backgrounds; and performing *longitudinal re-runs* (see *Reliability & Reproducibility* below), which also helps detect cross-time instability.
+
+### Internal Validity.
+
+The primary threats to internal validity are:
+
+- *Data leakage and contamination*: Inter-dataset duplication can produce training-evaluation overlap, yielding overly optimistic results (see [*Benchmarks and Metrics*](../guidelines/use-suitable-baselines-benchmarks-and-metrics.md)).
+- *Evaluation data entering model-improvement pipelines*: Evaluation samples can unintentionally feed retraining or fine-tuning, especially in longitudinal studies involving LLMs.
+- *Incomplete architecture, prompt, or pipeline reporting*: Undisclosed components introduce hidden confounders (see [*System and Prompt Design*](../guidelines/report-system-and-prompt-design.md)).
+
+As transparency on training data is limited for LLMs, researchers **must** discuss potential data leakage effects and their impact on results. Concrete mitigations for contamination (e.g., post-cutoff benchmark construction, held-out subsets, canary strings) are discussed in [*Benchmarks and Metrics*](../guidelines/use-suitable-baselines-benchmarks-and-metrics.md).
+
+### Construct Validity.
+
+The primary threats to construct validity are:
+
+- *Metric-construct mismatch*: Traditional metrics such as BLEU or ROUGE may miss SE-specific aspects such as functional correctness or behavioral equivalence (see [*Benchmarks and Metrics*](../guidelines/use-suitable-baselines-benchmarks-and-metrics.md)).
+- *Construct under-specification*: If a construct lacks an operational definition, neither automated metrics nor human raters can apply it consistently.
+- *Reliability without validity*: High inter-rater or inter-model agreement does not imply that the measurement captures the intended construct; a reliable LLM can be reliably inaccurate (see [*Human Validation*](../guidelines/use-human-validation-for-llm-outputs.md)).
+- *Benchmark scope limitations*: Benchmarks commonly ignore runtime behaviors, security implications, readability, testability, and maintainability, yielding results that may not transfer to realistic development settings.
+- *Capability confounding*: Benchmark performance can blend the target capability with unrelated capabilities such as output format compliance, instruction following, or prompt format sensitivity, inflating apparent scores (see [*Benchmarks and Metrics*](../guidelines/use-suitable-baselines-benchmarks-and-metrics.md)).
+- *Over-reliance on benchmark-specific metrics*: Optimizing for a single benchmark may produce dataset-specific shortcuts that pass the benchmark without exhibiting the capability it was designed to test, overstating real-world utility.
+- *Prompt sensitivity*: Small changes in instructions, formatting, or in-context examples can substantially shift what the LLM appears to measure, making the operationalized construct unstable across prompt variants (see [*System and Prompt Design*](../guidelines/report-system-and-prompt-design.md)).
+- *Judge biases*: LLM and human judges exhibit systematic biases such as position bias, verbosity bias, and preferences for richly formatted or citation-rich outputs regardless of correctness (see [*Human Validation*](../guidelines/use-human-validation-for-llm-outputs.md)).
+
+If constructs are based on subjective interpretations, purely automated metrics are insufficient. Researchers **must** discuss how they ensured quality of subjective results, similarly to qualitative research. The primary mitigation is *human validation* of subjective constructs following quality criteria known from qualitative research (see [*Human Validation*](../guidelines/use-human-validation-for-llm-outputs.md)).
 
 ### Reliability & Reproducibility.
 
 The primary threats to reliability and reproducibility are:
 
-- *Non-deterministic outputs.* Identical prompts and configurations can yield different outputs across runs due to factors such as floating-point arithmetic, batching, and stochastic decoding strategies.
-- *Infrastructure dependence.* Results may vary depending on the hardware, software stack, and hosting environment used; vendor-imposed quotas, throttling, or pricing changes can further prevent re-running experiments at the original scale, making exact replication challenging across different infrastructure setups.
-- *Resource inequality.* LLM research is resource-intensive and remains predominantly in the domain of private companies or well-funded research institutions (Schwartz et al. 2020; Ahmed, Wahed, and Thompson 2023), excluding researchers from under-resourced institutions.
+- *Non-deterministic outputs*: Identical prompts and configurations can yield different outputs across runs due to factors such as floating-point arithmetic, batching, and stochastic decoding strategies.
+- *Infrastructure dependence*: Results may vary depending on the hardware, software stack, and hosting environment used; vendor-imposed quotas, throttling, or pricing changes can further prevent re-running experiments at the original scale, making exact replication challenging across different infrastructure setups.
+- *Resource inequality*: LLM research is resource-intensive and remains predominantly in the domain of private companies or well-funded research institutions (Schwartz et al. 2020; Ahmed, Wahed, and Thompson 2023), excluding researchers from under-resourced institutions.
 
-Researchers **must** discuss the measures taken to increase reliability and reproducibility. However, non-deterministic reproducibility is not inherently disqualifying. Qualitative traditions such as ethnography, grounded theory, and action research ensure trustworthiness through *credibility*, *transferability*, *dependability*, and *confirmability* (Guba 1981). The same applies to SaaS-based LLM research, where providers frequently deprecate model versions without guaranteeing stable behavior.
+Researchers **must** discuss the measures taken to increase reliability and reproducibility. However, non-deterministic reproducibility is not inherently disqualifying. The trustworthiness criteria introduced above apply particularly to SaaS-based LLM research, where providers frequently deprecate model versions without guaranteeing stable behavior. Mitigations include providing *replication packages* that cover prompt and architecture specifications, model outputs, and representative examples for partial replicability (ideally accompanied by an implementation using an open model for long-term stability), and performing *longitudinal re-runs* with statistical analyses. When deterministic reproduction is structurally impossible, researchers **should** consider *methodological trustworthiness measures* such as triangulation, reflexivity, audit trails, and peer debriefing as complementary measures.
 
 ### Ethical & Regulatory Boundaries.
 
 The primary concerns for ethical and regulatory matters are:
 
-- *Use of sensitive or proprietary data.* Studies involving proprietary code, confidential business data, or personally identifiable information may face restrictions on data sharing that limit reproducibility.
-- *Jurisdictional obligations.* Data protection regulations such as GDPR or CCPA and institutional policies may impose constraints on data collection, processing, and sharing in LLM-based studies.
-- *Implicit model bias.* Especially for qualitative research, LLMs might “*reinforce dominant paradigms and biases*” and “*identify, replicate and reinforce dominant language and patterns*” (Jowsey et al. 2025).
+- *Use of sensitive or proprietary data*: Studies involving proprietary code, confidential business data, or personally identifiable information may face restrictions on data sharing that limit reproducibility.
+- *Jurisdictional obligations*: Data protection regulations such as GDPR or CCPA and institutional policies may impose constraints on data collection, processing, and sharing in LLM-based studies.
+- *Implicit model bias*: Especially for qualitative research, LLMs might “*reinforce dominant paradigms and biases*” and “*identify, replicate and reinforce dominant language and patterns*” (Jowsey et al. 2025) (see [*Human Validation*](../guidelines/use-human-validation-for-llm-outputs.md)).
 
-Studies involving sensitive data **must** discuss data governance mechanisms tailored towards LLM environments, compliant with applicable juristical obligations. If applicable, researchers **should** discuss how model biases potentially impact the study outcomes and how those biases were evaluated.
+Studies involving sensitive data **must** discuss data governance mechanisms tailored toward LLM environments, compliant with applicable jurisdictional obligations. If applicable, researchers **should** discuss how model biases potentially impact the study outcomes and how those biases were evaluated.
 
 ### Environmental & Sustainability Constraints.
 
 The primary environmental and sustainability concerns are:
 
-- *Energy consumption.* With growing model size, the environmental impact of experiments with LLMs increases, and the substantial energy costs of LLM experiments warrant consideration in study design (Strubell, Ganesh, and McCallum 2019).
-- *Trade-off between repetition and sustainability.* Repeating experiments increases reliability but also energy consumption, requiring trade-offs during study design.
+- *Energy consumption*: With growing model size, the environmental impact of experiments with LLMs increases, and the substantial energy costs of LLM experiments warrant consideration in study design (Strubell, Ganesh, and McCallum 2019).
+- *Trade-off between repetition and sustainability*: Repeating experiments increases reliability but also energy consumption, requiring trade-offs during study design.
 
-Researchers **should** justify the LLM’s resource consumption against the benefits over traditional approaches.
-
-### Mitigation Strategies.
-
-The following mitigation strategies can help address the threats described above, depending on the study scope and feasibility.
-
-- *Replication Packages.* Cover prompt and architecture specifications, model outputs, and representative examples for partial replicability, accompanied by an implementation using an open model for long-term stability.
-- *Human Validation.* Validate subjective constructs following quality criteria known from qualitative research.
-- *Longitudinal Re-Runs.* Repeat experiments with LLMs over time, complemented by statistical analyses.
-- *Methodological Trustworthiness Measures.* Researchers **should** consider triangulation, reflexivity, audit trails, and peer debriefing as complementary measures when deterministic reproduction is structurally impossible.
-- *Triangulation.* Use multiple models (e.g., proprietary and open), multiple independent datasets, and multiple complementary metrics.
-- *Cost Accounting.* Report input and output tokens, token and service costs, or hardware specifications.
-- *Energy Preservation.* Select smaller or newer less resource-intensive models and apply techniques such as input/output token reduction, model pruning, quantization, or knowledge distillation (Mitu and Mitu 2024) where feasible. Carbon footprint estimation is desirable, but still difficult.
-- *Ethical and Regulatory Considerations.* Apply data governance mechanisms, ethical reviews, and bias assessment procedures.
-- *Sensitivity Analysis.* Vary LLM configurations, prompts, architecture decisions, datasets, and where applicable human participant backgrounds.
+Researchers **should** justify the LLM’s resource consumption against the benefits over traditional approaches. Mitigations include *energy preservation* and *cost accounting*. *Energy preservation* involves selecting smaller or newer, less resource-intensive models and applying techniques such as input/output token reduction, model pruning, quantization, or knowledge distillation (Mitu and Mitu 2024) where feasible. Carbon footprint estimation is desirable, but still difficult. *Cost accounting* tracks resource consumption by reporting tokens, service costs, or hardware specifications.
 
 ## Examples
 
@@ -113,7 +96,7 @@ The threats to validity framework itself is contested within SE. Verdecchia et a
 
 ## Study Types
 
-Researchers **must** follow this guideline for all study types. Transparently reporting limitations and mitigations is a universal requirement, but specific concerns vary by study type. For [*LLMs as Annotators*](../study-types/llms-as-annotators.md), researchers **must** discuss potential biases in label assignment, label reliability limitations, and sensitivity of annotations to prompt wording and model choice. For [*LLMs as Judges*](../study-types/llms-as-judges.md), researchers **must** address measurement validity concerns, known biases such as position bias or verbosity bias, and the extent to which LLM judgments align with human expert assessments. For [*LLMs for Synthesis*](../study-types/llms-for-synthesis.md), researchers **must** discuss the risk of contextual misinterpretation, potential loss of nuance in summarized or aggregated outputs, and reflexivity limitations inherent in using an LLM for qualitative interpretation. For [*LLMs as Subjects*](../study-types/llms-as-subjects.md), researchers **must** discuss the fundamental inability of LLMs to truly simulate human behavior, the risk of stereotype amplification, and the limited ecological validity of simulated responses. For [*Studying LLM Usage*](../study-types/studying-llm-usage-in-software-engineering.md), researchers **must** discuss generalizability constraints across different tools and user populations, and acknowledge how observed usage patterns may not transfer to other contexts. For [*LLMs for Tools*](../study-types/llms-for-new-software-engineering-tools.md), researchers **must** discuss replicability constraints arising from dependencies on commercial models, the impact of model updates on tool behavior, and limitations of the evaluation setup. For [*Benchmarking LLMs*](../study-types/benchmarking-llms-for-software-engineering-tasks.md), researchers **must** discuss potential data contamination, benchmark scope limitations, and the extent to which benchmark performance generalizes to real-world tasks.
+Researchers **must** follow this guideline for all study types. Transparently reporting limitations and mitigations is a universal requirement, but specific concerns vary by study type. For [*LLMs as Annotators*](../study-types/llms-as-annotators.md), researchers **must** discuss potential biases in label assignment, label reliability limitations, and sensitivity of annotations to prompt wording and model choice. For [*LLMs as Judges*](../study-types/llms-as-judges.md), researchers **must** address measurement validity concerns, known biases such as position bias or verbosity bias, and the extent to which LLM judgments align with human expert assessments. For [*LLMs for Synthesis*](../study-types/llms-for-synthesis.md), researchers **must** discuss the risk of contextual misinterpretation, potential loss of nuance in summarized or aggregated outputs, and reflexivity limitations inherent in using an LLM for qualitative interpretation. For [*LLMs as Subjects*](../study-types/llms-as-subjects.md), researchers **must** discuss the fundamental inability of LLMs to truly simulate human behavior, the risk of stereotype amplification, and the limited ecological validity of simulated responses. For [*Studying LLM Usage*](../study-types/studying-llm-usage-in-software-engineering.md), researchers **must** discuss generalizability constraints across different tools and user populations, and acknowledge how observed usage patterns may not transfer to other contexts. For [*LLMs for Tools*](../study-types/llms-for-new-software-engineering-tools.md), researchers **must** discuss replicability constraints arising from dependencies on commercial models, the impact of model updates on tool behavior, and limitations of the evaluation setup. For [*Benchmarking LLMs*](../study-types/benchmarking-llms-for-software-engineering-tasks.md), researchers **must** discuss potential data contamination, benchmark scope limitations, capability confounding, and the extent to which benchmark performance generalizes to real-world tasks.
 
 ## Advice for Reviewers
 
@@ -125,6 +108,7 @@ Reviewers should verify that the limitation section is comprehensive and appropr
 - [Report System and Prompt Design](../guidelines/report-system-and-prompt-design.md): Triangulation across architectures and prompts is one mitigation strategy.
 - [Report Session Traces](../guidelines/report-session-traces.md): Stored session traces serve as a baseline against which authors can monitor LLM behavior drift over time.
 - [Use Suitable Baselines, Benchmarks, and Metrics](../guidelines/use-suitable-baselines-benchmarks-and-metrics.md): Benchmark and metric choices are one source of construct-validity threats authors must discuss.
+- [Use an Open LLM as a Baseline](../guidelines/use-an-open-llm-as-a-baseline.md): An open LLM baseline mitigates cross-model transfer concerns by providing an independently reproducible comparison.
 - [Use Human Validation for LLM Outputs](../guidelines/use-human-validation-for-llm-outputs.md): When automated metrics cannot validly measure a construct, human validation is an alternative.
 
 ## References
