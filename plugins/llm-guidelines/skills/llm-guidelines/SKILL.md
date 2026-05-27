@@ -3,7 +3,7 @@ name: llm-guidelines
 description: Apply the community LLM reporting guidelines for empirical SE studies (see https://llm-guidelines.org). Use when the user plans, discusses, or audits an empirical study whose method involves an LLM, walks through the scope statement, eight reporting guidelines, or reporting checklist, picks a study type from the taxonomy (LLMs as annotators, judges, synthesis, or subjects; studying LLM usage in software engineering; LLMs for new SE tools; benchmarking LLMs for SE tasks), or asks for a structured pass over a draft (`.tex` or `.pdf`, plus any supplementary material) producing an `llm-guidelines-report.md`.
 license: CC-BY-4.0
 metadata:
-  version: "2026.05_rev16"
+  version: "2026.05_rev17"
   homepage: https://llm-guidelines.org
 ---
 
@@ -40,26 +40,26 @@ Load on demand. Do not preload the full bundle; the mode files instruct when to 
 
 ## Guidelines index
 
-- [Declare LLM Usage and Role](references/guidelines/declare-llm-usage-and-role.md)
-- [Report Model Version, Configuration, and Customizations](references/guidelines/report-model-version-configuration-and-customizations.md)
-- [Report System and Prompt Design](references/guidelines/report-system-and-prompt-design.md)
-- [Report Session Traces](references/guidelines/report-session-traces.md)
-- [Use Suitable Baselines, Benchmarks, and Metrics](references/guidelines/use-suitable-baselines-benchmarks-and-metrics.md)
-- [Use an Open LLM as a Baseline](references/guidelines/use-an-open-llm-as-a-baseline.md)
-- [Use Human Validation for LLM Outputs](references/guidelines/use-human-validation-for-llm-outputs.md)
-- [Report Limitations and Mitigations](references/guidelines/report-limitations-and-mitigations.md)
+- [Declare LLM Usage and Role](references/guidelines/declare-usage.md)
+- [Report Model Version, Configuration, and Customizations](references/guidelines/model-version.md)
+- [Report System and Prompt Design](references/guidelines/design.md)
+- [Report Session Traces](references/guidelines/traces.md)
+- [Use Suitable Baselines, Benchmarks, and Metrics](references/guidelines/benchmarks.md)
+- [Use an Open LLM as a Baseline](references/guidelines/open-llm.md)
+- [Use Human Validation for LLM Outputs](references/guidelines/human-validation.md)
+- [Report Limitations and Mitigations](references/guidelines/limitations.md)
 
 ## Study-types index
 
-- [LLMs as Tools for Software Engineering Researchers](references/study-types/llms-as-tools-for-software-engineering-researchers.md)
-    - [LLMs as Annotators](references/study-types/llms-as-annotators.md)
-    - [LLMs as Judges](references/study-types/llms-as-judges.md)
-    - [LLMs for Synthesis](references/study-types/llms-for-synthesis.md)
-    - [LLMs as Subjects](references/study-types/llms-as-subjects.md)
-- [LLMs as Tools for Software Engineers](references/study-types/llms-as-tools-for-software-engineers.md)
-    - [Studying LLM Usage in Software Engineering](references/study-types/studying-llm-usage-in-software-engineering.md)
-    - [LLMs for New Software Engineering Tools](references/study-types/llms-for-new-software-engineering-tools.md)
-    - [Benchmarking LLMs for Software Engineering Tasks](references/study-types/benchmarking-llms-for-software-engineering-tasks.md)
+- [LLMs as Tools for Software Engineering Researchers](references/study-types/llms-for-research.md)
+    - [LLMs as Annotators](references/study-types/annotators.md)
+    - [LLMs as Judges](references/study-types/judges.md)
+    - [LLMs for Synthesis](references/study-types/synthesis.md)
+    - [LLMs as Subjects](references/study-types/subjects.md)
+- [LLMs as Tools for Software Engineers](references/study-types/llms-for-se.md)
+    - [Studying LLM Usage in Software Engineering](references/study-types/usage.md)
+    - [LLMs for New Software Engineering Tools](references/study-types/tools.md)
+    - [Benchmarking LLMs for Software Engineering Tasks](references/study-types/benchmarks.md)
 - [Advantages and Challenges](references/study-types/advantages-and-challenges.md)
 
 ## Shared constraints

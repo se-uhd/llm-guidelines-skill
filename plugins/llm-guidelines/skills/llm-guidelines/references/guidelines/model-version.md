@@ -4,7 +4,7 @@
 
 ## Rationale
 
-LLMs and LLM-based tools are frequently updated, and configuration parameters such as temperature or seed values affect content generation. This guideline focuses on documenting the *model-specific* aspects of empirical studies involving LLMs, concentrating on the models themselves, their version, configuration parameters, and customizations (e.g., fine-tuning). While the [*System and Prompt Design*](../guidelines/report-system-and-prompt-design.md) section addresses system-level integration and the authored artifacts (including prompts) that the model uses on each call, the information outlined here is essential for reproducibility whenever an LLM is involved.
+LLMs and LLM-based tools are frequently updated, and configuration parameters such as temperature or seed values affect content generation. This guideline focuses on documenting the *model-specific* aspects of empirical studies involving LLMs, concentrating on the models themselves, their version, configuration parameters, and customizations (e.g., fine-tuning). While the [*System and Prompt Design*](../guidelines/design.md) section addresses system-level integration and the authored artifacts (including prompts) that the model uses on each call, the information outlined here is essential for reproducibility whenever an LLM is involved.
 
 ## Recommendations
 
@@ -44,11 +44,11 @@ Even with a temperature of 0, full determinism is rarely guaranteed: floating-po
 
 ## Study Types
 
-This guideline **must** be followed for all study types for which the researcher has access to (parts of) the model’s configuration. They **must** always report the configuration that is visible to them, acknowledging the reproducibility challenges of commercial tools and models that are offered as-a-service. Depending on the specific study type, researchers **should** provide additional information on the system and prompt design (see [*System and Prompt Design*](../guidelines/report-system-and-prompt-design.md)), session traces (see [*Session Traces*](../guidelines/report-session-traces.md)), and specific limitations and mitigations (see [*Limitations and Mitigations*](../guidelines/report-limitations-and-mitigations.md)).
+This guideline **must** be followed for all study types for which the researcher has access to (parts of) the model’s configuration. They **must** always report the configuration that is visible to them, acknowledging the reproducibility challenges of commercial tools and models that are offered as-a-service. Depending on the specific study type, researchers **should** provide additional information on the system and prompt design (see [*System and Prompt Design*](../guidelines/design.md)), session traces (see [*Session Traces*](../guidelines/traces.md)), and specific limitations and mitigations (see [*Limitations and Mitigations*](../guidelines/limitations.md)).
 
-For example, when [*Studying LLM Usage*](../study-types/studying-llm-usage-in-software-engineering.md) by focusing on commercial tools such as ChatGPT or GitHub Copilot, researchers **must** be as specific as possible in describing their study setup. The configured model name, version, and the date of study execution **must** always be reported. See [*System and Prompt Design*](../guidelines/report-system-and-prompt-design.md) for prompt reporting and [*Session Traces*](../guidelines/report-session-traces.md) for interaction logs.
+For example, when [*Studying LLM Usage*](../study-types/usage.md) by focusing on commercial tools such as ChatGPT or GitHub Copilot, researchers **must** be as specific as possible in describing their study setup. The configured model name, version, and the date of study execution **must** always be reported. See [*System and Prompt Design*](../guidelines/design.md) for prompt reporting and [*Session Traces*](../guidelines/traces.md) for interaction logs.
 
-For [*LLMs as Annotators*](../study-types/llms-as-annotators.md), [*LLMs as Judges*](../study-types/llms-as-judges.md), and [*LLMs for Synthesis*](../study-types/llms-for-synthesis.md), researchers **must** report the model configuration used for the respective annotation, judging, or synthesis tasks, including temperature and other sampling parameters that affect output variability. For [*LLMs as Subjects*](../study-types/llms-as-subjects.md), researchers **must** report any persona-related configuration settings and parameters that configure the simulated behavior. For [*LLMs for Tools*](../study-types/llms-for-new-software-engineering-tools.md), researchers **must** report the configuration for each model integrated in the tool’s architecture, including any model-specific parameter choices. For [*Benchmarking LLMs*](../study-types/benchmarking-llms-for-software-engineering-tasks.md), researchers **must** report the configuration for all benchmarked models to enable fair cross-model comparisons.
+For [*LLMs as Annotators*](../study-types/annotators.md), [*LLMs as Judges*](../study-types/judges.md), and [*LLMs for Synthesis*](../study-types/synthesis.md), researchers **must** report the model configuration used for the respective annotation, judging, or synthesis tasks, including temperature and other sampling parameters that affect output variability. For [*LLMs as Subjects*](../study-types/subjects.md), researchers **must** report any persona-related configuration settings and parameters that configure the simulated behavior. For [*LLMs for Tools*](../study-types/tools.md), researchers **must** report the configuration for each model integrated in the tool’s architecture, including any model-specific parameter choices. For [*Benchmarking LLMs*](../study-types/benchmarks.md), researchers **must** report the configuration for all benchmarked models to enable fair cross-model comparisons.
 
 ## Advice for Reviewers
 
@@ -56,11 +56,11 @@ Missing version, configuration, or parameter information is typically a minor re
 
 ## See Also
 
-- [Report System and Prompt Design](../guidelines/report-system-and-prompt-design.md): Beyond the model itself, authors must also document the architecture and prompts that use it.
-- [Report Session Traces](../guidelines/report-session-traces.md): Session traces show what the reported model and configuration produced at runtime.
-- [Use Suitable Baselines, Benchmarks, and Metrics](../guidelines/use-suitable-baselines-benchmarks-and-metrics.md): Benchmark comparisons require identifying the exact model version under test.
-- [Use an Open LLM as a Baseline](../guidelines/use-an-open-llm-as-a-baseline.md): An open model gives full version visibility, which some commercial products do not.
-- [Report Limitations and Mitigations](../guidelines/report-limitations-and-mitigations.md): Hidden or shifting commercial versions become reproducibility threats in their own right.
+- [Report System and Prompt Design](../guidelines/design.md): Beyond the model itself, authors must also document the architecture and prompts that use it.
+- [Report Session Traces](../guidelines/traces.md): Session traces show what the reported model and configuration produced at runtime.
+- [Use Suitable Baselines, Benchmarks, and Metrics](../guidelines/benchmarks.md): Benchmark comparisons require identifying the exact model version under test.
+- [Use an Open LLM as a Baseline](../guidelines/open-llm.md): An open model gives full version visibility, which some commercial products do not.
+- [Report Limitations and Mitigations](../guidelines/limitations.md): Hidden or shifting commercial versions become reproducibility threats in their own right.
 
 ## References
 

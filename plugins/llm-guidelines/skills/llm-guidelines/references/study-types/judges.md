@@ -1,6 +1,6 @@
 # LLMs as Judges
 
-In the judge role, LLMs rate or rank artifacts on quality criteria, in contrast to the qualitative coding tasks of [*LLMs as Annotators*](../study-types/llms-as-annotators.md).
+In the judge role, LLMs rate or rank artifacts on quality criteria, in contrast to the qualitative coding tasks of [*LLMs as Annotators*](../study-types/annotators.md).
 
 ## Description
 

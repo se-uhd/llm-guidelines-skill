@@ -12,7 +12,7 @@ When conducting any kind of empirical study involving LLMs, researchers **must**
 
 Beyond generic declarations, researchers **should** report the exact purpose of using an LLM in a study, the tasks it was used to automate, and the expected benefits in the *paper*. A sufficient declaration specifies not only *that* an LLM was used, but also *which* LLM (name and version), *how* it was used (e.g., as an annotator, code generator, or judge), and *where* in the research process it was employed (e.g., data collection, analysis, or synthesis).
 
-When the LLM is central to the study (e.g., as the main tool being evaluated or as a core component of the research method), the declaration **should** be prominent and detailed, appearing in the methodology section with cross-references to the specific guidelines that apply (e.g., Sections [*Version and Configuration*](../guidelines/report-model-version-configuration-and-customizations.md), [*System and Prompt Design*](../guidelines/report-system-and-prompt-design.md), and [*Session Traces*](../guidelines/report-session-traces.md)). When the LLM’s role is more tangential (e.g., used for a single preprocessing step), a brief but explicit statement in the methodology or acknowledgments section is sufficient. When a study assigns multiple distinct roles to LLMs (e.g., one model generates evaluation data while another scores outputs), each role **should** be declared separately. In each case, the disclosure **must** be specific enough for readers to assess how the LLM’s involvement may affect the study’s validity and reproducibility.
+When the LLM is central to the study (e.g., as the main tool being evaluated or as a core component of the research method), the declaration **should** be prominent and detailed, appearing in the methodology section with cross-references to the specific guidelines that apply (e.g., Sections [*Version and Configuration*](../guidelines/model-version.md), [*System and Prompt Design*](../guidelines/design.md), and [*Session Traces*](../guidelines/traces.md)). When the LLM’s role is more tangential (e.g., used for a single preprocessing step), a brief but explicit statement in the methodology or acknowledgments section is sufficient. When a study assigns multiple distinct roles to LLMs (e.g., one model generates evaluation data while another scores outputs), each role **should** be declared separately. In each case, the disclosure **must** be specific enough for readers to assess how the LLM’s involvement may affect the study’s validity and reproducibility.
 
 ## Examples
 
@@ -28,7 +28,7 @@ Golnari et al. (2026)’s DevBench paper illustrates separate disclosure of mult
 
 ## Benefits
 
-Transparency in the use of LLMs helps other researchers understand the context and scope of the study, supporting interpretation and comparison of the results. Realizing these benefits requires reporting the LLM’s exact role and version (see [*Version and Configuration*](../guidelines/report-model-version-configuration-and-customizations.md)).
+Transparency in the use of LLMs helps other researchers understand the context and scope of the study, supporting interpretation and comparison of the results. Realizing these benefits requires reporting the LLM’s exact role and version (see [*Version and Configuration*](../guidelines/model-version.md)).
 
 ## Challenges
 
@@ -36,7 +36,7 @@ Declaring LLM usage requires only a brief statement and no additional experiment
 
 ## Study Types
 
-Researchers **must** follow this guideline for all study types. The specific focus of the declaration varies by study type. For [*LLMs as Annotators*](../study-types/llms-as-annotators.md), [*LLMs as Judges*](../study-types/llms-as-judges.md), [*LLMs for Synthesis*](../study-types/llms-for-synthesis.md), and [*LLMs as Subjects*](../study-types/llms-as-subjects.md), researchers **must** declare the specific role assigned to the LLM (e.g., annotator, judge, synthesizer, or simulated participant). For [*Studying LLM Usage*](../study-types/studying-llm-usage-in-software-engineering.md), researchers **must** clarify which LLM(s) the observed participants used and under which conditions. For [*LLMs for Tools*](../study-types/llms-for-new-software-engineering-tools.md), researchers **must** declare the LLM’s role within the tool architecture and its contribution to the tool’s functionality. For [*Benchmarking LLMs*](../study-types/benchmarking-llms-for-software-engineering-tasks.md), researchers **must** declare which LLMs were benchmarked and for which tasks.
+Researchers **must** follow this guideline for all study types. The specific focus of the declaration varies by study type. For [*LLMs as Annotators*](../study-types/annotators.md), [*LLMs as Judges*](../study-types/judges.md), [*LLMs for Synthesis*](../study-types/synthesis.md), and [*LLMs as Subjects*](../study-types/subjects.md), researchers **must** declare the specific role assigned to the LLM (e.g., annotator, judge, synthesizer, or simulated participant). For [*Studying LLM Usage*](../study-types/usage.md), researchers **must** clarify which LLM(s) the observed participants used and under which conditions. For [*LLMs for Tools*](../study-types/tools.md), researchers **must** declare the LLM’s role within the tool architecture and its contribution to the tool’s functionality. For [*Benchmarking LLMs*](../study-types/benchmarks.md), researchers **must** declare which LLMs were benchmarked and for which tasks.
 
 ## Advice for Reviewers
 
@@ -48,9 +48,9 @@ If undisclosed LLM use is suspected, the reviewer should similarly consult their
 
 ## See Also
 
-- [Report Model Version, Configuration, and Customizations](../guidelines/report-model-version-configuration-and-customizations.md): The disclosure is incomplete without naming the specific model and version.
-- [Report System and Prompt Design](../guidelines/report-system-and-prompt-design.md): When the LLM lives inside a tool or agent, authors must also describe that tool’s architecture and prompts.
-- [Report Session Traces](../guidelines/report-session-traces.md): Session traces show what the LLM did during the study.
+- [Report Model Version, Configuration, and Customizations](../guidelines/model-version.md): The disclosure is incomplete without naming the specific model and version.
+- [Report System and Prompt Design](../guidelines/design.md): When the LLM lives inside a tool or agent, authors must also describe that tool’s architecture and prompts.
+- [Report Session Traces](../guidelines/traces.md): Session traces show what the LLM did during the study.
 
 ## References
 
