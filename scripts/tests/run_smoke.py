@@ -14,18 +14,28 @@ step required. Frontmatter is parsed manually (single-line key: value).
 Exits 0 if all pass; non-zero on the first failure (with a summary).
 """
 import json
+import os
 import re
+import shutil
+import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent.parent
+CLAUDE_MARKETPLACE = ROOT / '.claude-plugin' / 'marketplace.json'
+CODEX_MARKETPLACE = ROOT / '.agents' / 'plugins' / 'marketplace.json'
 PLUGIN_DIR = ROOT / 'plugins' / 'llm-guidelines'
+CLAUDE_PLUGIN_JSON = PLUGIN_DIR / '.claude-plugin' / 'plugin.json'
+CODEX_PLUGIN_JSON = PLUGIN_DIR / '.codex-plugin' / 'plugin.json'
 SKILLS_DIR = PLUGIN_DIR / 'skills'
 COMMANDS_DIR = PLUGIN_DIR / 'commands'
 SKILL_DIR = SKILLS_DIR / 'llm-guidelines'
 REFS_DIR = SKILL_DIR / 'references'
 
+EXPECTED_CLAUDE_VERSION = '2026.05_rev18'
 VERSION_RE = re.compile(r'^\d{4}\.\d{2}(_rev\d+)?$')
+SEMVER_RE = re.compile(r'^\d+\.\d+\.\d+$')
 
 
 def read_frontmatter(path):
@@ -79,15 +89,24 @@ def bundle_version():
     return (ROOT / 'VERSION').read_text(encoding='utf-8').strip()
 
 
+def codex_semver_for(version):
+    m = re.match(r'^(\d{4})\.(\d{2})(?:_rev(\d+))?$', version)
+    assert m, f"cannot map {version!r} to Codex semver"
+    year, month, revision = m.groups()
+    return f"{year}.{int(month)}.{int(revision or 0)}"
+
+
 # ---------- version coherence ----------
 
 def test_version_file_format():
     v = bundle_version()
     assert VERSION_RE.match(v), f"VERSION {v!r} does not match YYYY.MM[_revN]"
+    assert v == EXPECTED_CLAUDE_VERSION, \
+        f"VERSION {v!r} != expected release {EXPECTED_CLAUDE_VERSION!r}"
 
 
 def test_plugin_json_version_matches():
-    p = PLUGIN_DIR / '.claude-plugin' / 'plugin.json'
+    p = CLAUDE_PLUGIN_JSON
     data = json.loads(p.read_text(encoding='utf-8'))
     assert data.get('name') == 'llm-guidelines', f"{p}: wrong name {data.get('name')!r}"
     assert data.get('version') == bundle_version(), \
@@ -97,8 +116,10 @@ def test_plugin_json_version_matches():
 
 
 def test_marketplace_json_version_matches():
-    p = ROOT / '.claude-plugin' / 'marketplace.json'
+    p = CLAUDE_MARKETPLACE
     data = json.loads(p.read_text(encoding='utf-8'))
+    assert data.get('name') == 'llm-guidelines', \
+        f"{p}: wrong marketplace name {data.get('name')!r}"
     plugins = data.get('plugins') or []
     assert len(plugins) == 1, f"{p}: expected 1 plugin entry, got {len(plugins)}"
     entry = plugins[0]
@@ -111,6 +132,62 @@ def test_marketplace_json_version_matches():
         f"{p}: wrong source {entry.get('source')!r}"
 
 
+def test_codex_plugin_json_version_and_shape():
+    p = CODEX_PLUGIN_JSON
+    data = json.loads(p.read_text(encoding='utf-8'))
+    expected = codex_semver_for(bundle_version())
+    assert data.get('name') == 'llm-guidelines', f"{p}: wrong name {data.get('name')!r}"
+    assert data.get('version') == expected, \
+        f"{p}: version {data.get('version')!r} != expected Codex semver {expected!r}"
+    assert SEMVER_RE.match(data.get('version', '')), \
+        f"{p}: version {data.get('version')!r} is not strict semver"
+    assert data.get('skills') == './skills/', \
+        f"{p}: skills {data.get('skills')!r} != './skills/'"
+    for required in ('description', 'homepage', 'repository', 'license'):
+        assert data.get(required), f"{p}: missing or empty {required!r}"
+    author = data.get('author') or {}
+    assert author.get('name'), f"{p}: missing author.name"
+    interface = data.get('interface') or {}
+    required_interface = (
+        'displayName',
+        'shortDescription',
+        'longDescription',
+        'developerName',
+        'category',
+        'capabilities',
+        'websiteURL',
+        'defaultPrompt',
+    )
+    for required in required_interface:
+        assert interface.get(required), f"{p}: missing or empty interface.{required}"
+    assert interface.get('category') == 'Research', \
+        f"{p}: interface.category {interface.get('category')!r} != 'Research'"
+
+
+def test_codex_marketplace_shape():
+    p = CODEX_MARKETPLACE
+    data = json.loads(p.read_text(encoding='utf-8'))
+    assert data.get('name') == 'se-uhd', f"{p}: wrong name {data.get('name')!r}"
+    interface = data.get('interface') or {}
+    assert interface.get('displayName') == 'SE UHD', \
+        f"{p}: wrong displayName {interface.get('displayName')!r}"
+    plugins = data.get('plugins') or []
+    assert len(plugins) == 1, f"{p}: expected 1 plugin entry, got {len(plugins)}"
+    entry = plugins[0]
+    assert entry.get('name') == 'llm-guidelines', \
+        f"{p}: wrong plugin name {entry.get('name')!r}"
+    assert entry.get('source') == {
+        'source': 'local',
+        'path': './plugins/llm-guidelines',
+    }, f"{p}: wrong source {entry.get('source')!r}"
+    assert entry.get('policy') == {
+        'installation': 'AVAILABLE',
+        'authentication': 'ON_INSTALL',
+    }, f"{p}: wrong policy {entry.get('policy')!r}"
+    assert entry.get('category') == 'Research', \
+        f"{p}: category {entry.get('category')!r} != 'Research'"
+
+
 def test_skill_md_versions_match():
     skill = SKILL_DIR / 'SKILL.md'
     fm = read_frontmatter(skill)
@@ -121,6 +198,17 @@ def test_skill_md_versions_match():
         f"{skill}: metadata.version {metadata.get('version')!r} != VERSION {bundle_version()!r}"
     assert fm.get('description'), f"{skill}: missing description"
     assert fm.get('license'), f"{skill}: missing license"
+
+
+def test_agents_files_point_to_claude_md():
+    candidates = [ROOT / 'AGENTS.md']
+    website_agents = ROOT.parent / 'AGENTS.md'
+    if (ROOT.parent / 'generate-skill.sh').is_file() and website_agents.is_file():
+        candidates.append(website_agents)
+    for p in candidates:
+        text = p.read_text(encoding='utf-8')
+        assert '[CLAUDE.md](CLAUDE.md)' in text, \
+            f"{p}: does not point Codex agents to CLAUDE.md"
 
 
 # ---------- structural completeness ----------
@@ -209,17 +297,85 @@ def test_no_absolute_website_links_leaked_into_references():
     assert not leaks, "absolute website paths leaked into bundle:\n  " + "\n  ".join(leaks)
 
 
+def test_review_instructions_resolve_linter_across_clients():
+    review = REFS_DIR / 'review.md'
+    text = review.read_text(encoding='utf-8')
+    assert '${CLAUDE_SKILL_DIR}/scripts/lint_markdown.py' in text, \
+        f"{review}: missing Claude skill-dir linter candidate"
+    assert 'plugins/llm-guidelines/skills/llm-guidelines/scripts/lint_markdown.py' in text, \
+        f"{review}: missing checkout linter candidate"
+    assert '${CODEX_HOME:-$HOME/.codex}/plugins/cache' in text, \
+        f"{review}: missing Codex plugin-cache linter candidate"
+    assert 'If no linter is found, continue without the lint loop' in text, \
+        f"{review}: missing no-linter fallback"
+    assert 'python3 ${CLAUDE_SKILL_DIR}/scripts/lint_markdown.py --fix' not in text, \
+        f"{review}: still depends only on CLAUDE_SKILL_DIR"
+
+
+def test_optional_codex_cli_marketplace_smoke():
+    codex = shutil.which('codex')
+    if not codex:
+        print('SKIP  test_optional_codex_cli_marketplace_smoke: codex not installed')
+        return
+
+    tmp_root = '/private/tmp' if Path('/private/tmp').is_dir() else None
+    with tempfile.TemporaryDirectory(prefix='llm-guidelines-codex-', dir=tmp_root) as tmp:
+        env = os.environ.copy()
+        codex_home = Path(tmp) / 'codex-home'
+        codex_home.mkdir()
+        env['CODEX_HOME'] = str(codex_home)
+        add = subprocess.run(
+            [codex, 'plugin', 'marketplace', 'add', str(ROOT)],
+            cwd=ROOT,
+            env=env,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            timeout=60,
+        )
+        assert add.returncode == 0, \
+            "codex marketplace add failed:\nSTDOUT:\n{}\nSTDERR:\n{}".format(
+                add.stdout, add.stderr
+            )
+        listed = subprocess.run(
+            [codex, 'plugin', 'list', '--marketplace', 'se-uhd'],
+            cwd=ROOT,
+            env=env,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            timeout=60,
+        )
+        assert listed.returncode == 0, \
+            "codex plugin list failed:\nSTDOUT:\n{}\nSTDERR:\n{}".format(
+                listed.stdout, listed.stderr
+            )
+        output = f"{listed.stdout}\n{listed.stderr}"
+        listed_plugin = (
+            'llm-guidelines@se-uhd' in output
+            or re.search(r'\bllm-guidelines\b.*\bse-uhd\b', output)
+            or re.search(r'\bse-uhd\b.*\bllm-guidelines\b', output)
+        )
+        assert listed_plugin, \
+            f"codex plugin list did not show llm-guidelines@se-uhd:\n{output}"
+
+
 # ---------- runner ----------
 
 TESTS = [
     test_version_file_format,
     test_plugin_json_version_matches,
     test_marketplace_json_version_matches,
+    test_codex_plugin_json_version_and_shape,
+    test_codex_marketplace_shape,
     test_skill_md_versions_match,
+    test_agents_files_point_to_claude_md,
     test_skills_and_commands_present,
     test_references_required_files_exist,
     test_skill_md_internal_links_resolve,
     test_no_absolute_website_links_leaked_into_references,
+    test_review_instructions_resolve_linter_across_clients,
+    test_optional_codex_cli_marketplace_smoke,
 ]
 
 

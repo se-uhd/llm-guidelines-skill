@@ -8,7 +8,7 @@ Transparency about LLM involvement is a prerequisite for informed assessment of 
 
 ## Recommendations
 
-When conducting any kind of empirical study involving LLMs, researchers **must** clearly declare that an LLM was used (see [*Scope*](../scope.md) for what we consider relevant research support). This **should** be done in a suitable section of the *paper*, for example, in the introduction or research methods section; Cheng, Calhoun, and Reedy (2025) argue specifically for the methods section, since acknowledgments are easily missed at the end of a paper. The ACM Policy on Authorship requires that the specific uses of AI in the conduct of research be “*described in detail in the methods section of the Work*” (Association for Computing Machinery 2026).
+When conducting any kind of empirical study involving LLMs, researchers **must** clearly declare that an LLM was used (see [*Scope*](../scope.md) for what we consider relevant research support). This **should** be done in a suitable section of the *paper*, for example, in the introduction or research methods section; Cheng, Calhoun, and Reedy (2025) argue specifically for the methods section, since acknowledgments are easily missed at the end of a paper. The ACM Policy on Authorship requires authors to describe in the methods section any use of AI in the research itself (Association for Computing Machinery 2026).
 
 Beyond generic declarations, researchers **should** report the exact purpose of using an LLM in a study, the tasks it was used to automate, and the expected benefits in the *paper*. A sufficient declaration specifies not only *that* an LLM was used, but also *which* LLM (name and version), *how* it was used (e.g., as an annotator, code generator, or judge), and *where* in the research process it was employed (e.g., data collection, analysis, or synthesis).
 
@@ -32,7 +32,7 @@ Transparency in the use of LLMs helps other researchers understand the context a
 
 ## Challenges
 
-Declaring LLM usage requires only a brief statement and no additional experiments, making compliance straightforward. One challenge might be authors’ reluctance to disclose LLM usage for valid use cases, because they fear that AI-generated content makes reviewers think that the authors’ work is less original. In fact, there is evidence suggesting that AI disclosure can negatively affect trust in authors (Schilke and Reimann 2025). However, the *ACM Policy on Authorship* requires disclosure of AI used in the conduct of research, but not AI used only to assist with writing (Association for Computing Machinery 2026). Our guidelines focus on such use (see [*Scope*](../scope.md)), not on proofreading or writing support.
+Declaring LLM usage requires only a brief statement and no additional experiments, making compliance straightforward. One challenge might be authors’ reluctance to disclose LLM usage for valid use cases, because they fear that AI-generated content makes reviewers think that the authors’ work is less original. In fact, there is evidence suggesting that AI disclosure can negatively affect trust in authors (Schilke and Reimann 2025). However, the *ACM Policy on Authorship* requires disclosure of AI used in the research itself, not AI used only to assist with writing (Association for Computing Machinery 2026). Our guidelines focus on such use (see [*Scope*](../scope.md)), not on proofreading or writing support.
 
 ## Study Types
 
@@ -42,9 +42,7 @@ Researchers **must** follow this guideline for all study types. The specific fo
 
 The most common problem with disclosure is incompleteness or vagueness about how the LLM was used. If the paper says “we used LLM X to help with task Y” without specifying how, reviewers should request clarification. Such requests are typically minor revisions unless the missing details may reveal methodological problems.
 
-Using an LLM as a copyeditor becomes problematic when authors do not or cannot take responsibility for the resulting text. If a reviewer finds clear evidence that LLM-generated text was not carefully reviewed (e.g., text such as “As a Large Language Model, I...”), this may warrant rejection. If a reviewer suspects an author *cannot* take responsibility for AI-generated text, they should raise the concern with their editor or program chair. Due process requires that authors not be accused of misconduct without clear evidence.
-
-If undisclosed LLM use is suspected, the reviewer should similarly consult their editor or program chair. When the evidence is conclusive, the key question is the degree to which undisclosed use affects the study’s contribution, ranging from negligible (e.g., word choice in a single sentence) to severe (e.g., generating ostensibly empirical data or statistical analyses).
+If undisclosed LLM use is suspected, the reviewer should consult their editor or program chair. When the evidence is conclusive, the key question is the degree to which undisclosed use affects the study’s contribution, ranging from negligible (e.g., word choice in a single sentence) to severe (e.g., generating the reported data or results).
 
 ## See Also
 

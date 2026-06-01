@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-This repository is a **generated distribution bundle**. It is the publish target of an Agent Skill / Claude Code plugin that is authored upstream.
+This repository is a **generated distribution bundle**. It is the publish target of an Agent Skill / Claude Code plugin / Codex CLI plugin that is authored upstream.
 
 ## Upstream source
 
@@ -17,13 +17,14 @@ The following files are **generated** by `generate-skill.sh` and overwritten on 
 | `VERSION` | `_skill/REVISION` + `_config.yml` `aux_links` guideline tag |
 | `.claude-plugin/marketplace.json` (`version` field) | same as above |
 | `plugins/llm-guidelines/.claude-plugin/plugin.json` (`version` field) | same as above |
+| `plugins/llm-guidelines/.codex-plugin/plugin.json` (`version` field) | same as above, mapped to Codex semver `YYYY.M.REVISION` |
 | `plugins/llm-guidelines/skills/llm-guidelines/SKILL.md` | `_skill/SKILL.md.template` |
 | `plugins/llm-guidelines/skills/llm-guidelines/references/explore.md` | `_skill/references-explore.md.template` |
 | `plugins/llm-guidelines/skills/llm-guidelines/references/review.md` | `_skill/references-review.md.template` |
 | `plugins/llm-guidelines/skills/llm-guidelines/references/**` (guidelines, study-types, scope.md, checklist.md) | converted Markdown pages in the website repo |
 | `README.md` | `_skill/README.md.template` + `_skill/commands.env` |
 
-The remaining files in this repo — `LICENSE`, `.gitignore`, `CLAUDE.md` (this file), `.claude-plugin/marketplace.json` (catalog fields other than `version`), `plugins/llm-guidelines/.claude-plugin/plugin.json` (fields other than `version`), the slash-command files under `plugins/llm-guidelines/commands/`, the lint scaffolding under `plugins/llm-guidelines/skills/llm-guidelines/scripts/`, and the CI infrastructure under `.github/workflows/` and `scripts/tests/` — are hand-curated and may be edited here directly.
+The remaining files in this repo — `LICENSE`, `.gitignore`, `CLAUDE.md` (this file), `AGENTS.md`, `.claude-plugin/marketplace.json` (catalog fields other than `version`), `.agents/plugins/marketplace.json`, `plugins/llm-guidelines/.claude-plugin/plugin.json` (fields other than `version`), `plugins/llm-guidelines/.codex-plugin/plugin.json` (fields other than `version`), the slash-command files under `plugins/llm-guidelines/commands/`, the lint scaffolding under `plugins/llm-guidelines/skills/llm-guidelines/scripts/`, and the CI infrastructure under `.github/workflows/` and `scripts/tests/` — are hand-curated and may be edited here directly.
 
 Inside `plugins/llm-guidelines/skills/llm-guidelines/scripts/`, files split into two groups:
 
@@ -32,7 +33,7 @@ Inside `plugins/llm-guidelines/skills/llm-guidelines/scripts/`, files split into
 
 ## Smoke tests
 
-`scripts/tests/run_smoke.py` validates that the generated bundle is internally consistent: the `version` field agrees across `VERSION`, `marketplace.json`, `plugin.json`, and `skills/llm-guidelines/SKILL.md` (under `metadata.version`); exactly one skill (`llm-guidelines`) and two slash commands (`explore`, `review`) are present and both commands name the `llm-guidelines` skill in their body; the expected set of files under `references/` is present; internal `references/...` links from `SKILL.md` and sideways `./...` / `../...` links from `references/{explore,review}.md` all resolve; and no absolute website paths leaked through the generator's rewrite step. CI runs it on every push and pull request via `.github/workflows/smoke.yml`. Run it locally with `python3 scripts/tests/run_smoke.py` after `generate-skill.sh` finishes, before tagging a release — it catches exactly the desync that broke `2026.05_rev10`.
+`scripts/tests/run_smoke.py` validates that the generated bundle is internally consistent: the Claude `version` field agrees across `VERSION`, `.claude-plugin/marketplace.json`, `plugins/llm-guidelines/.claude-plugin/plugin.json`, and `skills/llm-guidelines/SKILL.md` (under `metadata.version`); the Codex manifest uses the mapped semver; the Codex marketplace is named `se-uhd` and points at `./plugins/llm-guidelines`; exactly one skill (`llm-guidelines`) and two slash commands (`explore`, `review`) are present and both commands name the `llm-guidelines` skill in their body; the expected set of files under `references/` is present; internal `references/...` links from `SKILL.md` and sideways `./...` / `../...` links from `references/{explore,review}.md` all resolve; and no absolute website paths leaked through the generator's rewrite step. If `codex` is installed, it also runs an isolated marketplace-list smoke under `/private/tmp` without installing the plugin. CI runs it on every push and pull request via `.github/workflows/smoke.yml`. Run it locally with `python3 scripts/tests/run_smoke.py` after `generate-skill.sh` finishes, before tagging a release — it catches exactly the desync that broke `2026.05_rev10`.
 
 The companion file `plugins/llm-guidelines/skills/llm-guidelines/scripts/tests/run_smoke.py` exercises the Markdown linter (`lint_markdown.py`) end-to-end — vendored PyMarkdown loads, pre-pass and schema findings fire on the right inputs, `--fix` mode normalizes auto-fixable rules. The same CI workflow runs it.
 
@@ -45,9 +46,10 @@ To cut a new revision:
 1. In the website repo, edit the upstream source (typically `_skill/SKILL.md.template`, `_skill/references-explore.md.template`, or `_skill/references-review.md.template`).
 2. Bump `_skill/REVISION` (skill-only change) or follow the guideline-version bump steps in the website repo's `CLAUDE.md` (new paper tag).
 3. Run `./generate-skill.sh` from the website repo.
-4. Validate manifests: `claude plugin validate plugins/llm-guidelines` and `claude plugin validate .claude-plugin/marketplace.json` (run from this repo's root after the generator has written the files).
-5. In this repo, review the diff, commit, tag the new commit (`git tag YYYY.MM_revN`), push commit and tag.
-6. Bump the submodule pointer in the website repo, commit, push.
+4. Validate Claude manifests: `claude plugin validate plugins/llm-guidelines` and `claude plugin validate .claude-plugin/marketplace.json` (run from this repo's root after the generator has written the files).
+5. Run `python3 scripts/tests/run_smoke.py` and the Markdown linter smoke test. The bundle smoke test covers Codex packaging and runs an optional Codex CLI marketplace check when `codex` is installed.
+6. In this repo, review the diff, commit, tag the new commit (`git tag YYYY.MM_revN`), push commit and tag.
+7. Bump the submodule pointer in the website repo, commit, push.
 
 ## If you only have this repo cloned, not the website repo
 

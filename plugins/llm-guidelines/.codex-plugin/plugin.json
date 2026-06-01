@@ -1,0 +1,37 @@
+{
+  "name": "llm-guidelines",
+  "version": "2026.5.18",
+  "description": "Community guidelines for empirical SE studies involving LLMs. Review paper drafts and supplementary material against the eight guidelines, or discuss the guidelines and study design.",
+  "author": {
+    "name": "Software Engineering Group, Heidelberg University",
+    "url": "https://github.com/se-uhd"
+  },
+  "homepage": "https://llm-guidelines.org",
+  "repository": "https://github.com/se-uhd/llm-guidelines-skill",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "llm",
+    "software-engineering",
+    "reporting-guidelines",
+    "paper-review",
+    "agent-skills"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "LLM Guidelines",
+    "shortDescription": "Review empirical SE papers against LLM reporting guidelines.",
+    "longDescription": "Apply the community guidelines for empirical software engineering studies involving LLMs. Use the skill to discuss study design, classify study types, or assess a paper draft and supplementary material against the eight reporting guidelines.",
+    "developerName": "Software Engineering Group, Heidelberg University",
+    "category": "Research",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://llm-guidelines.org",
+    "defaultPrompt": [
+      "Which LLM study type fits my planned study?",
+      "Review my paper against the LLM guidelines.",
+      "Check my replication package for reporting gaps."
+    ]
+  }
+}
