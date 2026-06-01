@@ -1,0 +1,20 @@
+{
+  "name": "se-uhd",
+  "interface": {
+    "displayName": "SE UHD"
+  },
+  "plugins": [
+    {
+      "name": "llm-guidelines",
+      "source": {
+        "source": "local",
+        "path": "./plugins/llm-guidelines"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Research"
+    }
+  ]
+}

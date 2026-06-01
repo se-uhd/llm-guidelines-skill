@@ -20,7 +20,7 @@ While multi-modal foundation models that use or generate images, audio, or video
 
 ### Focus on Direct Development or Research Support
 
-While researchers may use LLMs for many peripheral tasks (e.g., proofreading, spell-checking, translation), our guidelines focus on their direct role in empirical research and engineering practice. For engineers, we focus on the use of LLMs to automate SE tasks, that is, artificial intelligence (AI) for software engineering (AI4SE) (see [*LLMs for SE*](./study-types/llms-for-se.md)). This includes agentic systems that autonomously plan and execute multi-step tasks using LLMs (see [*System and Prompt Design*](./guidelines/design.md)). For researchers, we focus on the use of LLMs to automate empirical research tasks such as data collection, processing, or analysis (see [*LLMs for Research*](./study-types/llms-for-research.md)).
+While researchers may use LLMs for many peripheral tasks (e.g., proofreading, spell-checking, translation), our guidelines focus on their direct role in empirical research and engineering practice. For engineers, we focus on the use of LLMs to automate SE tasks, that is, artificial intelligence (AI) for software engineering (AI4SE) (see [*LLMs for SE*](./study-types/llms-for-se.md)). This includes agentic systems that autonomously plan and execute multi-step tasks using LLMs (see [*System and Prompt Design*](./guidelines/design.md)). For researchers, we focus on the use of LLMs to automate empirical research tasks such as data collection, processing, or analysis (see [*LLMs for Research*](./study-types/llms-for-research.md)). The 2026 ACM Policy on Authorship makes the same distinction, requiring disclosure of AI used in the conduct of research while exempting AI used only to assist with writing (Association for Computing Machinery 2026).
 
 ### Researchers as our Target Audience
 
@@ -47,6 +47,8 @@ Our guidelines are structured to support different reading strategies depending 
 Agarwal, Rishabh, Max Schwarzer, Pablo Samuel Castro, Aaron C. Courville, and Marc G. Bellemare. 2021. “Deep Reinforcement Learning at the Edge of the Statistical Precipice.” In *Advances in Neural Information Processing Systems 34: Annual Conference on Neural Information Processing Systems 2021, NeurIPS 2021, December 6-14, 2021, Virtual*, edited by Marc’Aurelio Ranzato, Alina Beygelzimer, Yann N. Dauphin, Percy Liang, and Jennifer Wortman Vaughan, 29304–20. <https://proceedings.neurips.cc/paper/2021/hash/f514cec81cb148559cf475e7426eed5e-Abstract.html>.
 
 Angermeir, Florian, Maximilian Amougou, Mark Kreitz, Andreas Bauer, Matthias Linhuber, Davide Fucci, Fabiola Moyón Constante, Daniel Méndez, and Tony Gorschek. 2025. “Reflections on the Reproducibility of Commercial LLM Performance in Empirical Software Engineering Studies.” *CoRR* abs/2510.25506. <https://doi.org/10.48550/ARXIV.2510.25506>.
+
+Association for Computing Machinery. 2026. “ACM Policy on Authorship.” <https://www.acm.org/publications/policies/new-acm-policy-on-authorship>.
 
 Bjarnason, Bjarni Haukur, André Silva, and Martin Monperrus. 2026. “On Randomness in Agentic Evals.” *CoRR* abs/2602.07150. <https://doi.org/10.48550/ARXIV.2602.07150>.
 
