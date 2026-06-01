@@ -1,6 +1,6 @@
 # Declare LLM Usage and Role
 
-> ***Summary***: Researchers **must** disclose any use of LLMs to support empirical studies in their *paper*, specifying which LLM was used, how it was used, and where in the research process it was employed. They **should** report the exact purpose, the tasks that were automated, and the expected benefits in the *paper*. When the LLM is central to the study, the declaration **should** be prominent and detailed in the methodology section; for tangential uses, a brief statement in the methodology or acknowledgments suffices.
+> ***Summary***: Researchers **must** disclose any use of LLMs to support empirical studies in their *paper*, specifying which LLM was used, how it was used, and where in the research process it was employed. They **should** report the exact purpose, the tasks that were automated, and the expected benefits in the *paper*. When the LLM is central to the study, the declaration **should** be prominent and detailed in the methodology section; for tangential uses, a brief statement in the methodology section suffices.
 
 ## Rationale
 
@@ -8,15 +8,15 @@ Transparency about LLM involvement is a prerequisite for informed assessment of 
 
 ## Recommendations
 
-When conducting any kind of empirical study involving LLMs, researchers **must** clearly declare that an LLM was used (see [*Scope*](../scope.md) for what we consider relevant research support). This **should** be done in a suitable section of the *paper*, for example, in the introduction or research methods section; Cheng, Calhoun, and Reedy (2025) argue specifically for the methods section, since acknowledgments are easily missed at the end of a paper. For authoring scientific articles, this transparency is, for example, required by the ACM Policy on Authorship: “*The use of generative AI tools and technologies to create content is permitted but must be fully disclosed in the Work*” (Association for Computing Machinery 2023).
+When conducting any kind of empirical study involving LLMs, researchers **must** clearly declare that an LLM was used (see [*Scope*](../scope.md) for what we consider relevant research support). This **should** be done in a suitable section of the *paper*, for example, in the introduction or research methods section; Cheng, Calhoun, and Reedy (2025) argue specifically for the methods section, since acknowledgments are easily missed at the end of a paper. The ACM Policy on Authorship requires that the specific uses of AI in the conduct of research be “*described in detail in the methods section of the Work*” (Association for Computing Machinery 2026).
 
 Beyond generic declarations, researchers **should** report the exact purpose of using an LLM in a study, the tasks it was used to automate, and the expected benefits in the *paper*. A sufficient declaration specifies not only *that* an LLM was used, but also *which* LLM (name and version), *how* it was used (e.g., as an annotator, code generator, or judge), and *where* in the research process it was employed (e.g., data collection, analysis, or synthesis).
 
-When the LLM is central to the study (e.g., as the main tool being evaluated or as a core component of the research method), the declaration **should** be prominent and detailed, appearing in the methodology section with cross-references to the specific guidelines that apply (e.g., Sections [*Version and Configuration*](../guidelines/model-version.md), [*System and Prompt Design*](../guidelines/design.md), and [*Session Traces*](../guidelines/traces.md)). When the LLM’s role is more tangential (e.g., used for a single preprocessing step), a brief but explicit statement in the methodology or acknowledgments section is sufficient. When a study assigns multiple distinct roles to LLMs (e.g., one model generates evaluation data while another scores outputs), each role **should** be declared separately. In each case, the disclosure **must** be specific enough for readers to assess how the LLM’s involvement may affect the study’s validity and reproducibility.
+When the LLM is central to the study (e.g., as the main tool being evaluated or as a core component of the research method), the declaration **should** be prominent and detailed, appearing in the methodology section with cross-references to the specific guidelines that apply (e.g., Sections [*Version and Configuration*](../guidelines/model-version.md), [*System and Prompt Design*](../guidelines/design.md), and [*Session Traces*](../guidelines/traces.md)). When the LLM’s role is more tangential (e.g., used for a single preprocessing step), a brief but explicit statement in the methodology section is sufficient. When a study assigns multiple distinct roles to LLMs (e.g., one model generates evaluation data while another scores outputs), each role **should** be declared separately. In each case, the disclosure **must** be specific enough for readers to assess how the LLM’s involvement may affect the study’s validity and reproducibility.
 
 ## Examples
 
-The *ACM Policy on Authorship* (Association for Computing Machinery 2023) suggests disclosing GenAI usage in the acknowledgments section of the *paper*, advising to “*err on the side of caution, and include a disclosure in the acknowledgments section of the Work*” when uncertain about the need. For double-blind review, researchers can add a temporary “AI Disclosure” section where the acknowledgments would appear. An example of an LLM disclosure beyond writing support can be found in a recent paper by Lubos et al. (2024), in which they write in the methodology section:
+The *ACM Policy on Authorship* requires reporting AI-generated artifacts such as code, datasets, and figures where they underlie a study’s conclusions (Association for Computing Machinery 2026). Reporting in the methods section keeps this disclosure visible under double-blind review, where end-of-paper acknowledgments are often removed. An example of an LLM disclosure beyond writing support can be found in a recent paper by Lubos et al. (2024), in which they write in the methodology section:
 
 > *“We conducted an LLM-based evaluation of requirements utilizing the Llama 2 language model with 70 billion parameters, fine-tuned to complete chat responses...”*
 
@@ -32,7 +32,7 @@ Transparency in the use of LLMs helps other researchers understand the context a
 
 ## Challenges
 
-Declaring LLM usage requires only a brief statement and no additional experiments, making compliance straightforward. One challenge might be authors’ reluctance to disclose LLM usage for valid use cases, because they fear that AI-generated content makes reviewers think that the authors’ work is less original. In fact, there is evidence suggesting that AI disclosure can negatively affect trust in authors (Schilke and Reimann 2025). However, the *ACM Policy on Authorship* is very clear in that any use of GenAI tools to create content **must** be disclosed. Our guidelines focus on research support beyond proof-reading and writing support (see [*Scope*](../scope.md)), but the threshold of what must be declared continues to evolve as organizations such as the ACM update their authorship policies.
+Declaring LLM usage requires only a brief statement and no additional experiments, making compliance straightforward. One challenge might be authors’ reluctance to disclose LLM usage for valid use cases, because they fear that AI-generated content makes reviewers think that the authors’ work is less original. In fact, there is evidence suggesting that AI disclosure can negatively affect trust in authors (Schilke and Reimann 2025). However, the *ACM Policy on Authorship* requires disclosure of AI used in the conduct of research, but not AI used only to assist with writing (Association for Computing Machinery 2026). Our guidelines focus on such use (see [*Scope*](../scope.md)), not on proofreading or writing support.
 
 ## Study Types
 
@@ -54,7 +54,7 @@ If undisclosed LLM use is suspected, the reviewer should similarly consult their
 
 ## References
 
-Association for Computing Machinery. 2023. “ACM Policy on Authorship.” <https://www.acm.org/publications/policies/new-acm-policy-on-authorship>.
+Association for Computing Machinery. 2026. “ACM Policy on Authorship.” <https://www.acm.org/publications/policies/new-acm-policy-on-authorship>.
 
 Cheng, Adam, Aaron Calhoun, and Gabriel Reedy. 2025. “Artificial Intelligence-Assisted Academic Writing: Recommendations for Ethical Use.” *Advances in Simulation* 10 (1): 26. <https://doi.org/10.1186/s41077-025-00350-6>.
 
