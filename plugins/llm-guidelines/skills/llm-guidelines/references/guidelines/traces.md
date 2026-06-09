@@ -34,7 +34,7 @@ An example of reporting full interaction logs is the study by Ronanki, Berger, a
 
 Unlike human participant conversations, which often cannot be reported because of confidentiality, LLM interaction logs can be shared. This enables reproduction studies, tracking of response changes over time or across model versions, and secondary research on LLM consistency for specific SE tasks.
 
-For agentic systems, reporting runtime traces alongside interaction logs lets readers follow the model’s reasoning, the tool calls it made, and the order of those calls. Usage traces complement the static configuration reported under [*System and Prompt Design*](../guidelines/design.md) by showing which of the configured artifacts were activated on a given run.
+For agentic systems, reporting runtime traces alongside interaction logs lets readers follow the model’s reasoning, the tool calls it made, and the order of those calls. Runtime traces complement the static configuration reported under [*System and Prompt Design*](../guidelines/design.md) by showing which of the configured artifacts were activated on a given run.
 
 ## Challenges
 
