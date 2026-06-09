@@ -56,7 +56,7 @@ Gibney, Elizabeth. 2024. “Not all ‘open source’ AI models are actually ope
 
 Golnari, Pareesa Ameneh, Adarsh Kumarappan, Wen Wen, Xiaoyu Liu, Gabriel Ryan, Yuting Sun, Shengyu Fu, and Elsie Nallipogu. 2026. “DevBench: A Realistic, Developer-Informed Benchmark for Code Generation Models.” *CoRR* abs/2601.11895. <https://doi.org/10.48550/ARXIV.2601.11895>.
 
-Gonçalves, José, Miguel Silva, Bernardo Cabral, Tiago Dias, Eva Maia, Isabel Praça, Ricardo Severino, and Luı́s Lino Ferreira. 2025. “Evaluating LLaMA 3.2 for Software Vulnerability Detection.” In *Cybersecurity - 9th European Interdisciplinary Cybersecurity Conference, EICC 2025, Rennes, France, June 18-19, 2025, Proceedings*, edited by Isabel Praça, Simona Bernardi, and Pedro R. M. Inácio, 38–51. Communications in Computer and Information Science. Springer. [https://doi.org/10.1007/978-3-031-94855-8\\3](https://doi.org/10.1007/978-3-031-94855-8\_3).
+Gonçalves, José, Miguel Silva, Bernardo Cabral, Tiago Dias, Eva Maia, Isabel Praça, Ricardo Severino, and Luı́s Lino Ferreira. 2025. “Evaluating LLaMA 3.2 for Software Vulnerability Detection.” In *Cybersecurity - 9th European Interdisciplinary Cybersecurity Conference, EICC 2025, Rennes, France, June 18-19, 2025, Proceedings*, edited by Isabel Praça, Simona Bernardi, and Pedro R. M. Inácio, 38–51. Communications in Computer and Information Science. Springer. <https://doi.org/10.1007/978-3-031-94855-8_3>.
 
 Microsoft. 2023. “CodeBERT on GitHub.” <https://github.com/microsoft/CodeBERT>.
 

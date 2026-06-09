@@ -91,7 +91,7 @@ Krippendorff, Klaus. 2018. *Content Analysis: An Introduction to Its Methodology
 
 McDonald, Nora, Sarita Schoenebeck, and Andrea Forte. 2019. “Reliability and Inter-Rater Reliability in Qualitative Research: Norms and Guidelines for CSCW and HCI Practice.” *Proc. ACM Hum. Comput. Interact.* 3 (CSCW): 72:1–23. <https://doi.org/10.1145/3359174>.
 
-Ralph, Paul, Miikka Kuutila, Hera Arif, and Bimpe Ayoola. 2024. “Teaching Software Metrology: The Science of Measurement for Software Engineering.” In *Handbook on Teaching Empirical Software Engineering*, edited by Daniel Méndez, Paris Avgeriou, Marcos Kalinowski, and Nauman Bin Ali, 101–54. Springer Nature Switzerland. [https://doi.org/10.1007/978-3-031-71769-7\\5](https://doi.org/10.1007/978-3-031-71769-7\_5).
+Ralph, Paul, Miikka Kuutila, Hera Arif, and Bimpe Ayoola. 2024. “Teaching Software Metrology: The Science of Measurement for Software Engineering.” In *Handbook on Teaching Empirical Software Engineering*, edited by Daniel Méndez, Paris Avgeriou, Marcos Kalinowski, and Nauman Bin Ali, 101–54. Springer Nature Switzerland. <https://doi.org/10.1007/978-3-031-71769-7_5>.
 
 Ralph, Paul, and Ewan D. Tempero. 2018. “Construct Validity in Software Engineering Research and Software Metrics.” In *Proceedings of the 22nd International Conference on Evaluation and Assessment in Software Engineering, EASE2018*, edited by Austen Rainer, Stephen G. MacDonell, and Jacky W. Keung, 13–23. ACM. <https://doi.org/10.1145/3210459.3210461>.
 

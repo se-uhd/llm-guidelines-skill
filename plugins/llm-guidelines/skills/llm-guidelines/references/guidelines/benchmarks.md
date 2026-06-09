@@ -176,7 +176,7 @@ Menzies, Tim. 2025. “The Case for Compact AI.” *Commun. ACM* 68 (9): 6–7. 
 
 Papineni, Kishore, Salim Roukos, Todd Ward, and Wei-Jing Zhu. 2002. “BLEU: A Method for Automatic Evaluation of Machine Translation.” In *Proceedings of the 40th Annual Meeting of the Association for Computational Linguistics*, 311–18. ACL. <https://doi.org/10.3115/1073083.1073135>.
 
-Ralph, Paul, Miikka Kuutila, Hera Arif, and Bimpe Ayoola. 2024. “Teaching Software Metrology: The Science of Measurement for Software Engineering.” In *Handbook on Teaching Empirical Software Engineering*, edited by Daniel Méndez, Paris Avgeriou, Marcos Kalinowski, and Nauman Bin Ali, 101–54. Springer Nature Switzerland. [https://doi.org/10.1007/978-3-031-71769-7\\5](https://doi.org/10.1007/978-3-031-71769-7\_5).
+Ralph, Paul, Miikka Kuutila, Hera Arif, and Bimpe Ayoola. 2024. “Teaching Software Metrology: The Science of Measurement for Software Engineering.” In *Handbook on Teaching Empirical Software Engineering*, edited by Daniel Méndez, Paris Avgeriou, Marcos Kalinowski, and Nauman Bin Ali, 101–54. Springer Nature Switzerland. <https://doi.org/10.1007/978-3-031-71769-7_5>.
 
 Ralph, Paul, and Ewan D. Tempero. 2018. “Construct Validity in Software Engineering Research and Software Metrics.” In *Proceedings of the 22nd International Conference on Evaluation and Assessment in Software Engineering, EASE2018*, edited by Austen Rainer, Stephen G. MacDonell, and Jacky W. Keung, 13–23. ACM. <https://doi.org/10.1145/3210459.3210461>.
 

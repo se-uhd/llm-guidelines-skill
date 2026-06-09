@@ -48,7 +48,7 @@ Chandra, Satish. 2025. “Benchmarks for AI in Software Engineering (BLOG@CACM).
 
 Chen, Guiming, Shunian Chen, Ziche Liu, Feng Jiang, and Benyou Wang. 2024. “Humans or LLMs as the Judge? A Study on Judgement Bias.” In *Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing, EMNLP 2024, Miami, FL, USA, November 12-16, 2024*, edited by Yaser Al-Onaizan, Mohit Bansal, and Yun-Nung Chen, 8301–27. Association for Computational Linguistics. <https://doi.org/10.18653/V1/2024.EMNLP-MAIN.474>.
 
-Gallegos, Isabel O., Ryan A. Rossi, Joe Barrow, Md. Mehrab Tanjim, Sungchul Kim, Franck Dernoncourt, Tong Yu, Ruiyi Zhang, and Nesreen K. Ahmed. 2024. “Bias and Fairness in Large Language Models: A Survey.” *Comput. Linguistics* 50 (3): 1097–1179. [https://doi.org/10.1162/COLI\\A\\00524](https://doi.org/10.1162/COLI\_A\_00524).
+Gallegos, Isabel O., Ryan A. Rossi, Joe Barrow, Md. Mehrab Tanjim, Sungchul Kim, Franck Dernoncourt, Tong Yu, Ruiyi Zhang, and Nesreen K. Ahmed. 2024. “Bias and Fairness in Large Language Models: A Survey.” *Comput. Linguistics* 50 (3): 1097–1179. <https://doi.org/10.1162/COLI_A_00524>.
 
 Gilardi, Fabrizio, Meysam Alizadeh, and Maël Kubli. 2023. “ChatGPT Outperforms Crowd Workers for Text-Annotation Tasks.” *Proceedings of the National Academy of Sciences* 120 (30): e2305016120. <https://doi.org/10.1073/pnas.2305016120>.
 
@@ -74,7 +74,7 @@ Panickssery, Arjun, Samuel R. Bowman, and Shi Feng. 2024. “LLM Evaluators Reco
 
 Pezeshkpour, Pouya, and Estevam Hruschka. 2024. “Large Language Models Sensitivity to the Order of Options in Multiple-Choice Questions.” In *Findings of the Association for Computational Linguistics: NAACL 2024, Mexico City, Mexico, June 16-21, 2024*, edited by Kevin Duh, Helena Gómez-Adorno, and Steven Bethard, NAACL 2024:2006–17. Findings of ACL. Association for Computational Linguistics. <https://doi.org/10.18653/V1/2024.FINDINGS-NAACL.130>.
 
-Ralph, Paul, Miikka Kuutila, Hera Arif, and Bimpe Ayoola. 2024. “Teaching Software Metrology: The Science of Measurement for Software Engineering.” In *Handbook on Teaching Empirical Software Engineering*, edited by Daniel Méndez, Paris Avgeriou, Marcos Kalinowski, and Nauman Bin Ali, 101–54. Springer Nature Switzerland. [https://doi.org/10.1007/978-3-031-71769-7\\5](https://doi.org/10.1007/978-3-031-71769-7\_5).
+Ralph, Paul, Miikka Kuutila, Hera Arif, and Bimpe Ayoola. 2024. “Teaching Software Metrology: The Science of Measurement for Software Engineering.” In *Handbook on Teaching Empirical Software Engineering*, edited by Daniel Méndez, Paris Avgeriou, Marcos Kalinowski, and Nauman Bin Ali, 101–54. Springer Nature Switzerland. <https://doi.org/10.1007/978-3-031-71769-7_5>.
 
 Reiss, Michael V. 2023. “Testing the Reliability of ChatGPT for Text Annotation and Classification: A Cautionary Remark.” *CoRR* abs/2304.11085. <https://doi.org/10.48550/ARXIV.2304.11085>.
 
