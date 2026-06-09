@@ -82,7 +82,7 @@ Researchers **should** justify the LLM’s resource consumption against the ben
 
 ## Examples
 
-Sallou, Durieux, and Panichella (2024) catalog three categories of LLM-specific threats to validity (i.e., closed-source models, implicit data leakage, and reproducibility) and pair each with concrete mitigation strategies (e.g., versioned model archives, metamorphic test data, multiple replication runs with variability metrics, and detailed execution metadata). Du et al. (2024) pair each threat in their *ClassEval* evaluation with a concrete mitigation: manually constructing the benchmark with multiple annotators to limit data leakage, piloting prompts on held-out tasks to control for prompt sensitivity, and reporting greedy-decoding results to control for non-determinism.
+Sallou, Durieux, and Panichella (2024) catalog three categories of LLM-specific threats to validity (i.e., closed-source models, implicit data leakage, and reproducibility) and pair each with concrete mitigation strategies (e.g., versioned model archives, metamorphic test data, multiple replication runs with variability metrics, and detailed execution metadata) (Sallou, Durieux, and Panichella 2024). Du et al. (2024) pair each threat in their *ClassEval* evaluation with a concrete mitigation: manually constructing the benchmark with multiple annotators to limit data leakage, piloting prompts on held-out tasks to control for prompt sensitivity, and reporting greedy-decoding results to control for non-determinism.
 
 ## Benefits
 
@@ -92,7 +92,7 @@ Transparent reporting of limitations and mitigations helps readers calibrate con
 
 Identifying limitations one is not already aware of is the hardest part of writing a threats section, particularly for methodological threats outside the team’s primary expertise. Publication and reviewing norms can pressure authors to downplay weaknesses, while page limits make exhaustive treatment impractical. Threat lists that recite generic LLM-research issues (e.g., model bias, non-determinism, or contamination) without showing how each one applies to specific design choices in this study leave reviewers unable to tell which risks actually applied.
 
-The threats to validity framework itself is contested within SE. Verdecchia et al. (2023) argue that threats sections too often read as “*laundry-lists*”, Lago et al. (2024) corroborate this empirically across a decade of ICSE Distinguished Paper Award winners, and Robillard et al. (2024) argue for refocusing the discussion on study design trade-offs rather than the standard validity categories.
+The threats to validity framework itself is contested within SE. Verdecchia et al. (2023) argue that threats sections too often read as “*laundry-lists*”, Lago et al. (2024) corroborated this empirically across a decade of ICSE Distinguished Paper Award winners, and Robillard et al. (2024) argue for refocusing the discussion on study design trade-offs rather than the standard validity categories.
 
 ## Study Types
 

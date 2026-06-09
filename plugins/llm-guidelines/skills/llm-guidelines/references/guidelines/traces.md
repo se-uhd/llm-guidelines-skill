@@ -28,7 +28,7 @@ For agentic systems that autonomously plan and execute tasks, researchers **shou
 
 ## Examples
 
-An example of reporting full interaction logs is the study by Ronanki, Berger, and Horkoff (2023), for which the authors reported the full answers of ChatGPT and uploaded them to [Zenodo](https://zenodo.org/records/8124936). For agentic systems, Bouzenia and Pradel (2025) unified the runtime trajectories of three SE agents (*RepairAgent*, *AutoCodeRover*, *OpenHands*) into a custom thought-action-result format and released the resulting 120 trajectories with 2,822 LLM interactions as a public dataset.
+An example of reporting full interaction logs is the study by Ronanki, Berger, and Horkoff (2023), for which the authors reported the full answers of ChatGPT and uploaded them to [Zenodo](https://zenodo.org/records/8124936) (Ronanki, Berger, and Horkoff 2023). For agentic systems, Bouzenia and Pradel (2025) unified the runtime trajectories of three SE agents (*RepairAgent*, *AutoCodeRover*, *OpenHands*) into a custom thought-action-result format and released the resulting 120 trajectories with 2,822 LLM interactions as a public dataset (Bouzenia and Pradel 2025).
 
 ## Benefits
 

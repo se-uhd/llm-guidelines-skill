@@ -24,7 +24,7 @@ A more contemporary declaration could similarly state:
 
 > *“We used Claude Opus 4.7 via the Anthropic API to synthesize themes from interview transcripts, with all prompts and conversation logs published as supplementary material.”*
 
-Golnari et al. (2026)’s DevBench paper illustrates separate disclosure of multiple LLM roles: *GPT-4o* generates the synthetic benchmark instances, nine models (including *Claude 4 Sonnet*, *GPT-4.1*, *DeepSeek-V3*, and *Ministral-3B*) are the evaluation subjects, and *o3-mini* is the LLM judge that scores completions for relevance and helpfulness (Golnari et al. 2026).
+Golnari et al. (2026)’s DevBench paper illustrates separate disclosure of multiple LLM roles: *GPT-4o* generated the synthetic benchmark instances, nine models (including *Claude 4 Sonnet*, *GPT-4.1*, *DeepSeek-V3*, and *Ministral-3B*) were the evaluation subjects, and *o3-mini* was the LLM judge that scored completions for relevance and helpfulness (Golnari et al. 2026).
 
 ## Benefits
 

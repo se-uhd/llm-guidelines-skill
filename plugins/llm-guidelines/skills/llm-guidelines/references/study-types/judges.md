@@ -8,7 +8,7 @@ As judges, LLMs rate software artifacts along quality criteria (e.g., code reada
 
 ## Examples
 
-Lubos et al. (2024) used [Llama-2](https://www.llama.com/llama2/) to evaluate the quality of software requirements statements. They prompted the LLM with the text below, where the words in braces reflect the study parameters:
+Lubos et al. (2024) used [Llama-2](https://www.llama.com/llama2/) to evaluate the quality of software requirements statements (Lubos et al. 2024). They prompted the LLM with the text below, where the words in braces reflect the study parameters:
 
     Your task is to evaluate the quality of a software requirement. Evaluate
     whether the following requirement is quality_characteristic.
@@ -18,7 +18,7 @@ Lubos et al. (2024) used [Llama-2](https://www.llama.com/llama2/) to evaluate th
     quality of the following requirement: requirement. Explain your decision
     and suggest an improved version.
 
-They evaluated LLM output against expert human judges and found moderate agreement for simple requirements and poor agreement for more complex requirements. In contrast, Wang et al. (2025) used an LLM to generate acceptance criteria for user stories, and provided a rubric to an LLM to judge the generated acceptance criteria on interpretable scales (0 to 4).
+They evaluated LLM output against expert human judges and found moderate agreement for simple requirements and poor agreement for more complex requirements. In contrast, Wang et al. (2025) used an LLM to generate acceptance criteria for user stories, and provided a rubric to an LLM to judge the generated acceptance criteria on interpretable scales (0 to 4) (Wang et al. 2025).
 
 ## References
 

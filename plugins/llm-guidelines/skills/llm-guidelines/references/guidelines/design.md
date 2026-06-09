@@ -46,7 +46,7 @@ On each call, agentic systems expose a set of tools to the model along with thei
 
 ## Examples
 
-Schäfer et al. (2024) evaluated LLMs for automated unit test generation, providing a detailed description of the system architecture including code parsing, prompt formulation, LLM interaction, and test suite integration. They also detail the datasets used, including sources, selection criteria, and preprocessing steps.
+Schäfer et al. (2024) evaluated LLMs for automated unit test generation, providing a detailed description of the system architecture including code parsing, prompt formulation, LLM interaction, and test suite integration. They also detailed the datasets used, including sources, selection criteria, and preprocessing steps.
 
 A second example is Yan et al. (2024)’s *IVIE* tool, which integrates LLMs into the VS Code interface. The authors document the tool architecture, detailing the IDE integration, context extraction from code editors, and the formatting pipeline for LLM-generated explanations.
 
