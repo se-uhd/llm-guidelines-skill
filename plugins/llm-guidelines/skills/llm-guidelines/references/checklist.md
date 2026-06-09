@@ -73,7 +73,7 @@ The following checklist, inspired by CONSORT (Schulz, Altman, and Moher 2010), 
 - **must** `[human-validation]` When developing or adapting measurement instruments, share them ([Human Validation](./guidelines/human-validation.md)).
 - **must** `[human-validation]` When LLMs replace humans in research tasks, explain in the *paper* whether and how the replacement is justified ([Human Validation](./guidelines/human-validation.md)).
 - **should** Consider human validation early in the study design and build on established reference models for human-LLM comparison ([Human Validation](./guidelines/human-validation.md)).
-- **should** `[human-validation]` When LLMs replace humans in research tasks, report in the *paper* the systematic approach used to justify the replacement, including model-to-model and model-to-human agreement ([Human Validation](./guidelines/human-validation.md)).
+- **should** `[human-validation]` When LLMs replace humans in research tasks, report in the *paper* the systematic approach used to justify the replacement, including inter-model and model-to-human agreement ([Human Validation](./guidelines/human-validation.md)).
 - **should** `[human-validation]` Validate LLM judgments against human judgment, report aggregation methods, and assess human-LLM agreement ([Human Validation](./guidelines/human-validation.md)).
 - **should** `[human-validation]` Discuss and, where feasible, control for confounding factors ([Human Validation](./guidelines/human-validation.md)).
 - **should** `[human-validation]``[subjective-constructs]` For value-laden or culturally contingent constructs, describe rater demographics beyond expertise and discuss potential demographic biases ([Human Validation](./guidelines/human-validation.md)).

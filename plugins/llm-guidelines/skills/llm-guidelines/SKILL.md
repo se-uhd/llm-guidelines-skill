@@ -3,7 +3,7 @@ name: llm-guidelines
 description: Apply the community LLM reporting guidelines for empirical SE studies (see https://llm-guidelines.org). Use when the user plans, discusses, or audits an empirical study whose method involves an LLM, walks through the scope statement, eight reporting guidelines, or reporting checklist, picks a study type from the taxonomy (LLMs as annotators, judges, synthesis, or subjects; studying LLM usage in software engineering; LLMs for new SE tools; benchmarking LLMs for SE tasks), or asks for a structured pass over a draft (`.tex` or `.pdf`, plus any supplementary material) producing an `llm-guidelines-report.md`.
 license: CC-BY-4.0
 metadata:
-  version: "2026.05_rev18"
+  version: "2026.06"
   homepage: https://llm-guidelines.org
 ---
 

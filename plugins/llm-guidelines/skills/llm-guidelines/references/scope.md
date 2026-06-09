@@ -24,7 +24,7 @@ While researchers may use LLMs for many peripheral tasks (e.g., proofreading, sp
 
 ### Researchers as our Target Audience
 
-Our guidelines are intended to help SE researchers design, plan, conduct, and report empirical studies involving LLMs, and to support scholarly peer review of such studies. Each guideline includes an *Advice for Reviewers* subsection with targeted assessment suggestions. Our guidelines focus on what to report and how; they complement but do not replace methodological guidance for designing specific types of empirical studies.
+Our guidelines are intended to help SE researchers design, plan, conduct, and report empirical studies involving LLMs, and to support scholarly peer review of such studies. Each guideline includes an *Advice for Reviewers* subsection with targeted assessment suggestions. Our guidelines focus on what to report and how. They complement but do not replace methodological guidance for designing specific types of empirical studies.
 
 ### Reporting Locations
 

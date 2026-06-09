@@ -40,7 +40,7 @@ Reporting the model version, configuration, and date of study execution is a pre
 
 Different model providers and modes of operating the models allow for varying degrees of information. For example, OpenAI provides a model version and a system fingerprint describing the backend configuration, which can also influence the output. However, the fingerprint is intended only to detect changes in the model or its configuration; one cannot go back to a certain fingerprint. As a beta feature, OpenAI lets users set a seed parameter to receive “*(mostly) consistent output*” (OpenAI 2023). However, the seed value does not allow for full reproducibility and the fingerprint changes frequently. Although, as motivated above, open models substantially simplify re-running experiments, they also come with challenges in terms of reproducibility, as generated outputs can be inconsistent despite setting the temperature to 0 and using a seed value (see [GitHub issue for Llama3](https://github.com/ollama/ollama/issues/5321)). Setting the temperature to 0 configures greedy decoding (always selecting the most probable next token), which minimizes output variability but can degrade quality by producing repetitive text and missing higher-quality responses (Holtzman et al. 2020).
 
-Even with a temperature of 0, full determinism is rarely guaranteed: floating-point arithmetic on GPUs causes slight numerical differences that cascade into divergent token selections (Yuan et al. 2025), Sparse Mixture-of-Experts routing amplifies this effect (Chann 2023), silent backend changes in commercial APIs produce different outputs over time (Chen, Zaharia, and Zou 2024), and even self-hosted open models with identical settings do not always yield consistent outputs (Angermeir et al. 2025; Song et al. 2025). Researchers **should not** treat a temperature of 0 as a guarantee of reproducibility, but as one measure among several, including fixed seed values (OpenAI 2023), system fingerprints, and archiving of raw outputs. When a temperature of 0 is chosen primarily for reproducibility, this motivation **should** be stated explicitly, along with an acknowledgment of its potential impact on output quality.
+Even with a temperature of 0, full determinism is rarely guaranteed: floating-point arithmetic on GPUs causes slight numerical differences that cascade into divergent token selections (Yuan et al. 2025), Sparse Mixture-of-Experts routing amplifies this effect (Chann 2023), silent backend changes in commercial APIs produce different outputs over time (Chen, Zaharia, and Zou 2024), and even self-hosted open models with identical settings do not always yield consistent outputs (Atil et al. 2024). Researchers **should not** treat a temperature of 0 as a guarantee of reproducibility, but as one measure among several, including fixed seed values (OpenAI 2023), system fingerprints, and archiving of raw outputs. When a temperature of 0 is chosen primarily for reproducibility, this motivation **should** be stated explicitly, along with an acknowledgment of its potential impact on output quality.
 
 ## Study Types
 
@@ -64,7 +64,7 @@ Missing version, configuration, or parameter information is typically a minor re
 
 ## References
 
-Angermeir, Florian, Maximilian Amougou, Mark Kreitz, Andreas Bauer, Matthias Linhuber, Davide Fucci, Fabiola Moyón Constante, Daniel Méndez, and Tony Gorschek. 2025. “Reflections on the Reproducibility of Commercial LLM Performance in Empirical Software Engineering Studies.” *CoRR* abs/2510.25506. <https://doi.org/10.48550/ARXIV.2510.25506>.
+Atil, Berk, Sarp Aykent, Alexa Chittams, Lisheng Fu, Rebecca J. Passonneau, Evan Radcliffe, Guru Rajan Rajagopal, et al. 2024. “Non-Determinism of ‘Deterministic’ LLM Settings.” *CoRR* abs/2408.04667. <https://arxiv.org/abs/2408.04667>.
 
 Chann, Sherman. 2023. “Non-determinism in GPT-4 is caused by Sparse MoE.” <https://152334h.github.io/blog/non-determinism-in-gpt-4/>.
 
@@ -80,8 +80,6 @@ Microsoft. 2025. “Azure OpenAI Service models.” <https://learn.microsoft.com
 
 OpenAI. 2023. “How to make your completions outputs consistent with the new seed parameter.” <https://cookbook.openai.com/examples/reproducible_outputs_with_the_seed_parameter>.
 
-———. 2025. “OpenAI API Introduction.” <https://platform.openai.com/docs/api-reference/chat/streaming>.
-
-Song, Yifan, Guoyin Wang, Sujian Li, and Bill Yuchen Lin. 2025. “The Good, the Bad, and the Greedy: Evaluation of LLMs Should Not Ignore Non-Determinism.” In *Proceedings of the 2025 Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics: Human Language Technologies, NAACL 2025 - Volume 1: Long Papers*, edited by Luis Chiruzzo, Alan Ritter, and Lu Wang, 4195–4206. Association for Computational Linguistics. <https://doi.org/10.18653/V1/2025.NAACL-LONG.211>.
+———. 2025. “OpenAI API Reference.” <https://platform.openai.com/docs/api-reference>.
 
 Yuan, Jiayi, Hao Li, Xinheng Ding, Wenya Xie, Yu-Jhe Li, Wentian Zhao, Kun Wan, Jing Shi, Xia Hu, and Zirui Liu. 2025. “Understanding and Mitigating Numerical Sources of Nondeterminism in LLM Inference.” In *Advances in Neural Information Processing Systems 38: Annual Conference on Neural Information Processing Systems 2025, NeurIPS 2025*. <https://openreview.net/forum?id=Q3qAsZAEZw>.
