@@ -1,6 +1,6 @@
 # Reporting Checklist
 
-The following checklist, inspired by CONSORT (Schulz, Altman, and Moher 2010), summarizes actionable items from the guidelines based on the **summary** sections. The checklist is organized along typical paper sections. Items prefixed with **must** are requirements; items prefixed with **should** are recommendations. Each item references its source guideline by short name. Items annotated with *paper* or *supplementary material* indicate where we expect the information to be reported. Unmarked items may be reported either in the paper or as supplementary material. Items prefixed with a backticked tag (e.g., `[fine-tuning]`, `[agents]`) apply only to studies with that characteristic. Beyond these characteristic-tagged items, each guideline’s *Study Types* subsection lists study-type-specific recommendations where applicable.
+The following checklist, inspired by CONSORT (Schulz, Altman, and Moher 2010), summarizes actionable items from the guidelines. The checklist is organized along typical paper sections. Items prefixed with **must** are requirements; items prefixed with **should** are recommendations. Each item references its source guideline by short name. Items annotated with *paper* or *supplementary material* indicate where we expect the information to be reported. Unmarked items may be reported either in the paper or as supplementary material. Items prefixed with a backticked tag (e.g., `[fine-tuning]`, `[agents]`) apply only to studies with that characteristic. Beyond these characteristic-tagged items, each guideline’s *Study Types* subsection lists study-type-specific recommendations where applicable.
 
 ## Introduction
 
@@ -22,20 +22,27 @@ The following checklist, inspired by CONSORT (Schulz, Altman, and Moher 2010), 
 ### System and Prompt Design
 
 - **must** Describe in the *paper* the full architecture of LLM-based tools, including the role of the LLM, interactions with other components, and overall system behavior ([Design](./guidelines/design.md)).
-- **must** Specify in the *paper* whether zero-shot, one-shot, or few-shot prompting was used ([Design](./guidelines/design.md)).
+- **must** Specify whether zero-shot, one-shot, or few-shot prompting was used ([Design](./guidelines/design.md)).
 - **must** Specify prompt reuse across models and configurations ([Design](./guidelines/design.md)).
-- **must** Publish all prompts or, when using templates, prompt templates with representative instances, including their structure, content, formatting, and variable components, as *supplementary material* ([Design](./guidelines/design.md)).
-- **must** Report hosting and hardware setup ([Design](./guidelines/design.md)).
+- **must** If the LLM was used in a standalone setup, with prompts sent directly to a model and no pre- or post-processing, state this explicitly ([Design](./guidelines/design.md)).
+- **must** Publish all prompts or, when using templates, prompt templates with representative instances, including their structure, content, formatting, and variable components, as *supplementary material*; include representative examples in the *paper* ([Design](./guidelines/design.md)).
+- **must** `[few-shot]` For few-shot prompts, explain in the *paper* how the examples were selected ([Design](./guidelines/design.md)).
 - **must** `[dynamic-prompts]` For dynamically generated prompts, document the code or rules that assemble each prompt from runtime inputs ([Design](./guidelines/design.md)).
+- **must** `[restricted-sharing]` For partially shared prompts, anonymize personal identifiers, replace proprietary code with placeholders, and clearly highlight modified sections ([Design](./guidelines/design.md)).
 - **must** `[context-files]` Describe in the *paper* any configuration mechanisms used (e.g., context files such as `CLAUDE.md` or `AGENTS.md`, skills, subagents, hooks, settings, rules) ([Design](./guidelines/design.md)).
 - **must** `[tool-use]` Summarize in the *paper* which tools were exposed to the model ([Design](./guidelines/design.md)).
 - **must** `[agents]` If autonomous agents are used, specify agent roles, reasoning frameworks, and communication flows ([Design](./guidelines/design.md)).
+- **must** `[agents]` For agentic systems that use external tools, distinguish the model’s reasoning and outputs, its tool calls, and its interactions with users, the environment, or other agents ([Design](./guidelines/design.md)).
 - **must** `[context-augmentation]` For retrieval-augmented generation (RAG) or related methods, describe how external data was retrieved, stored, and selected for inclusion in the model’s context ([Design](./guidelines/design.md)).
 - **must** `[benchmarking]` Describe the evaluation harness and infrastructure when it goes beyond bare model API calls (e.g., custom sandboxing, orchestration layers, or post-processing pipelines) ([Design](./guidelines/design.md)).
+- **must** `[benchmarking]` For pre-defined prompts from existing benchmarks, specify the benchmark version, and disclose and justify any modifications to the prompts or evaluation setup ([Design](./guidelines/design.md)).
+- **must** `[latency-sensitive]` For time-sensitive measurements, clarify whether local infrastructure or cloud services were used, including the specific hardware for local hosting (e.g., GPU model and VRAM) or the service tier for cloud APIs ([Design](./guidelines/design.md)).
 - **should** Justify substantive architectural choices where alternatives existed (e.g., agentic framework, tool catalog) ([Design](./guidelines/design.md)).
+- **should** Describe how the models were hosted and accessed ([Design](./guidelines/design.md)).
 - **should** Describe prompt development rationale and selection process ([Design](./guidelines/design.md)).
 - **should** Report prompt evolution and any LLM-suggested refinements ([Design](./guidelines/design.md)).
 - **should** Where legally possible, release the source code of the implementation under an open-source license ([Design](./guidelines/design.md)).
+- **should** `[few-shot]` Include the concrete few-shot examples in the *supplementary material* ([Design](./guidelines/design.md)).
 - **should** `[participant-prompts]` For user-authored prompts, describe how they were collected and analyzed ([Design](./guidelines/design.md)).
 - **should** `[long-prompts]` Document input handling and token optimization strategies when prompts are long or complex ([Design](./guidelines/design.md)).
 - **should** `[restricted-sharing]` If full prompt disclosure is not feasible, provide summaries or examples ([Design](./guidelines/design.md)).
@@ -47,6 +54,9 @@ The following checklist, inspired by CONSORT (Schulz, Altman, and Moher 2010), 
 
 ### Session Traces
 
+- **must** Where tool-native trace formats are used (e.g., Claude Code’s session transcripts, LangGraph’s state logs), describe the file format and report the tool version ([Traces](./guidelines/traces.md)).
+- **must** `[restricted-sharing]` For traces containing sensitive information, anonymize personal identifiers, replace proprietary code with placeholders, and clearly highlight modified sections ([Traces](./guidelines/traces.md)).
+- **should** Use an open trace format with a documented schema where it fits (e.g., the OpenTelemetry GenAI semantic conventions or OpenInference) ([Traces](./guidelines/traces.md)).
 - **should** Include full interaction logs (prompts and responses) as *supplementary material* if privacy and confidentiality can be ensured ([Traces](./guidelines/traces.md)).
 - **should** `[agents]` For agentic systems, include interaction logs covering human-in-the-loop exchanges with the agent (feedback, approvals, refinements) as *supplementary material* ([Traces](./guidelines/traces.md)).
 - **should** `[agents]` For agentic systems, report the complete runtime trace as *supplementary material*, including for each entry the tool or artifact name, arguments, result, and ordering, and which configured artifacts (skills, context files, subagents) were activated ([Traces](./guidelines/traces.md)).
@@ -55,8 +65,10 @@ The following checklist, inspired by CONSORT (Schulz, Altman, and Moher 2010), 
 ### Benchmarks and Metrics
 
 - **must** Justify in the *paper* all benchmark and metric choices ([Benchmarks](./guidelines/benchmarks.md)).
-- **must** Explain in the *paper* why the selected metrics are suitable for the specific study ([Benchmarks](./guidelines/benchmarks.md)).
+- **must** Discuss in the *paper* the reliability and validity, especially construct validity, of the selected benchmarks and metrics ([Benchmarks](./guidelines/benchmarks.md)).
+- **must** Explain in the *paper* why the selected metrics are suitable for the specific study; prior adoption in related work alone is not sufficient justification ([Benchmarks](./guidelines/benchmarks.md)).
 - **must** `[latency-sensitive]` Report latency when it can affect study outcomes (e.g., interactive user studies, latency comparisons) ([Benchmarks](./guidelines/benchmarks.md)).
+- **must** `[new-benchmark]` For new or updated benchmarks, disclose data sources and collection dates for each release ([Benchmarks](./guidelines/benchmarks.md)).
 - **should** Provide an operational definition of the phenomenon the benchmark is intended to measure, including its scope and any sub-components ([Benchmarks](./guidelines/benchmarks.md)).
 - **should** Summarize benchmark structure, task types, and limitations ([Benchmarks](./guidelines/benchmarks.md)).
 - **should** Identify the capabilities a benchmark conflates with the target phenomenon, isolate the target where possible, and acknowledge remaining confounders as construct-validity threats ([Benchmarks](./guidelines/benchmarks.md)).
@@ -71,18 +83,19 @@ The following checklist, inspired by CONSORT (Schulz, Altman, and Moher 2010), 
 
 - **must** `[human-validation]` If using human validation, define in the *paper* the measured construct (e.g., usability, maintainability) and describe the measurement instrument ([Human Validation](./guidelines/human-validation.md)).
 - **must** `[human-validation]` When developing or adapting measurement instruments, share them ([Human Validation](./guidelines/human-validation.md)).
-- **must** `[human-validation]` When LLMs replace humans in research tasks, explain in the *paper* whether and how the replacement is justified ([Human Validation](./guidelines/human-validation.md)).
+- **must** `[human-validation]` When LLMs replace humans in research tasks, explain whether and how the replacement is justified ([Human Validation](./guidelines/human-validation.md)).
 - **should** Consider human validation early in the study design and build on established reference models for human-LLM comparison ([Human Validation](./guidelines/human-validation.md)).
-- **should** `[human-validation]` When LLMs replace humans in research tasks, report in the *paper* the systematic approach used to justify the replacement, including inter-model and model-to-human agreement ([Human Validation](./guidelines/human-validation.md)).
+- **should** `[human-validation]` When LLMs replace humans in research tasks, report the systematic approach used to justify the replacement, including inter-model and model-to-human agreement ([Human Validation](./guidelines/human-validation.md)).
 - **should** `[human-validation]` Validate LLM judgments against human judgment, report aggregation methods, and assess human-LLM agreement ([Human Validation](./guidelines/human-validation.md)).
 - **should** `[human-validation]` Discuss and, where feasible, control for confounding factors ([Human Validation](./guidelines/human-validation.md)).
 - **should** `[human-validation]``[subjective-constructs]` For value-laden or culturally contingent constructs, describe rater demographics beyond expertise and discuss potential demographic biases ([Human Validation](./guidelines/human-validation.md)).
+- **should** `[agents]` When evaluating agentic tools, assess the feedback users provided on the agent’s proposed actions, and report how frequently proposals were accepted and how they were modified ([Human Validation](./guidelines/human-validation.md)).
 
 ### Reproducibility, Ethics, and Resources
 
 - **must** `[restricted-sharing]` For studies involving sensitive data, discuss data governance mechanisms compliant with applicable jurisdictional obligations ([Limitations](./guidelines/limitations.md)).
 - **should** Justify LLM usage in light of its resource demands ([Limitations](./guidelines/limitations.md)).
-- **should** Provide a full replication package as *supplementary material*, including step-by-step instructions for verifying and reproducing the results ([Limitations](./guidelines/limitations.md)).
+- **should** Ensure the open-LLM baseline is independently reproducible from the *supplementary material* ([Open LLM](./guidelines/open-llm.md)).
 - **should** `[restricted-sharing]` Where full sharing of prompts, traces, or datasets is not feasible, share representative examples for partial replicability ([Limitations](./guidelines/limitations.md)).
 
 ## Results
@@ -94,7 +107,7 @@ The following checklist, inspired by CONSORT (Schulz, Altman, and Moher 2010), 
 
 ## Limitations and Threats to Validity
 
-- **must** Describe measurement constructs and methods; disclose any data leakage risks and avoid leaking evaluation data into LLM improvement pipelines ([Limitations](./guidelines/limitations.md)).
+- **must** Discuss potential data leakage effects and their impact on results, and describe how the quality of subjective results was ensured ([Limitations](./guidelines/limitations.md)).
 - **must** Transparently report study limitations, including the impact of non-determinism and generalizability constraints ([Limitations](./guidelines/limitations.md)).
 - **must** Specify whether generalization across LLMs or across time was assessed, and discuss model and version differences ([Limitations](./guidelines/limitations.md)).
 - **must** `[restricted-sharing]` Acknowledge non-disclosed confidential or proprietary components as reproducibility limitations ([Design](./guidelines/design.md)).
