@@ -4,21 +4,21 @@
 
 ## Rationale
 
-Even with well-justified benchmarks and metrics ([*Benchmarks and Metrics*](../guidelines/benchmarks.md)), automated measurement captures only the constructs the benchmark was designed to measure. Subjective constructs and constructs that no current benchmark covers require human assessment.
+Even with well-justified benchmarks and metrics ([*Benchmarks and Metrics*](../guidelines/benchmarks-metrics.md)), automated measurement captures only the constructs the benchmark was designed to measure. Subjective constructs and constructs that no current benchmark covers require human assessment.
 
 ## Recommendations
 
 When LLMs automate research or software development tasks previously performed by humans, the LLM’s performance needs to be assessed. Where no benchmark adequately operationalizes the target construct, researchers **should** validate LLM outputs against human judgment.
 
-### Study Design Considerations.
+### Study Design Considerations
 
 Studies that include human participants need additional considerations, including a recruitment strategy, annotation guidelines, training sessions, or ethical approvals. Therefore, researchers **should** consider human validation early in the study design, not as an afterthought. Authors **must** clearly define in the *paper* the constructs that the human and LLM annotators evaluate (Ralph and Tempero 2018). When designing custom instruments to assess LLM output (e.g., questionnaires, scales), researchers **must** share these instruments.
 
-### Replacing Human Judgment.
+### Replacing Human Judgment
 
 LLMs may be used to replace, rather than augment, humans in research tasks such as annotating software artifacts, coding interview transcripts, or simulating participants in user studies. In such cases, researchers **must** explain whether and how the replacement is justified and **should** follow systematic approaches to support this judgment, e.g., showing that a jury of three LLMs exhibits inter-model agreement at the same threshold researchers would require for human-to-human agreement, such as Krippendorff’s *α* &gt; 0.8. Such agreement is necessary but not sufficient. High inter-model agreement can reflect shared model biases rather than valid annotation, so researchers **should** additionally validate a sample against human experts before treating LLM outputs as a substitute for human work (Ahmed et al. 2025; Krippendorff 2018). For qualitative coding of interpretive data such as open-ended developer interview responses, agreement metrics do not show that an LLM can perform the interpretive work that the task requires. Researchers **should** justify why the LLM is methodologically appropriate (see [*LLMs for Research*](../study-types/llms-for-research.md)).
 
-### Subjective Judgment and Agreement.
+### Subjective Judgment and Agreement
 
 When the judgment is subjective (i.e., depends on the judge’s values or theories), the same artifacts **should** be judged independently by both the LLM and a panel of human experts, and the LLM judgments **should** then be compared against an aggregated human reference. Researchers **should** clearly describe their aggregation method and reasoning. Researchers **should** use established reference models to compare humans with LLMs. For example, Schneider, Fotrousi, and Wohlrab (2025) outline design considerations for studies comparing LLMs with humans.
 
@@ -33,7 +33,7 @@ The goal is to reach a target IRA or IRR (e.g., Krippendorff’s *α* &gt; 0
 
 Confounding factors **should** be discussed and, where feasible, controlled for (e.g., by categorizing participants according to their level of experience or expertise). For value-laden or culturally contingent constructs (e.g., judging code-style appropriateness or comment helpfulness), researchers **should** describe rater demographics beyond expertise (e.g., geographic, linguistic, or professional background) and discuss potential demographic biases in rater recruitment and instructions (Bean et al. 2025). Where applicable, researchers may perform a power analysis (Cohen 1992; Dybå, Kampenes, and Sjøberg 2006) to estimate the required sample size, ensuring sufficient statistical power in their experimental design. Although established sample-size guidance for LLM-human comparisons is limited, related fields commonly use 100 comparisons without further justification (Tam et al. 2024).
 
-### Agentic Tools.
+### Agentic Tools
 
 Agentic human-in-the-loop interaction is a built-in human validation, with larger degrees of freedom than traditional experiments that use LLMs directly. Besides generating and modifying content, agentic systems such as *Claude Code* (see [*System and Prompt Design*](../guidelines/design.md)) can autonomously call command-line tools or pull in additional information from MCP servers. When evaluating agentic tools, researchers **should** assess the feedback that users provided on the agent’s proposed actions (e.g., file edits, command executions), report statistics on how frequently they accepted the proposals, and how they modified them.
 
@@ -63,7 +63,7 @@ Human validation may be the most challenging of our guidelines to assess because
 
 ## See Also
 
-- [Use Suitable Baselines, Benchmarks, and Metrics](../guidelines/benchmarks.md): Human evaluation complements automated metrics where benchmarks cannot sufficiently capture the target construct.
+- [Use Suitable Baselines, Benchmarks, and Metrics](../guidelines/benchmarks-metrics.md): Human evaluation complements automated metrics where benchmarks cannot sufficiently capture the target construct.
 - [Report Model Version, Configuration, and Customizations](../guidelines/model-version.md): Human-validation findings characterize only the specific model and configuration that produced the outputs.
 - [Report System and Prompt Design](../guidelines/design.md): Prompt and architecture choices produce the outputs that humans then validate.
 - [Report Session Traces](../guidelines/traces.md): Stored interaction logs and runtime traces are the artifacts human reviewers examine.

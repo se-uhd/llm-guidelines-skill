@@ -38,7 +38,7 @@ Researchers building or releasing new SE benchmarks **should** consult operatio
 
 ## Examples
 
-### Common Metrics.
+### Common Metrics
 
 Two common metrics used for generation tasks are *BLEU-N* and *pass@k*. *BLEU-N* (Papineni et al. 2002) was originally developed for evaluating machine translation quality by measuring modified n-gram precision (with a brevity penalty) between a candidate and reference text, ranging from 0 (dissimilar) to 1 (similar). It has been widely adopted in SE for code generation tasks, though its validity in this context is debatable. An n-gram overlap does not capture functional correctness, and syntactically different code can be semantically equivalent (see *Challenges* below). Code-specific variations attempt to address these limitations. *CodeBLEU* (Ren et al. 2020) augments n-gram overlap with syntactic (AST) and data-flow matching, whereas *CrystalBLEU* (Eghbali and Pradel 2022) ignores n-grams that recur across unrelated programs, such as boilerplate syntax and common API calls, because they inflate overlap scores without indicating genuine similarity.
 
@@ -61,7 +61,7 @@ If a study evaluates an LLM-based tool for supporting humans, a relevant metric 
 
 Common problem types for LLM-based studies are classification, recommendation, and generation, each requiring different metrics (Hou et al. 2024). Hu et al. (2025) categorized 191 LLM benchmarks by SE task, providing a valuable reference. For an overview of code foundation models, agents, and their evaluation, see Yang et al. (2025). From a practitioner perspective, Anthropic (2025) categorize evaluation approaches for LLM-based agents into code-based graders (e.g., test suite execution, static analysis), model-based graders (e.g., rubric-scored LLM judgments), and human graders (Anthropic 2025). This taxonomy may help researchers systematically design evaluation strategies for agent-based tools. Common metrics include *BLEU*, *pass@k*, *Accuracy@k*, and *Exact Match* for generation; *Mean Reciprocal Rank* for recommendation; and *Precision*, *Recall*, *F1-score*, and *Accuracy* for classification.
 
-### Benchmark Examples.
+### Benchmark Examples
 
 Benchmarks used for code generation include *HumanEval* (available on [GitHub](https://github.com/openai/human-eval)) (M. Chen et al. 2021), *MBPP* (available on [Hugging Face](https://huggingface.co/datasets/google-research-datasets/mbpp)) (Austin et al. 2021), *ClassEval* (available on [GitHub](https://github.com/FudanSELab/ClassEval)) (Du et al. 2024), *LiveCodeBench* (available on [GitHub](https://github.com/LiveCodeBench/LiveCodeBench)) (Jain et al. 2024), and *SWE-bench* (available on [GitHub](https://github.com/swe-bench/SWE-bench)) (Jimenez et al. 2024). An example of a code translation benchmark is *TransCoder* (Rozière et al. 2020) (available on [GitHub](https://github.com/facebookresearch/CodeGen)). Golnari et al. (2026)’s *DevBench* (available on [GitHub](https://github.com/microsoft/devbench)) synthesized 1,800 code completion instances from developer telemetry, rather than collecting them from public sources (Golnari et al. 2026). For evaluating LLMs as agents, *AgentBench* (available on [GitHub](https://github.com/THUDM/AgentBench)) (X. Liu et al. 2024) evaluates LLM agents across eight environments, including an operating system shell, a database, and a web browser.
 

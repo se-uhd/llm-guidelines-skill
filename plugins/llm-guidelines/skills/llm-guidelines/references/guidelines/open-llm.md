@@ -8,7 +8,7 @@ Reproducibility depends on access to the model under study. When research relies
 
 ## Recommendations
 
-Empirical studies using LLMs in SE, especially those that target commercial tools or models, **should** incorporate an open LLM as a baseline and report established metrics for inter-model agreement (see [*Benchmarks and Metrics*](../guidelines/benchmarks.md)). We acknowledge that including an open LLM baseline might not always be possible, for example, if the study involves human participants, and letting them work on the tasks using two different models might not be feasible. Using an open model as a baseline is also not necessary if the use of the LLM is tangential to the study goal.
+Empirical studies using LLMs in SE, especially those that target commercial tools or models, **should** incorporate an open LLM as a baseline and report established metrics for inter-model agreement (see [*Benchmarks and Metrics*](../guidelines/benchmarks-metrics.md)). We acknowledge that including an open LLM baseline might not always be possible, for example, if the study involves human participants, and letting them work on the tasks using two different models might not be feasible. Using an open model as a baseline is also not necessary if the use of the LLM is tangential to the study goal.
 
 Open models allow other researchers to verify research results and build upon them, even without access to commercial models. A comparison of commercial and open models also allows researchers to contextualize model performance. Researchers **should** ensure the open-LLM baseline is independently reproducible from their *supplementary material*.
 
@@ -45,7 +45,7 @@ Reviewers should distinguish between LLM use that is central to the research (e.
 
 - [Report Model Version, Configuration, and Customizations](../guidelines/model-version.md): Authors must report version, configuration, and parameters for open models, not just commercial ones.
 - [Report System and Prompt Design](../guidelines/design.md): Self-hosting an open model adds hardware, hosting, and infrastructure to document.
-- [Use Suitable Baselines, Benchmarks, and Metrics](../guidelines/benchmarks.md): Inter-model agreement metrics make open-vs-commercial comparisons interpretable.
+- [Use Suitable Baselines, Benchmarks, and Metrics](../guidelines/benchmarks-metrics.md): Inter-model agreement metrics make open-vs-commercial comparisons interpretable.
 - [Report Limitations and Mitigations](../guidelines/limitations.md): When using an open LLM as a baseline is impractical, authors must report this as a limitation.
 
 ## References

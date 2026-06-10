@@ -58,7 +58,7 @@ Missing version, configuration, or parameter information is typically a minor re
 
 - [Report System and Prompt Design](../guidelines/design.md): Beyond the model itself, authors must also document the architecture and prompts that use it.
 - [Report Session Traces](../guidelines/traces.md): Session traces show what the reported model and configuration produced at runtime.
-- [Use Suitable Baselines, Benchmarks, and Metrics](../guidelines/benchmarks.md): Benchmark comparisons require identifying the exact model version under test.
+- [Use Suitable Baselines, Benchmarks, and Metrics](../guidelines/benchmarks-metrics.md): Benchmark comparisons require identifying the exact model version under test.
 - [Use an Open LLM as a Baseline](../guidelines/open-llm.md): An open model gives full version visibility, which some commercial products do not.
 - [Report Limitations and Mitigations](../guidelines/limitations.md): Hidden or shifting commercial versions become reproducibility threats in their own right.
 

@@ -8,7 +8,7 @@ Applicability of the eight guidelines to the seven study types: **must** = the g
 | [Model Version](./guidelines/model-version.md) | must | must | must | must | must | must | must |
 | [Design](./guidelines/design.md) | must | must | must | must | should | must | must |
 | [Traces](./guidelines/traces.md) | should | should | should | should | must | should | should |
-| [Benchmarks](./guidelines/benchmarks.md) | must | should | should | should | should | should | must |
+| [Benchmarks & Metrics](./guidelines/benchmarks-metrics.md) | must | should | should | should | should | should | must |
 | [Open LLM](./guidelines/open-llm.md) | should | should | should | n/a | n/a | should | should |
 | [Human Validation](./guidelines/human-validation.md) | should | should | should | should | should | should | should |
 | [Limitations](./guidelines/limitations.md) | must | must | must | must | must | must | must |

@@ -64,20 +64,20 @@ The following checklist, inspired by CONSORT (Schulz, Altman, and Moher 2010), 
 
 ### Benchmarks and Metrics
 
-- **must** Justify in the *paper* all benchmark and metric choices ([Benchmarks](./guidelines/benchmarks.md)).
-- **must** Discuss in the *paper* the reliability and validity, especially construct validity, of the selected benchmarks and metrics ([Benchmarks](./guidelines/benchmarks.md)).
-- **must** Explain in the *paper* why the selected metrics are suitable for the specific study; prior adoption in related work alone is not sufficient justification ([Benchmarks](./guidelines/benchmarks.md)).
-- **must** `[latency-sensitive]` Report latency when it can affect study outcomes (e.g., interactive user studies, latency comparisons) ([Benchmarks](./guidelines/benchmarks.md)).
-- **must** `[new-benchmark]` For new or updated benchmarks, disclose data sources and collection dates for each release ([Benchmarks](./guidelines/benchmarks.md)).
-- **should** Provide an operational definition of the phenomenon the benchmark is intended to measure, including its scope and any sub-components ([Benchmarks](./guidelines/benchmarks.md)).
-- **should** Summarize benchmark structure, task types, and limitations ([Benchmarks](./guidelines/benchmarks.md)).
-- **should** Identify the capabilities a benchmark conflates with the target phenomenon, isolate the target where possible, and acknowledge remaining confounders as construct-validity threats ([Benchmarks](./guidelines/benchmarks.md)).
-- **should** Perform an error analysis: categorize the failures observed and report their relative frequency; report failures that cluster on confounding capabilities as construct-validity threats ([Benchmarks](./guidelines/benchmarks.md)).
-- **should** Describe and justify the sampling strategy used to select problems for inclusion in the benchmark ([Benchmarks](./guidelines/benchmarks.md)).
-- **should** Justify the number of experiment repetitions, for example through a power analysis or by monitoring convergence of descriptive statistics ([Benchmarks](./guidelines/benchmarks.md)).
-- **should** `[non-probability-sampling]` For non-probability sampling (e.g., convenience), discuss the implications for the generalizability of conclusions ([Benchmarks](./guidelines/benchmarks.md)).
-- **should** `[new-benchmark]` For new or released benchmarks, adopt contamination-prevention mechanisms: held-out subset, canary strings, and pre-exposure investigation against common training corpora ([Benchmarks](./guidelines/benchmarks.md)).
-- **should** `[multi-rater-scoring]` For ratings that vary across raters or runs (human raters, LLM-as-judge), report the distribution of ratings per item rather than only aggregated point estimates ([Benchmarks](./guidelines/benchmarks.md)).
+- **must** Justify in the *paper* all benchmark and metric choices ([Benchmarks & Metrics](./guidelines/benchmarks-metrics.md)).
+- **must** Discuss in the *paper* the reliability and validity, especially construct validity, of the selected benchmarks and metrics ([Benchmarks & Metrics](./guidelines/benchmarks-metrics.md)).
+- **must** Explain in the *paper* why the selected metrics are suitable for the specific study; prior adoption in related work alone is not sufficient justification ([Benchmarks & Metrics](./guidelines/benchmarks-metrics.md)).
+- **must** `[latency-sensitive]` Report latency when it can affect study outcomes (e.g., interactive user studies, latency comparisons) ([Benchmarks & Metrics](./guidelines/benchmarks-metrics.md)).
+- **must** `[new-benchmark]` For new or updated benchmarks, disclose data sources and collection dates for each release ([Benchmarks & Metrics](./guidelines/benchmarks-metrics.md)).
+- **should** Provide an operational definition of the phenomenon the benchmark is intended to measure, including its scope and any sub-components ([Benchmarks & Metrics](./guidelines/benchmarks-metrics.md)).
+- **should** Summarize benchmark structure, task types, and limitations ([Benchmarks & Metrics](./guidelines/benchmarks-metrics.md)).
+- **should** Identify the capabilities a benchmark conflates with the target phenomenon, isolate the target where possible, and acknowledge remaining confounders as construct-validity threats ([Benchmarks & Metrics](./guidelines/benchmarks-metrics.md)).
+- **should** Perform an error analysis: categorize the failures observed and report their relative frequency; report failures that cluster on confounding capabilities as construct-validity threats ([Benchmarks & Metrics](./guidelines/benchmarks-metrics.md)).
+- **should** Describe and justify the sampling strategy used to select problems for inclusion in the benchmark ([Benchmarks & Metrics](./guidelines/benchmarks-metrics.md)).
+- **should** Justify the number of experiment repetitions, for example through a power analysis or by monitoring convergence of descriptive statistics ([Benchmarks & Metrics](./guidelines/benchmarks-metrics.md)).
+- **should** `[non-probability-sampling]` For non-probability sampling (e.g., convenience), discuss the implications for the generalizability of conclusions ([Benchmarks & Metrics](./guidelines/benchmarks-metrics.md)).
+- **should** `[new-benchmark]` For new or released benchmarks, adopt contamination-prevention mechanisms: held-out subset, canary strings, and pre-exposure investigation against common training corpora ([Benchmarks & Metrics](./guidelines/benchmarks-metrics.md)).
+- **should** `[multi-rater-scoring]` For ratings that vary across raters or runs (human raters, LLM-as-judge), report the distribution of ratings per item rather than only aggregated point estimates ([Benchmarks & Metrics](./guidelines/benchmarks-metrics.md)).
 
 ### Human Validation
 
@@ -100,10 +100,10 @@ The following checklist, inspired by CONSORT (Schulz, Altman, and Moher 2010), 
 
 ## Results
 
-- **should** Repeat experiments due to the inherent non-determinism of LLMs and report the result distribution using descriptive statistics ([Benchmarks](./guidelines/benchmarks.md)).
-- **should** Use traditional (non-LLM) baselines for comparison where possible ([Benchmarks](./guidelines/benchmarks.md)).
-- **should** Report established metrics to make study results comparable; additional metrics may be reported where appropriate ([Benchmarks](./guidelines/benchmarks.md)).
-- **should** `[comparing-models]` If comparing models or tools, use appropriate inferential statistics (e.g., hypothesis tests, effect sizes) rather than relying solely on summary statistics ([Benchmarks](./guidelines/benchmarks.md)).
+- **should** Repeat experiments due to the inherent non-determinism of LLMs and report the result distribution using descriptive statistics ([Benchmarks & Metrics](./guidelines/benchmarks-metrics.md)).
+- **should** Use traditional (non-LLM) baselines for comparison where possible ([Benchmarks & Metrics](./guidelines/benchmarks-metrics.md)).
+- **should** Report established metrics to make study results comparable; additional metrics may be reported where appropriate ([Benchmarks & Metrics](./guidelines/benchmarks-metrics.md)).
+- **should** `[comparing-models]` If comparing models or tools, use appropriate inferential statistics (e.g., hypothesis tests, effect sizes) rather than relying solely on summary statistics ([Benchmarks & Metrics](./guidelines/benchmarks-metrics.md)).
 
 ## Limitations and Threats to Validity
 
