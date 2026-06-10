@@ -47,7 +47,7 @@ To cut a new revision:
 2. Bump `_skill/REVISION` (skill-only change) or follow the guideline-version bump steps in the website repo's `CLAUDE.md` (new paper tag).
 3. Run `./generate-skill.sh` from the website repo.
 4. Validate Claude manifests: `claude plugin validate plugins/llm-guidelines` and `claude plugin validate .claude-plugin/marketplace.json` (run from this repo's root after the generator has written the files).
-5. Run `python3 scripts/tests/run_smoke.py` and the Markdown linter smoke test. The bundle smoke test covers Codex packaging and runs an optional Codex CLI marketplace check when `codex` is installed.
+5. Bump `EXPECTED_CLAUDE_VERSION` in `scripts/tests/run_smoke.py` to the new combined version (a deliberate tripwire: CI smoke fails on any release that skips it), then run `python3 scripts/tests/run_smoke.py` and the Markdown linter smoke test, checking exit codes (the suite prints failures before passes). The bundle smoke test covers Codex packaging and runs an optional Codex CLI marketplace check when `codex` is installed.
 6. In this repo, review the diff, commit, tag the new commit (`git tag YYYY.MM_revN`), push commit and tag.
 7. Bump the submodule pointer in the website repo, commit, push.
 

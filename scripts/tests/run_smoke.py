@@ -33,7 +33,7 @@ COMMANDS_DIR = PLUGIN_DIR / 'commands'
 SKILL_DIR = SKILLS_DIR / 'llm-guidelines'
 REFS_DIR = SKILL_DIR / 'references'
 
-EXPECTED_CLAUDE_VERSION = '2026.06_rev6'
+EXPECTED_CLAUDE_VERSION = '2026.06_rev7'
 VERSION_RE = re.compile(r'^\d{4}\.\d{2}(_rev\d+)?$')
 SEMVER_RE = re.compile(r'^\d+\.\d+\.\d+$')
 
@@ -232,6 +232,7 @@ def test_references_required_files_exist():
     required = [
         REFS_DIR / 'scope.md',
         REFS_DIR / 'checklist.md',
+        REFS_DIR / 'matrix.md',
         REFS_DIR / 'explore.md',
         REFS_DIR / 'review.md',
     ]
