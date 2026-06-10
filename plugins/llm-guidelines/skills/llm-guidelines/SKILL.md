@@ -3,7 +3,7 @@ name: llm-guidelines
 description: Apply the community LLM reporting guidelines for empirical SE studies (see https://llm-guidelines.org). Use when the user plans, discusses, or audits an empirical study whose method involves an LLM, walks through the scope statement, eight reporting guidelines, or reporting checklist, picks a study type from the taxonomy (LLMs as annotators, judges, synthesis, or subjects; studying LLM usage in software engineering; LLMs for new SE tools; benchmarking LLMs for SE tasks), or asks for a structured pass over a draft (`.tex` or `.pdf`, plus any supplementary material) producing an `llm-guidelines-report.md`.
 license: CC-BY-4.0
 metadata:
-  version: "2026.06_rev7"
+  version: "2026.06_rev8"
   homepage: https://llm-guidelines.org
 ---
 
@@ -60,7 +60,7 @@ Load on demand. Do not preload the full bundle; the mode files instruct when to 
 - [LLMs as Tools for Software Engineers](references/study-types/llms-for-se.md)
     - [Studying LLM Usage in Software Engineering](references/study-types/usage.md)
     - [LLMs for New Software Engineering Tools](references/study-types/tools.md)
-    - [Benchmarking LLMs for Software Engineering Tasks](references/study-types/benchmarks.md)
+    - [Benchmarking LLMs for Software Engineering Tasks](references/study-types/benchmarking.md)
 - [Advantages and Challenges](references/study-types/advantages-and-challenges.md)
 
 ## Shared constraints

@@ -1,6 +1,6 @@
 {
   "name": "llm-guidelines",
-  "version": "2026.6.7",
+  "version": "2026.6.8",
   "description": "Community guidelines for empirical SE studies involving LLMs. Review paper drafts and supplementary material against the eight guidelines, or discuss the guidelines and study design.",
   "author": {
     "name": "Software Engineering Group, Heidelberg University",
