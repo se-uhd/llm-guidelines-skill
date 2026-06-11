@@ -1,6 +1,6 @@
 {
   "name": "llm-guidelines",
-  "version": "2026.06_rev9",
+  "version": "2026.06_rev10",
   "description": "Community guidelines for empirical SE studies involving LLMs. Use /llm-guidelines:review to check a paper draft and its supplementary material against the eight guidelines, or /llm-guidelines:explore to discuss the guidelines and your study design.",
   "homepage": "https://llm-guidelines.org",
   "repository": "https://github.com/se-uhd/llm-guidelines-skill",

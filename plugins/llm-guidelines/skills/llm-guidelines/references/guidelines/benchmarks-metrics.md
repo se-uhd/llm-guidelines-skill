@@ -42,18 +42,19 @@ Researchers building or releasing new SE benchmarks **should** consult operatio
 
 Two common metrics used for generation tasks are *BLEU-N* and *pass@k*. *BLEU-N* (Papineni et al. 2002) was originally developed for evaluating machine translation quality by measuring modified n-gram precision (with a brevity penalty) between a candidate and reference text, ranging from 0 (dissimilar) to 1 (similar). It has been widely adopted in SE for code generation tasks, though its validity in this context is debatable. An n-gram overlap does not capture functional correctness, and syntactically different code can be semantically equivalent (see *Challenges* below). Code-specific variations attempt to address these limitations. *CodeBLEU* (Ren et al. 2020) augments n-gram overlap with syntactic (AST) and data-flow matching, whereas *CrystalBLEU* (Eghbali and Pradel 2022) ignores n-grams that recur across unrelated programs, such as boilerplate syntax and common API calls, because they inflate overlap scores without indicating genuine similarity.
 
-The metric *pass@k* reports the likelihood that a model correctly completes a code snippet at least once within *k* attempts. Originally introduced by Kulal et al. (2019) as the success rate within a budget of *B* program attempts (corresponding to *k* in *pass@k*) (Kulal et al. 2019) and popularized by M. Chen et al. (2021), it ranges from 0 (no correct solution in *k* tries) to 1 (at least one correct solution), with correctness typically defined by passing test cases.
+The metric *pass@k* reports the probability that at least one of *k* generated solutions for a task passes the task’s tests. In their pseudocode-to-code study, Kulal et al. (2019) counted a test example as solved if best-first search over one candidate code line per pseudocode line produced an accepted program within *B* trials. Each trial compiled one candidate program and, if compilation succeeded, ran public tests (Kulal et al. 2019). M. Chen et al. (2021) defined *pass@k* for code generation and estimated it from *n* ≥ *k* samples, treating a sample as correct when it passes the task’s unit tests.
 
-The *pass@k* metric is defined as:
+For a single task, the estimator for *pass@k* is:
 
 $$\text{pass@}k = 1 - \frac{\binom{n-c}{k}}{\binom{n}{k}},$$
+
 where:
 
-- *n* is the total number of samples generated per prompt (with *n* ≥ *k*),
+- *n* is the total number of samples generated per task (with *n* ≥ *k*),
 - *c* is the number of correct samples among the *n*, and
 - *k* is the number of attempts considered, drawn from the *n* generated samples without replacement.
 
-The formula above gives *pass@k* for a single prompt. The value reported for a benchmark is its mean over all prompts. The choice of *k* depends on the downstream task. The metric *pass@1* is critical for single-suggestion scenarios such as code completion, while higher *k* values (e.g., 2, 5, 10) assess multi-attempt capability and are commonly reported in technical reports of code LLMs (e.g., Code Llama (Rozière et al. 2023), DeepSeek-Coder (Guo et al. 2024), Qwen2.5-Coder (Hui et al. 2024), StarCoder (Li et al. 2023)). However, *pass@k* is not a universal metric suitable for all generation tasks. It requires a binary notion of correctness, making the metric appropriate for code synthesis evaluated via unit tests, but unsuitable for open-ended generation tasks such as comment generation, where multiple valid outputs exist.
+A benchmark reports the mean of the task-level *pass@k* estimates. The choice of *k* depends on the downstream task. The metric *pass@1* is critical for single-suggestion scenarios such as code completion, while higher *k* values (e.g., 2, 5, 10) assess multi-attempt capability and are commonly reported in technical reports of code LLMs (e.g., Code Llama (Rozière et al. 2023), DeepSeek-Coder (Guo et al. 2024), Qwen2.5-Coder (Hui et al. 2024), StarCoder (Li et al. 2023)). However, *pass@k* is not a universal metric suitable for all generation tasks. It requires a binary notion of correctness, making the metric appropriate for code synthesis evaluated via unit tests, but unsuitable for open-ended generation tasks such as comment generation, where multiple valid outputs exist.
 
 A complementary perspective from industry practice is *pass<sup>k</sup>* (also written *pass^k*), which measures the probability that *all* *k* trials succeed rather than *at least one* (Anthropic 2025). While *pass@k* increases with *k*, *pass<sup>k</sup>* decreases, making it useful for assessing reliability in deployment scenarios where consistent success matters (e.g., customer-facing agents).
 
