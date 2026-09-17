@@ -1,6 +1,6 @@
 # Use an Open LLM as a Baseline
 
-> ***Summary***: Researchers **should** include an open LLM as a baseline when using commercial models and report inter-model agreement. We follow the OSI definition of open-source AI: access to everything needed to understand, modify, share, retrain, and recreate the model. Many models release only trained weights without training data or methodological details (“open weight”). Researchers **should** ensure the open-LLM baseline is independently reproducible from their *supplementary material*.
+> ***Summary***: When researchers can control which LLM a study uses, they **should** include an open-weight LLM, ideally an open-source LLM, as a baseline and report inter-model agreement. Researchers **should** ensure the open-weight baseline is independently reproducible from their *supplementary material*.
 
 ## Rationale
 
@@ -8,30 +8,30 @@ Reproducibility depends on access to the model under study. When research relies
 
 ## Recommendations
 
+The term “open” can have different meanings in the context of LLMs. Widder, Whittaker, and West (2024) discuss three types of openness (i.e., transparency, reusability, and extensibility) and what openness can and cannot provide (Widder, Whittaker, and West 2024). We distinguish open-weight from open-source LLMs. An *open-weight* LLM has publicly released trained weights, so others can fine-tune, adapt, or deploy the model (Open Source Initiative 2025b). An *open-source* LLM, as defined by the *Open Source Initiative* (OSI) (Open Source Initiative 2025a), also releases the complete source code used to train and run the model and sufficiently detailed information about the training data to build a substantially equivalent model. These components are available under terms that grant the freedoms to use, study, modify, and share the model. In our guidelines, an *open LLM* is any LLM that is at least open-weight. Open-source LLMs are preferable, because researchers can check their training data for benchmark contamination (see [*Benchmarks and Metrics*](../guidelines/benchmarks-metrics.md)).
+
 Empirical studies using LLMs in SE, especially those that target commercial tools or models, **should** incorporate an open LLM as a baseline and report established metrics for inter-model agreement (see [*Benchmarks and Metrics*](../guidelines/benchmarks-metrics.md)). We acknowledge that including an open LLM baseline might not always be possible, for example, if the study involves human participants, and letting them work on the tasks using two different models might not be feasible. Using an open model as a baseline is also not necessary if the use of the LLM is tangential to the study goal.
 
 Open models allow other researchers to verify research results and build upon them, even without access to commercial models. A comparison of commercial and open models also allows researchers to contextualize model performance. Researchers **should** ensure the open-LLM baseline is independently reproducible from their *supplementary material*.
 
 Open LLMs are available from hubs such as [*Hugging Face*](https://huggingface.co/). They can be self-hosted with frameworks such as [*Ollama*](https://ollama.com/) or [*LM Studio*](https://lmstudio.ai/), accessed through cloud services such as [*Together AI*](https://together.ai/), AWS, Azure, and Google Cloud, or routed through aggregators such as [*OpenRouter*](https://openrouter.ai/) that expose many providers behind a single API. For agentic setups, open-source tools such as [*Continue*](https://www.continue.dev/), [*Cline*](https://cline.bot/), and [*opencode*](https://opencode.ai/) (OpenCode Contributors 2025) publish their full agent code, system prompts, and tool catalog. By contrast, vendor-hosted services such as *GitHub Copilot* and *Claude Code* expose only parts of their tooling (e.g., editor extensions, hook examples) and keep their deployed agent loops, system prompts, and tool catalogs proprietary.
 
-The term “open” can have different meanings in the context of LLMs. Widder, Whittaker, and West (2024) discuss three types of openness (i.e., transparency, reusability, and extensibility) and what openness can and cannot provide (Widder, Whittaker, and West 2024). The *Open Source Initiative* (OSI) (Open Source Initiative (OSI) 2025) defines open-source AI as having access to everything needed to understand, modify, share, retrain, and recreate the model.
-
 ## Examples
 
-An increasing number of studies have adopted open LLMs as baseline models. For example, Wang et al. (2024) evaluated seven advanced LLMs, six of which were open-source, testing 145 API mappings drawn from eight popular Python libraries across 28,125 completion prompts aimed at detecting deprecated API usage in code completion. Moumoula et al. (2024) compared four LLMs on a cross-language code clone detection task. Three evaluated models were open-source. Gonçalves et al. (2025) fine-tuned the open LLM *LLaMA* 3.2 on a refined version of the *DiverseVul* dataset to benchmark vulnerability detection performance (Gonçalves et al. 2025). Golnari et al. (2026) evaluated nine code completion models on the *DevBench* benchmark and included three open-weight models (*DeepSeek-V3*, *DeepSeek-V3.1*, and *Ministral-3B*) alongside commercial frontier models, releasing benchmark, evaluation scripts, and per-model raw completions under an MIT license (Golnari et al. 2026). *CodeBERT*, a bimodal transformer pre-trained by Microsoft Research, is published with model weights, source code, and data processing scripts on GitHub (Microsoft 2023). It has been used as an open baseline across diverse SE tasks, including exploit code generation (Yang et al. 2023), vulnerability detection (Xia, Shao, and Deng 2024), code clone detection (Sonnekalb et al. 2022), and programming assistance for exception handling (Cai et al. 2024).
+An increasing number of studies have adopted open LLMs as baseline models. For example, Wang et al. (2024) evaluated seven advanced LLMs, six of which were open-weight, testing 145 API mappings drawn from eight popular Python libraries across 28,125 completion prompts aimed at detecting deprecated API usage in code completion. Moumoula et al. (2024) compared four LLMs on a cross-language code clone detection task. Three evaluated models were open-weight. Gonçalves et al. (2025) fine-tuned the open LLM *LLaMA* 3.2 on a refined version of the *DiverseVul* dataset to benchmark vulnerability detection performance (Gonçalves et al. 2025). Golnari et al. (2026) evaluated nine code completion models on the *DevBench* benchmark and included three open-weight models (*DeepSeek-V3*, *DeepSeek-V3.1*, and *Ministral-3B*) alongside commercial frontier models, releasing benchmark, evaluation scripts, and per-model raw completions under an MIT license (Golnari et al. 2026). *CodeBERT*, a bimodal transformer pre-trained by Microsoft Research, is published with model weights, source code, and data processing scripts on GitHub (Microsoft 2023). It has been used as an open baseline across diverse SE tasks, including exploit code generation (Yang et al. 2023), vulnerability detection (Xia, Shao, and Deng 2024), code clone detection (Sonnekalb et al. 2022), and programming assistance for exception handling (Cai et al. 2024).
 
 ## Benefits
 
-A true open LLM baseline improves reproducibility by exposing model architectures, parameter settings, and ideally training data, enabling independent verification of results. Such baselines also let researchers compare novel methods against a stable reference point, since proprietary models can silently change between tests. They also allow inspection of training data (when released) and model behavior, helping identify biases and limitations. Unlike closed-source alternatives, which can be withdrawn or silently updated, open LLMs remain available for future studies. They typically avoid the per-use API fees that can constrain research groups with limited budgets.
+An open LLM baseline improves reproducibility by exposing model architectures, weights, and ideally training data, enabling independent verification of results. Such baselines also let researchers compare novel methods against a stable reference point, since proprietary models can silently change between tests. They also allow inspection of training data (when released) and model behavior, helping identify biases and limitations. Unlike proprietary alternatives, which can be withdrawn or silently updated, open LLMs remain available for future studies. They typically avoid the per-use API fees that can constrain research groups with limited budgets.
 
 ## Challenges
 
-Open-source LLMs face several challenges:
+Open LLMs face several challenges:
 
-- *Definitional inconsistency.* Many models release only trained weights without training data or methodological details (“open weight” openness) (Gibney 2024), which is why we reference the OSI definition in our recommendations (Open Source Initiative (OSI) 2025).
+- *Definitional inconsistency.* Many models that claim to be open or open source, such as Meta’s *Llama* and Google’s *Gemma*, release only trained weights without training data or methodological details (Gibney 2024), which is why we distinguish open-weight from open-source LLMs (see *Recommendations* above).
 - *Performance gap.* Open models often lag behind the most advanced proprietary “frontier” models in common benchmarks, making it difficult to demonstrate clear improvements when evaluating new methods using open LLMs alone.
 - *Hardware demands.* Deploying and experimenting with these models typically requires substantial hardware resources, in particular high-performance GPUs that may be beyond reach for many academic groups.
-- *Operational complexity.* Unlike APIs provided by proprietary vendors (e.g., the OpenAI API), installing, configuring, and fine-tuning open-source models can be technically demanding.
+- *Operational complexity.* Unlike APIs provided by proprietary vendors (e.g., the OpenAI API), installing, configuring, and fine-tuning open models can be technically demanding.
 
 ## Study Types
 
@@ -62,7 +62,9 @@ Microsoft. 2023. “CodeBERT on GitHub.” <https://github.com/microsoft/CodeBER
 
 Moumoula, Micheline Bénédicte, Abdoul Kader Kaboré, Jacques Klein, and Tegawendé F. Bissyandé. 2024. “Large Language Models for Cross-Language Code Clone Detection.” *CoRR* abs/2408.04430. <https://doi.org/10.48550/ARXIV.2408.04430>.
 
-Open Source Initiative (OSI). 2025. “Open Source AI Definition 1.0.” <https://opensource.org/ai/open-source-ai-definition>.
+Open Source Initiative. 2025a. “Open Source AI Definition 1.0.” <https://opensource.org/ai/open-source-ai-definition>.
+
+———. 2025b. “Open Weights: Not Quite What You’ve Been Told.” <https://opensource.org/ai/open-weights>.
 
 OpenCode Contributors. 2025. “OpenCode: The Open Source AI Coding Agent.” <https://opencode.ai/>.
 

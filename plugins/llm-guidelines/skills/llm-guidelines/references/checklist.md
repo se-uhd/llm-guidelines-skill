@@ -17,7 +17,7 @@ The following checklist, inspired by CONSORT (Schulz, Altman, and Moher 2010), 
 - **should** Report checksums and additional model properties where available; for commercial tools, openly acknowledge their reproducibility limits ([Model Version](./guidelines/model-version.md)).
 - **should** `[quantization]` For quantized models, report the quantization level (e.g., 4-bit, 8-bit) and method (e.g., GPTQ or AWQ) ([Model Version](./guidelines/model-version.md)).
 - **should** `[fine-tuning]` Compare base and fine-tuned models using suitable metrics and benchmarks; share fine-tuning data and weights as *supplementary material* (or justify in the *paper* why they cannot be shared) ([Model Version](./guidelines/model-version.md)).
-- **should** `[commercial-models]` Include an open LLM as a baseline when using commercial models and report inter-model agreement ([Open LLM](./guidelines/open-llm.md)).
+- **should** `[commercial-models]` Include an open-weight LLM, ideally an open-source LLM, as a baseline when using commercial models and report inter-model agreement ([Open LLM](./guidelines/open-llm.md)).
 
 ### System and Prompt Design
 
