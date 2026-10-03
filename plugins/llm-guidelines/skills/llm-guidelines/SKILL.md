@@ -1,9 +1,9 @@
 ---
 name: llm-guidelines
-description: Apply the community LLM reporting guidelines for empirical SE studies (see https://llm-guidelines.org). Use when the user plans, discusses, or audits an empirical study whose method involves an LLM, walks through the scope statement, eight reporting guidelines, or reporting checklist, picks a study type from the taxonomy (LLMs as annotators, judges, synthesis, or subjects; studying LLM usage in software engineering; LLMs for new SE tools; benchmarking LLMs for SE tasks), or asks for a structured pass over a draft (`.tex` or `.pdf`, plus any supplementary material) producing an `llm-guidelines-report.md`.
+description: Apply the community LLM reporting guidelines for empirical SE studies (see https://llm-guidelines.org). Use when the user plans, discusses, or audits an empirical study whose method involves an LLM, asks how to cite the guidelines, walks through the scope statement, eight reporting guidelines, or reporting checklist, picks a study type from the taxonomy (LLMs as annotators, judges, synthesis, or subjects; studying LLM usage in software engineering; LLMs for new SE tools; benchmarking LLMs for SE tasks), or asks for a structured pass over a draft (`.tex` or `.pdf`, plus any supplementary material) producing an `llm-guidelines-report.md`.
 license: CC-BY-4.0
 metadata:
-  version: "2026.09"
+  version: "2026.09_rev1"
   homepage: https://llm-guidelines.org
 ---
 
@@ -26,6 +26,23 @@ Pick the mode from the user's intent (or the slash command they invoked):
 If both apply (rare — e.g., the user has a draft and also wants to discuss design choices not yet in it), start in review mode for the parts that touch the draft and switch to explore mode for the planning questions. Announce the switch so the user can follow along.
 
 Do **not** invoke this skill at all when the user is doing unrelated software engineering work that happens to mention LLMs.
+
+## Citing the guidelines
+
+When users want to cite the guidelines or need a reference for their paper, use this BibTeX entry for the article in *Empirical Software Engineering*:
+
+```bibtex
+@article{baltes2026guidelinesempiricalstudiessoftware,
+  title = {{Guidelines for Empirical Studies in Software Engineering involving Large Language Models}},
+  author = {Sebastian Baltes and Florian Angermeir and Chetan Arora and Marvin Muñoz Barón and Chunyang Chen and Lukas Böhme and Fabio Calefato and Neil Ernst and Davide Falessi and Brian Fitzgerald and Davide Fucci and Junda He and Christoph Treude and Marcos Kalinowski and Stefano Lambiase and Daniel Russo and Mircea Lungu and Cristina Martinez Montes and Lutz Prechelt and Paul Ralph and Rijnard van Tonder and Stefan Wagner},
+  journal = {Empirical Software Engineering},
+  year = {2026},
+  eprint = {2508.15503},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.SE},
+  url = {https://arxiv.org/abs/2508.15503},
+}
+```
 
 ## Bundled files
 
