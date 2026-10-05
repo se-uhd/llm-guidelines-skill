@@ -21,6 +21,7 @@ The user typically provides one or more of:
   - A PDF (`.pdf`): extract text using whatever tool is available in the environment (e.g., `pdftotext`, `mutool draw -F txt`, or a Python library). If no extractor is available, tell the user which one to install rather than failing silently.
   When both are available, prefer the LaTeX source: it lets you spot LaTeX-specific artifacts (e.g., commented-out disclosures, `\todo{}` notes) that get lost in the PDF.
 - One or more pointers to supplementary material with prompts, traces, datasets, code, or replication packages. Each can be a local directory, a local repository, or a public URL (e.g., a GitHub repo or a Zenodo record). For URLs, **clone or download the artifact locally and read its files directly**; do not characterise the artifact from a `WebFetch` summary of its landing page (see workflow step 1).
+- Optionally, a description of sharing restrictions that apply to the study (e.g., an NDA, an industry-partner agreement, an embargo, or ethics-board conditions), either stated in the request or as a path to a document listing what cannot be shared. See workflow step 2.
 
 If no paper path is supplied, ask the user for one before proceeding. Supplementary paths are optional: if the user omits them, search the paper itself for links to replication packages, datasets, prompts, traces, or code (see workflow step 1).
 
@@ -43,11 +44,21 @@ If no paper path is supplied, ask the user for one before proceeding. Supplement
 
     **When fetching genuinely fails**, say so explicitly in the report — name the URL, the failure mode (404, archive corrupt, repo private, auth/approval wall, rate limit, LFS pull failed, network blocked), and what is therefore unverified. Do not paper over the gap with a `WebFetch` summary.
 
-2. **Identify the study type(s).** Use the files under `./study-types/` to classify the study. A single paper can fall under multiple types (e.g., a new tool that also benchmarks LLMs). Note the classification at the top of the report.
+2. **Establish sharing restrictions.** Several guidelines ask authors to publish prompts, traces, datasets, or code. When parts of a study are under an NDA, an industry-partner agreement, an embargo, or ethics-board conditions, those recommendations do not apply as written, and a report that ignores this is mostly noise. Settle which restrictions apply before the per-guideline assessment:
 
-3. **Consult [`./scope.md`](./scope.md)** to confirm the work is in scope. The guidelines cover LLM use that materially affects the research method or its outcomes; peripheral uses (proofreading, spell-checking, translation, writing assistance) are explicitly out of scope, even though venue policies such as the ACM Policy on Authorship may still require an author-writing disclosure separately.
+    1. **Look for signs of restrictions** in the inputs you already read. In the paper, check data-availability and artifact-availability statements, threats to validity, acknowledgments, and footnotes for terms such as "NDA", "non-disclosure", "confidential", "proprietary", "industry partner", "industrial collaboration", "embargo", "cannot be shared", "not publicly available", "available upon request", "anonymized", or "ethics approval". In the supplementary material, check `README*`, `LICENSE*`, `NOTICE*`, data-availability or data-management files, and project notes (e.g., `CLAUDE.md`, `AGENTS.md`, `memory/`). Also take into account anything the user said in the request.
+    2. **If you find no sign and the user said nothing about restrictions**, ask the user one short question before continuing: whether any part of the study (paper, data, prompts, traces, code, or model access) is under an NDA, embargo, or other sharing restriction. If the user says no, proceed with the guidelines as written. If you cannot ask (e.g., a non-interactive run), proceed as if there are no restrictions and state that assumption in the report's *Sharing restrictions* section.
+    3. **If restrictions apply**, look for a document that lists what is protected: a section in the paper or supplementary `README`, a data-management plan, an NDA summary, an artifact-availability note, or project notes. Record the source of each restriction. A statement that names only some protected elements (e.g., "the defect reports cannot be shared") is a partial list: record what it names, and ask in sub-step 4 only about what it leaves open.
+    4. **If restrictions apply but no such list exists, or the list leaves elements open**, ask the user to provide one, either in the chat or as a path to a document. Name the elements whose status is unclear, including ones derived from protected material (e.g., filled prompts or model outputs that contain protected text). Ask what is protected (e.g., source code, datasets, prompts, model outputs or traces, model identity or configuration, participant data) and to what degree (cannot be shared at all; shareable only as summaries, excerpts, or anonymized samples; shareable after an embargo date; shareable on request). Wait for the answer before the per-guideline assessment (step 5). If you cannot ask, proceed with the restrictions you could record, and state in the *Sharing restrictions* section that the list may be incomplete.
+    5. **Record the restrictions** in the report's *Sharing restrictions* section, each with its source (a quote with location, a file path, or "stated by the user in this session") and the elements it covers. Restrictions are the user's statement of fact; do not second-guess them, but do not invent restrictions the user did not state either. Where a restriction's wording leaves it unclear whether a reduced form (an excerpt, a summary, an anonymized sample) may be shared, ask; if you cannot ask, read the restriction strictly and say so.
 
-4. **Per-guideline assessment.** For each of the eight guidelines listed in [`../SKILL.md`](../SKILL.md), load the corresponding file in `./guidelines/` on demand, then for that guideline produce:
+    The restrictions recorded here change how step 5 phrases each gap; they do not change what you look for in the paper.
+
+3. **Identify the study type(s).** Use the files under `./study-types/` to classify the study. A single paper can fall under multiple types (e.g., a new tool that also benchmarks LLMs). Note the classification at the top of the report.
+
+4. **Consult [`./scope.md`](./scope.md)** to confirm the work is in scope. The guidelines cover LLM use that materially affects the research method or its outcomes; peripheral uses (proofreading, spell-checking, translation, writing assistance) are explicitly out of scope, even though venue policies such as the ACM Policy on Authorship may still require an author-writing disclosure separately.
+
+5. **Per-guideline assessment.** For each of the eight guidelines listed in [`../SKILL.md`](../SKILL.md), load the corresponding file in `./guidelines/` on demand, then for that guideline produce:
    - `Status`: one of `covered`, `partial`, `not found`, or `not applicable` (with a one-line reason if N/A).
    - `Evidence`: 1 to 3 items, each a **verbatim quote** from the paper or supplementary material (or, for binary/structured data files, a direct file-or-key pointer), with its source location (e.g., `_s4_evaluation.tex:34` or `benchmark/python/api_usage/instance_0042.json`). Do not paraphrase. See the *Constraints* section for the full grounding rule.
    - `Gaps`: bullet list of specific missing items (`must`/`should`-level), each phrased as an author-facing suggestion (e.g., "Consider naming the exact model version and access date in the methodology."). Each gap's premise must be supported either by an Evidence item above or by a verified absence (state what you searched for and how, e.g., "`grep -i 'experiment date' _s*.tex` returned no hit").
@@ -55,9 +66,15 @@ If no paper path is supplied, ask the user for one before proceeding. Supplement
 
    Apply the RFC 2119 levels from the guideline text: **must** items become "required for full reporting"; **should** items become "recommended". Do not invent severity levels not present in the guideline.
 
-5. **Cross-cutting concerns.** After the per-guideline pass, scan [`./checklist.md`](./checklist.md) for any item that did not surface during step 4 and add it to a `Checklist gaps` section if missing.
+   **Apply the sharing restrictions from step 2.** Before finalizing each guideline's gaps, compare every gap against the recorded restrictions:
+   - If a gap asks to publish or share an element that a restriction covers (e.g., "publish all prompts" when prompts are under NDA), replace it with the alternative the guideline itself names for restricted settings, such as publishing summaries or representative examples, anonymizing identifiers and replacing proprietary code with placeholders, acknowledging the non-disclosed components as a reproducibility limitation, or describing data governance. Use the severity the guideline gives to that alternative (the checklist marks these items with a `[restricted-sharing]` tag), not the severity of the original recommendation. Prefix the adjusted gap with *Adjusted for restriction:* and name the restriction.
+   - If the restriction makes a gap impossible to address and the guideline offers no alternative, drop the gap from the guideline's block and list it under *Recommendations not applicable under these restrictions* in the *Sharing restrictions* section, with the restriction that blocks it. Do not drop gaps silently.
+   - If every gap of a guideline is dropped (none kept or adjusted), set its status to `not applicable` with the restriction as the one-line reason. An adjusted gap stays in the guideline it came from, even if the alternative is about limitations.
+   - Restrictions on *sharing* do not remove requirements on *reporting* in the paper. For example, an NDA on the dataset does not remove the need to name the model version or describe the prompting strategy, unless the restriction explicitly covers that information too.
 
-6. **Write the report.** Save the assessment as `llm-guidelines-report.md` in the user's current working directory **and** print the same content to the console. Use the [report template](#report-template) below.
+6. **Cross-cutting concerns.** After the per-guideline pass, scan [`./checklist.md`](./checklist.md) for any item that did not surface during step 5 and add it to a `Checklist gaps` section if missing. Apply the step-2 restrictions to these items the same way. If restrictions apply, also check the checklist's `[restricted-sharing]` items, which become applicable.
+
+7. **Write the report.** Save the assessment as `llm-guidelines-report.md` in the user's current working directory **and** print the same content to the console. Use the [report template](#report-template) below.
 
     Then try to resolve the bundled Markdown linter. Check these locations in order and use the first `lint_markdown.py` that exists:
 
@@ -69,7 +86,7 @@ If no paper path is supplied, ask the user for one before proceeding. Supplement
 
     If a linter is found, run `python3 <resolved-lint_markdown.py> --fix llm-guidelines-report.md`. If the linter exits non-zero, read its stdout findings (one per line, tab-separated `<file>:<line>\t<rule>\t<message>`), revise the report in place to address each, and re-run the linter. Repeat at most three iterations; after the third pass proceed regardless of the linter's state. The lint loop is internal quality control; do not mention lint output, rule names, exit codes, or iteration counts in the user-facing summary.
 
-7. **Stop after the report.** Do not modify the user's paper or supplementary material. If the user asks for follow-up edits, treat that as a new request.
+8. **Stop after the report.** Do not modify the user's paper or supplementary material. If the user asks for follow-up edits, treat that as a new request.
 
 ## Report template
 
@@ -101,6 +118,15 @@ If no paper path is supplied, ask the user for one before proceeding. Supplement
 If nothing was supplied and nothing was found, say so explicitly and flag it under
 the relevant guideline (typically *Report System and Prompt Design* and *Report
 Session Traces*).>
+
+## Sharing restrictions
+
+<Report the outcome of workflow step 2:
+- Restrictions: <one bullet per restriction, naming the protected elements and the degree of protection, with its source (verbatim quote and location, file path, or "stated by the user in this session"); or "none: <how this was established, e.g., no signs found and the user confirmed none / not asked (non-interactive run), assumed none>".>
+- Recommendations not applicable under these restrictions: <one bullet per dropped gap, naming the guideline, the recommendation, and the restriction that blocks it; omit this bullet if nothing was dropped.>
+
+Gaps that were rephrased rather than dropped stay in their guideline block,
+prefixed with *Adjusted for restriction:*.>
 
 ## Per-guideline findings
 
