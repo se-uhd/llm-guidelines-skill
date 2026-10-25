@@ -13,7 +13,7 @@ The following checklist, inspired by CONSORT (Schulz, Altman, and Moher 2010), 
 
 - **must** Report in the *paper* the exact LLM model or tool version, the configuration, and the date of study execution ([Model Version](./guidelines/model-version.md)).
 - **must** `[fine-tuning]` For fine-tuned models, describe in the *paper* the fine-tuning goal, the dataset, and the procedure ([Model Version](./guidelines/model-version.md)).
-- **should** Report default parameters and explain model and version choices ([Model Version](./guidelines/model-version.md)).
+- **should** Report default parameters and explain model and version choices, including the models and versions compared in a pilot study, and the criteria used to select the models for the main study ([Model Version](./guidelines/model-version.md)).
 - **should** Report checksums and additional model properties where available; for commercial tools, openly acknowledge their reproducibility limits ([Model Version](./guidelines/model-version.md)).
 - **should** `[quantization]` For quantized models, report the quantization level (e.g., 4-bit, 8-bit) and method (e.g., GPTQ or AWQ) ([Model Version](./guidelines/model-version.md)).
 - **should** `[fine-tuning]` Compare base and fine-tuned models using suitable metrics and benchmarks; share fine-tuning data and weights as *supplementary material* (or justify in the *paper* why they cannot be shared) ([Model Version](./guidelines/model-version.md)).
@@ -100,8 +100,10 @@ The following checklist, inspired by CONSORT (Schulz, Altman, and Moher 2010), 
 
 ## Results
 
+- **must** Do not claim more in the *paper* than the evaluation verified ([Benchmarks & Metrics](./guidelines/benchmarks-metrics.md)).
 - **should** Repeat experiments due to the inherent non-determinism of LLMs and report the result distribution using descriptive statistics ([Benchmarks & Metrics](./guidelines/benchmarks-metrics.md)).
 - **should** Use traditional (non-LLM) baselines for comparison where possible ([Benchmarks & Metrics](./guidelines/benchmarks-metrics.md)).
+- **should** Include a naive baseline that does not consider the task input (e.g., a random or majority-class classifier) as a lower bound for performance ([Benchmarks & Metrics](./guidelines/benchmarks-metrics.md)).
 - **should** Report established metrics to make study results comparable; additional metrics may be reported where appropriate ([Benchmarks & Metrics](./guidelines/benchmarks-metrics.md)).
 - **should** `[comparing-models]` If comparing models or tools, use appropriate inferential statistics (e.g., hypothesis tests, effect sizes) rather than relying solely on summary statistics ([Benchmarks & Metrics](./guidelines/benchmarks-metrics.md)).
 
