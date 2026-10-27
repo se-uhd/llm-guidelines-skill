@@ -1,8 +1,8 @@
 # LLM Guidelines Skill
 
-An [Agent Skill](https://agentskills.io/home) bundle that applies the community guidelines for empirical software engineering studies involving LLMs to a paper draft and its supplementary material. Agent Skills is an open standard originally developed by Anthropic. The format is now read by Cursor, GitHub Copilot, OpenAI Codex, Gemini CLI, Claude Code, and JetBrains Junie, among others; see the [client list](https://agentskills.io/clients).
+An [Agent Skill](https://agentskills.io/home) bundle that applies the community guidelines for empirical software engineering studies involving LLMs to a paper draft and its supplementary material. Agent Skills is an open standard originally developed by Anthropic. The format is now read by Cursor, GitHub Copilot, OpenAI Codex, Gemini CLI, Claude Code, JetBrains Junie, and pi, among others; see the [client list](https://agentskills.io/clients).
 
-The bundle exposes a single skill, `llm-guidelines`, with two modes: explore mode for discussing the guidelines and planning a study, and review mode for assessing a concrete draft against the eight guidelines and writing a report. Claude Code adds slash-command entry points for those modes; Codex CLI invokes the same skill from natural-language prompts.
+The bundle exposes a single skill, `llm-guidelines`, with two modes: explore mode for discussing the guidelines and planning a study, and review mode for assessing a concrete draft against the eight guidelines and writing a report. Claude Code adds slash-command entry points for those modes. Codex CLI invokes the same skill from natural-language prompts, and pi runs it as `/skill:llm-guidelines` with the mode as the first argument.
 
 The guideline content is published at <https://llm-guidelines.org> and authored in the companion paper repository <https://github.com/se-uhd/llm-guidelines-paper>. The Markdown files in this repository are generated from those LaTeX sources; see <https://github.com/se-uhd/llm-guidelines-website> for the conversion pipeline. **Do not edit the generated files in this repository directly.**
 
@@ -13,7 +13,7 @@ The bundle uses two-part versioning: a guideline version (CalVer `YYYY.MM`, matc
 - Initial release for a guideline version: bare `YYYY.MM` (e.g., `2026.05`).
 - Skill-only revisions for the same guideline version: `YYYY.MM_revN` (e.g., `2026.05_rev1`, `2026.05_rev2`).
 
-The current Claude/skill version is recorded in `VERSION` and embedded in `.claude-plugin/marketplace.json`, `plugins/llm-guidelines/.claude-plugin/plugin.json`, and `plugins/llm-guidelines/skills/llm-guidelines/SKILL.md` (under `metadata.version`). Codex plugin manifests require strict semver, so `plugins/llm-guidelines/.codex-plugin/plugin.json` maps the same release to `YYYY.M.REVISION` (for example, `2026.05_rev18` becomes `2026.5.18`).
+The current Claude/skill version is recorded in `VERSION` and embedded in `.claude-plugin/marketplace.json`, `plugins/llm-guidelines/.claude-plugin/plugin.json`, and `plugins/llm-guidelines/skills/llm-guidelines/SKILL.md` (under `metadata.version`), and it appears in the report template in `references/review.md` and in the pinned pi install command below. Codex plugin manifests require strict semver, so `plugins/llm-guidelines/.codex-plugin/plugin.json` maps the same release to `YYYY.M.REVISION` (for example, `2026.05_rev18` becomes `2026.5.18`). The pi package manifest `package.json` has no version field, because pi pins an install to a git tag.
 
 ## Install as a Claude Code plugin
 
@@ -71,9 +71,32 @@ codex plugin add llm-guidelines@se-uhd
 
 Local path installs are a development workflow. Codex may copy the working tree into its plugin cache, so a local install can lag behind your checkout until the marketplace is upgraded or the plugin is reinstalled.
 
+## Install in pi
+
+Install a pinned release from GitHub:
+
+```text
+pi install git:github.com/se-uhd/llm-guidelines-skill@2026.09_rev4
+```
+
+Without `@<tag>`, pi follows the `main` branch instead of a release. `pi -e git:github.com/se-uhd/llm-guidelines-skill` loads the package for one session without adding it to your settings. For a local checkout, pass its absolute path to `pi install`.
+
+Pi exposes the skill as `/skill:llm-guidelines`, and the first argument selects the mode:
+
+```text
+/skill:llm-guidelines explore
+/skill:llm-guidelines review path/to/paper.tex
+```
+
+Natural-language prompts such as the Codex examples above also load the skill.
+
+A tag pins the install, and `pi update` does not move it. To pick up a new release, run `pi install` again with the new tag. Pi identifies a git package by its URL without the tag, so the new tag replaces the old one. `pi update git:github.com/se-uhd/llm-guidelines-skill` updates an install without a tag.
+
+If another installed package provides a skill with the same name, pi keeps the skill that it discovers first and shows a warning at startup. Run `pi config` to disable one of the two.
+
 ## Use in other Agent Skills clients
 
-The skill is self-contained under `plugins/llm-guidelines/skills/llm-guidelines/`, laid out per the [Agent Skills specification](https://agentskills.io/specification): `SKILL.md` plus a `references/` directory holding the mode-specific procedures (`explore.md`, `review.md`), the eight guideline files, the study-type files, the scope statement, and the reporting checklist. To consume the bundle outside Claude Code's plugin loader, copy that directory into the location your client expects (each client's docs are linked from the [Agent Skills client list](https://agentskills.io/clients)).
+The skill is self-contained under `plugins/llm-guidelines/skills/llm-guidelines/`, laid out per the [Agent Skills specification](https://agentskills.io/specification): `SKILL.md` plus a `references/` directory holding the mode-specific procedures (`explore.md`, `review.md`), the eight guideline files, the study-type files, the scope statement, and the reporting checklist. Claude Code, Codex CLI, and pi load it through the installers above. To consume the bundle in another client, copy that directory into the location your client expects (each client's docs are linked from the [Agent Skills client list](https://agentskills.io/clients)).
 
 ## What the skills do
 
@@ -99,6 +122,8 @@ Packaging skeleton (showing the plugin-loader files, not the full file inventory
 ```text
 .claude-plugin/marketplace.json
 .agents/plugins/marketplace.json
+package.json                      # pi package manifest
+.npmrc                            # keeps pi's npm install from writing a lockfile
 plugins/llm-guidelines/
   .claude-plugin/plugin.json
   .codex-plugin/plugin.json
@@ -125,9 +150,11 @@ claude plugin validate plugins/llm-guidelines
 claude plugin validate .claude-plugin/marketplace.json
 ```
 
+To check the pi package manifest, run `pi -e .` from the repository root and confirm that the `llm-guidelines` skill loads.
+
 If a user reports `Failed to install: This plugin uses a source type your Claude Code version does not support`, do **not** assume the problem is the `source` field. Claude Code emits that same message for any unrecognized key in either manifest. Run `claude plugin validate` first; the validator surfaces the real error.
 
-Run `python3 scripts/tests/run_smoke.py` before tagging a release. It verifies the Claude version fields, Codex semver mapping, Codex marketplace shape, expected `references/` files, internal links, and the optional Codex CLI marketplace smoke when `codex` is installed. Also run the Markdown linter smoke test at `plugins/llm-guidelines/skills/llm-guidelines/scripts/tests/run_smoke.py`; it exercises the vendored linter and schema checks without rewriting generated guideline prose. The smoke test catches exactly the desync that broke `2026.05_rev10`, where a content change shipped without the version stamps moving.
+Run `python3 scripts/tests/run_smoke.py` before tagging a release. It verifies the Claude version fields, Codex semver mapping, Codex marketplace shape, the pi package manifest, expected `references/` files, internal links, and the optional Codex CLI and pi smokes when `codex` or `pi` is installed. Also run the Markdown linter smoke test at `plugins/llm-guidelines/skills/llm-guidelines/scripts/tests/run_smoke.py`; it exercises the vendored linter and schema checks without rewriting generated guideline prose. The smoke test catches exactly the desync that broke `2026.05_rev10`, where a content change shipped without the version stamps moving.
 
 ## License
 

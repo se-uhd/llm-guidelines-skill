@@ -10,6 +10,9 @@ on stale content.
 
 Tests run with the stdlib only — no YAML library, no network, no install
 step required. Frontmatter is parsed manually (single-line key: value).
+The optional Codex and pi CLI smokes run only when those binaries are on
+PATH, and they add the marketplace or install the checkout into a temporary
+home directory, never into the user's configuration.
 
 Exits 0 if all pass; non-zero on the first failure (with a summary).
 """
@@ -25,6 +28,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent.parent
 CLAUDE_MARKETPLACE = ROOT / '.claude-plugin' / 'marketplace.json'
 CODEX_MARKETPLACE = ROOT / '.agents' / 'plugins' / 'marketplace.json'
+PI_PACKAGE_JSON = ROOT / 'package.json'
 PLUGIN_DIR = ROOT / 'plugins' / 'llm-guidelines'
 CLAUDE_PLUGIN_JSON = PLUGIN_DIR / '.claude-plugin' / 'plugin.json'
 CODEX_PLUGIN_JSON = PLUGIN_DIR / '.codex-plugin' / 'plugin.json'
@@ -33,9 +37,10 @@ COMMANDS_DIR = PLUGIN_DIR / 'commands'
 SKILL_DIR = SKILLS_DIR / 'llm-guidelines'
 REFS_DIR = SKILL_DIR / 'references'
 
-EXPECTED_CLAUDE_VERSION = '2026.09_rev3'
+EXPECTED_CLAUDE_VERSION = '2026.09_rev4'
 VERSION_RE = re.compile(r'^\d{4}\.\d{2}(_rev\d+)?$')
 SEMVER_RE = re.compile(r'^\d+\.\d+\.\d+$')
+SKILL_NAME_RE = re.compile(r'^[a-z0-9]+(-[a-z0-9]+)*$')
 
 
 def read_frontmatter(path):
@@ -198,6 +203,66 @@ def test_skill_md_versions_match():
         f"{skill}: metadata.version {metadata.get('version')!r} != VERSION {bundle_version()!r}"
     assert fm.get('description'), f"{skill}: missing description"
     assert fm.get('license'), f"{skill}: missing license"
+    # Some clients (pi among them) hand the model the SKILL.md body without
+    # its frontmatter, so the report template carries the version literally.
+    review = REFS_DIR / 'review.md'
+    stamp = f"**Skill version:** {bundle_version()}"
+    assert stamp in review.read_text(encoding='utf-8'), \
+        f"{review}: report template lacks {stamp!r}"
+
+
+def test_pi_package_manifest():
+    """The root package.json is the pi package manifest. It carries no
+    version, because pi pins a git install to a release tag, and it lists
+    only the skills directory, so the Claude slash commands stay
+    Claude-only."""
+    p = PI_PACKAGE_JSON
+    data = json.loads(p.read_text(encoding='utf-8'))
+    assert data.get('name') == 'llm-guidelines', f"{p}: wrong name {data.get('name')!r}"
+    assert data.get('private') is True, f"{p}: 'private' must be true"
+    assert 'pi-package' in (data.get('keywords') or []), \
+        f"{p}: keywords must contain 'pi-package'"
+    assert 'version' not in data, \
+        f"{p}: must not have a 'version' field (pi pins by git tag)"
+    claude = json.loads(CLAUDE_PLUGIN_JSON.read_text(encoding='utf-8'))
+    assert data.get('license') == claude.get('license'), \
+        f"{p}: license {data.get('license')!r} != Claude plugin.json " \
+        f"license {claude.get('license')!r}"
+    pi = data.get('pi') or {}
+    assert pi.get('skills') == ['./plugins/llm-guidelines/skills'], \
+        f"{p}: pi.skills {pi.get('skills')!r} != ['./plugins/llm-guidelines/skills']"
+    for key in ('extensions', 'prompts'):
+        assert key not in pi, f"{p}: unexpected pi.{key} entry"
+    npmrc = ROOT / '.npmrc'
+    settings = [line.strip() for line in npmrc.read_text(encoding='utf-8').splitlines()]
+    assert 'package-lock=false' in settings, \
+        f"{npmrc}: missing package-lock=false (pi runs npm install in its clone)"
+    resolved = (ROOT / pi['skills'][0]).resolve()
+    assert resolved == SKILLS_DIR.resolve(), \
+        f"{p}: pi.skills resolves to {resolved}, not {SKILLS_DIR}"
+    skill_names = {d.name for d in resolved.iterdir() if (d / 'SKILL.md').is_file()}
+    assert skill_names == {'llm-guidelines'}, \
+        f"{p}: pi.skills holds {sorted(skill_names)}, expected ['llm-guidelines']"
+
+
+def test_skill_portable_for_pi():
+    """Pi validates the Agent Skills name and description limits and invokes
+    the skill as /skill:<name>, so SKILL.md must tell the model how the mode
+    arrives in that form."""
+    skill = SKILL_DIR / 'SKILL.md'
+    fm = read_frontmatter(skill)
+    name = fm.get('name', '')
+    assert name == SKILL_DIR.name, \
+        f"{skill}: name {name!r} != directory name {SKILL_DIR.name!r}"
+    assert SKILL_NAME_RE.match(name) and len(name) <= 64, \
+        f"{skill}: name {name!r} is not a valid Agent Skills name"
+    description = fm.get('description', '')
+    assert len(description) <= 1024, \
+        f"{skill}: description has {len(description)} characters (limit 1024)"
+    text = skill.read_text(encoding='utf-8')
+    body = text[text.find('\n---\n', 4) + 5:]
+    assert '/skill:llm-guidelines' in body, \
+        f"{skill}: body does not explain the pi invocation /skill:llm-guidelines"
 
 
 def test_agents_files_point_to_claude_md():
@@ -303,6 +368,8 @@ def test_review_instructions_resolve_linter_across_clients():
     text = review.read_text(encoding='utf-8')
     assert '${CLAUDE_SKILL_DIR}/scripts/lint_markdown.py' in text, \
         f"{review}: missing Claude skill-dir linter candidate"
+    assert '`scripts/lint_markdown.py` in the skill directory' in text, \
+        f"{review}: missing skill-directory linter candidate (pi)"
     assert 'plugins/llm-guidelines/skills/llm-guidelines/scripts/lint_markdown.py' in text, \
         f"{review}: missing checkout linter candidate"
     assert '${CODEX_HOME:-$HOME/.codex}/plugins/cache' in text, \
@@ -361,6 +428,76 @@ def test_optional_codex_cli_marketplace_smoke():
             f"codex plugin list did not show llm-guidelines@se-uhd:\n{output}"
 
 
+def _run_pi(pi, args, cwd, env, stdin=None):
+    run = subprocess.run(
+        [pi, *args],
+        cwd=cwd,
+        env=env,
+        text=True,
+        input=stdin,
+        stdin=None if stdin is not None else subprocess.DEVNULL,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        timeout=120,
+    )
+    assert run.returncode == 0, \
+        "pi {} failed:\nSTDOUT:\n{}\nSTDERR:\n{}".format(
+            ' '.join(args), run.stdout, run.stderr
+        )
+    return run
+
+
+def test_optional_pi_cli_package_smoke():
+    """Install the checkout into a throwaway pi home and ask pi, over RPC,
+    which commands it loaded. `pi list` alone shows only that the package is
+    registered; `get_commands` shows that pi resolved `pi.skills` and loaded
+    the skill from this checkout."""
+    pi = shutil.which('pi')
+    if not pi:
+        print('SKIP  test_optional_pi_cli_package_smoke: pi not installed')
+        return
+
+    tmp_root = '/private/tmp' if Path('/private/tmp').is_dir() else None
+    with tempfile.TemporaryDirectory(prefix='llm-guidelines-pi-', dir=tmp_root) as tmp:
+        env = os.environ.copy()
+        # HOME as well, so that skills in the user's ~/.agents/skills cannot
+        # shadow or join the package skill.
+        env['HOME'] = tmp
+        env['PI_CODING_AGENT_DIR'] = str(Path(tmp) / 'pi-agent')
+        env['PI_OFFLINE'] = '1'
+        Path(env['PI_CODING_AGENT_DIR']).mkdir()
+
+        _run_pi(pi, ['install', str(ROOT)], tmp, env)
+        listed = _run_pi(pi, ['list'], tmp, env)
+        assert str(ROOT) in f"{listed.stdout}\n{listed.stderr}", \
+            f"pi list did not show the package at {ROOT}:\n{listed.stdout}"
+
+        rpc = _run_pi(
+            pi, ['--mode', 'rpc', '--no-session'], tmp, env,
+            stdin=json.dumps({'id': 'smoke', 'type': 'get_commands'}) + '\n',
+        )
+        responses = []
+        for line in rpc.stdout.splitlines():
+            try:
+                message = json.loads(line)
+            except ValueError:
+                continue
+            if message.get('type') == 'response' and message.get('id') == 'smoke':
+                responses.append(message)
+        assert len(responses) == 1 and responses[0].get('success'), \
+            f"pi get_commands gave no successful response:\n{rpc.stdout}\n{rpc.stderr}"
+        skills = [c for c in responses[0]['data']['commands'] if c.get('source') == 'skill']
+        names = sorted(c.get('name') for c in skills)
+        assert names == ['skill:llm-guidelines'], \
+            f"pi loaded skills {names}, expected ['skill:llm-guidelines']"
+        info = skills[0].get('sourceInfo') or {}
+        assert info.get('origin') == 'package', \
+            f"skill:llm-guidelines did not come from the package: {info}"
+        loaded = Path(info.get('path', '')).resolve()
+        assert loaded == (SKILL_DIR / 'SKILL.md').resolve(), \
+            f"pi loaded the skill from {loaded}, not {SKILL_DIR / 'SKILL.md'}"
+
+
 # ---------- runner ----------
 
 TESTS = [
@@ -370,6 +507,8 @@ TESTS = [
     test_codex_plugin_json_version_and_shape,
     test_codex_marketplace_shape,
     test_skill_md_versions_match,
+    test_pi_package_manifest,
+    test_skill_portable_for_pi,
     test_agents_files_point_to_claude_md,
     test_skills_and_commands_present,
     test_references_required_files_exist,
@@ -377,6 +516,7 @@ TESTS = [
     test_no_absolute_website_links_leaked_into_references,
     test_review_instructions_resolve_linter_across_clients,
     test_optional_codex_cli_marketplace_smoke,
+    test_optional_pi_cli_package_smoke,
 ]
 
 

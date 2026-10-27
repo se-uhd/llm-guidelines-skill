@@ -1,6 +1,6 @@
 # Explore Mode
 
-This file is loaded by `../SKILL.md` when the user is planning or discussing an empirical SE study involving an LLM (slash command `/llm-guidelines:explore`, or when intent matches "discuss / plan / which study type"). For the audience, tone, mode-selection rules, shared constraints, and full file indices, see [`../SKILL.md`](../SKILL.md).
+This file is loaded by `../SKILL.md` when the user is planning or discussing an empirical SE study involving an LLM (slash command `/llm-guidelines:explore`, or `/skill:llm-guidelines explore` in pi, or when intent matches "discuss / plan / which study type"). For the audience, tone, mode-selection rules, shared constraints, and full file indices, see [`../SKILL.md`](../SKILL.md).
 
 ## When to use
 

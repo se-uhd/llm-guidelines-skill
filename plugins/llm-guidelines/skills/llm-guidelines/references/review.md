@@ -1,6 +1,6 @@
 # Review Mode
 
-This file is loaded by `../SKILL.md` when the user wants a concrete draft assessed against the guidelines (slash command `/llm-guidelines:review`, or when the user names a paper / hands a path to `.tex` or `.pdf` / asks to check / audit / review a draft). For the audience, tone, mode-selection rules, shared constraints, and full file indices, see [`../SKILL.md`](../SKILL.md).
+This file is loaded by `../SKILL.md` when the user wants a concrete draft assessed against the guidelines (slash command `/llm-guidelines:review`, or `/skill:llm-guidelines review` in pi, or when the user names a paper / hands a path to `.tex` or `.pdf` / asks to check / audit / review a draft). For the audience, tone, mode-selection rules, shared constraints, and full file indices, see [`../SKILL.md`](../SKILL.md).
 
 ## When to use
 
@@ -69,8 +69,9 @@ If no paper path is supplied, ask the user for one before proceeding. Supplement
     Then try to resolve the bundled Markdown linter. Check these locations in order and use the first `lint_markdown.py` that exists:
 
     1. `${CLAUDE_SKILL_DIR}/scripts/lint_markdown.py`, when `${CLAUDE_SKILL_DIR}` is set.
-    2. A checked-out plugin path under the current directory or one of its parents: `plugins/llm-guidelines/skills/llm-guidelines/scripts/lint_markdown.py`.
-    3. The Codex plugin cache under `${CODEX_HOME:-$HOME/.codex}/plugins/cache`, preferring paths that contain `/se-uhd/llm-guidelines/` and then any `llm-guidelines` cache entry.
+    2. `scripts/lint_markdown.py` in the skill directory (the directory holding `SKILL.md`), resolved from the skill path the client supplies, as in pi.
+    3. A checked-out plugin path under the current directory or one of its parents: `plugins/llm-guidelines/skills/llm-guidelines/scripts/lint_markdown.py`.
+    4. The Codex plugin cache under `${CODEX_HOME:-$HOME/.codex}/plugins/cache`, preferring paths that contain `/se-uhd/llm-guidelines/` and then any `llm-guidelines` cache entry.
 
     If no linter is found, continue without the lint loop. Do not mention the missing linter in the user-facing summary.
 
@@ -86,7 +87,7 @@ If no paper path is supplied, ask the user for one before proceeding. Supplement
 **Paper:** <path or title>
 **Supplementary material:** <paths>
 **Identified study type(s):** <one or more from study-types/>
-**Skill version:** <VERSION>
+**Skill version:** 2026.09_rev4
 
 > This report applies the community LLM reporting guidelines from
 > <https://llm-guidelines.org> as a self-check for authors. It is not a

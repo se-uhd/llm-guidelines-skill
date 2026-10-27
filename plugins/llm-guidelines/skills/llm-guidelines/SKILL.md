@@ -3,7 +3,7 @@ name: llm-guidelines
 description: Apply the community LLM reporting guidelines for empirical SE studies (see https://llm-guidelines.org). Use when the user plans, discusses, or audits an empirical study whose method involves an LLM, asks how to cite the guidelines, walks through the scope statement, eight reporting guidelines, or reporting checklist, picks a study type from the taxonomy (LLMs as annotators, judges, synthesis, or subjects; studying LLM usage in software engineering; LLMs for new SE tools; benchmarking LLMs for SE tasks), or asks for a structured pass over a draft (`.tex` or `.pdf`, plus any supplementary material) producing an `llm-guidelines-report.md`.
 license: CC-BY-4.0
 metadata:
-  version: "2026.09_rev3"
+  version: "2026.09_rev4"
   homepage: https://llm-guidelines.org
 ---
 
@@ -22,6 +22,8 @@ Pick the mode from the user's intent (or the slash command they invoked):
 
 - **Explore** — `/llm-guidelines:explore`, or when the user asks a general question about the guidelines / scope / study types, is planning a study, is preparing a replication package, or has no draft yet. Follow [`references/explore.md`](references/explore.md).
 - **Review** — `/llm-guidelines:review`, or when the user names a paper, hands a path to a `.tex` or `.pdf`, asks to check / audit / review a draft, or shares a replication package for assessment. Follow [`references/review.md`](references/review.md).
+
+In pi, the skill runs as `/skill:llm-guidelines`, and a leading `explore` or `review` in the arguments selects the mode, as in `/skill:llm-guidelines review path/to/paper.tex`.
 
 If both apply (rare — e.g., the user has a draft and also wants to discuss design choices not yet in it), start in review mode for the parts that touch the draft and switch to explore mode for the planning questions. Announce the switch so the user can follow along.
 

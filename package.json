@@ -1,0 +1,12 @@
+{
+  "name": "llm-guidelines",
+  "private": true,
+  "description": "Apply the community LLM reporting guidelines for empirical software engineering studies: explore the guidelines or review a paper draft.",
+  "license": "CC-BY-4.0",
+  "homepage": "https://llm-guidelines.org",
+  "repository": "https://github.com/se-uhd/llm-guidelines-skill",
+  "keywords": ["pi-package", "agent-skills"],
+  "pi": {
+    "skills": ["./plugins/llm-guidelines/skills"]
+  }
+}
