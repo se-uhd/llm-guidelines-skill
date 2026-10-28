@@ -94,6 +94,8 @@ A tag pins the install, and `pi update` does not move it. To pick up a new relea
 
 If another installed package provides a skill with the same name, pi keeps the skill that it discovers first and shows a warning at startup. Run `pi config` to disable one of the two.
 
+When pi installs or updates the package from git, it runs `npm install` in its own clone of the repository. The bundle has no dependencies, and the `.npmrc` at the repository root keeps npm from writing a `package-lock.json` into that clone. If you have set pi's `npmCommand` to pnpm or bun, pi runs that tool instead, and the `.npmrc` setting does not apply to it. The clone may then contain an untracked lockfile. This does not affect the skill, and pi deletes untracked files in the clone whenever it moves the clone to a new commit, so lockfiles do not pile up. Installing the package with pnpm or bun has not been tested.
+
 ## Use in other Agent Skills clients
 
 The skill is self-contained under `plugins/llm-guidelines/skills/llm-guidelines/`, laid out per the [Agent Skills specification](https://agentskills.io/specification): `SKILL.md` plus a `references/` directory holding the mode-specific procedures (`explore.md`, `review.md`), the eight guideline files, the study-type files, the scope statement, and the reporting checklist. Claude Code, Codex CLI, and pi load it through the installers above. To consume the bundle in another client, copy that directory into the location your client expects (each client's docs are linked from the [Agent Skills client list](https://agentskills.io/clients)).
