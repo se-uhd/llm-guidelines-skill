@@ -76,7 +76,7 @@ Local path installs are a development workflow. Codex may copy the working tree 
 Install a pinned release from GitHub:
 
 ```text
-pi install git:github.com/se-uhd/llm-guidelines-skill@2026.09_rev4
+pi install git:github.com/se-uhd/llm-guidelines-skill@2026.09_rev5
 ```
 
 Without `@<tag>`, pi follows the `main` branch instead of a release. `pi -e git:github.com/se-uhd/llm-guidelines-skill` loads the package for one session without adding it to your settings. For a local checkout, pass its absolute path to `pi install`.

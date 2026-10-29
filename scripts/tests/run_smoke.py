@@ -37,7 +37,7 @@ COMMANDS_DIR = PLUGIN_DIR / 'commands'
 SKILL_DIR = SKILLS_DIR / 'llm-guidelines'
 REFS_DIR = SKILL_DIR / 'references'
 
-EXPECTED_CLAUDE_VERSION = '2026.09_rev4'
+EXPECTED_CLAUDE_VERSION = '2026.09_rev5'
 VERSION_RE = re.compile(r'^\d{4}\.\d{2}(_rev\d+)?$')
 SEMVER_RE = re.compile(r'^\d+\.\d+\.\d+$')
 SKILL_NAME_RE = re.compile(r'^[a-z0-9]+(-[a-z0-9]+)*$')

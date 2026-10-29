@@ -3,7 +3,7 @@ name: llm-guidelines
 description: Apply the community LLM reporting guidelines for empirical SE studies (see https://llm-guidelines.org). Use when the user plans, discusses, or audits an empirical study whose method involves an LLM, asks how to cite the guidelines, walks through the scope statement, eight reporting guidelines, or reporting checklist, picks a study type from the taxonomy (LLMs as annotators, judges, synthesis, or subjects; studying LLM usage in software engineering; LLMs for new SE tools; benchmarking LLMs for SE tasks), or asks for a structured pass over a draft (`.tex` or `.pdf`, plus any supplementary material) producing an `llm-guidelines-report.md`.
 license: CC-BY-4.0
 metadata:
-  version: "2026.09_rev4"
+  version: "2026.09_rev5"
   homepage: https://llm-guidelines.org
 ---
 
@@ -27,7 +27,7 @@ In pi, the skill runs as `/skill:llm-guidelines`, and a leading `explore` or `re
 
 If both apply (rare — e.g., the user has a draft and also wants to discuss design choices not yet in it), start in review mode for the parts that touch the draft and switch to explore mode for the planning questions. Announce the switch so the user can follow along.
 
-Do **not** invoke this skill at all when the user is doing unrelated software engineering work that happens to mention LLMs.
+If the request turns out to be general software engineering work that mentions LLMs but involves no empirical study, answer it directly without following either mode file.
 
 ## Citing the guidelines
 
