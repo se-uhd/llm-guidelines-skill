@@ -162,4 +162,4 @@ Run `python3 scripts/tests/run_smoke.py` before tagging a release. It verifies t
 
 First-party content is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), matching the [companion website](https://github.com/se-uhd/llm-guidelines-website) and [paper](https://github.com/se-uhd/llm-guidelines-paper) repositories. See [`LICENSE`](LICENSE).
 
-Third-party software bundled under `plugins/llm-guidelines/skills/llm-guidelines/scripts/_vendor/` is distributed verbatim under its own licenses (MIT, BSD-3-Clause, Apache-2.0, PSF-2.0). See [`plugins/llm-guidelines/skills/llm-guidelines/scripts/_vendor/NOTICE`](plugins/llm-guidelines/skills/llm-guidelines/scripts/_vendor/NOTICE) for per-package attribution and full license texts.
+Third-party software bundled under `plugins/llm-guidelines/skills/llm-guidelines/scripts/_vendor/` is distributed verbatim under its own licenses (MIT, BSD-3-Clause, PSF-2.0). See [`plugins/llm-guidelines/skills/llm-guidelines/scripts/_vendor/NOTICE`](plugins/llm-guidelines/skills/llm-guidelines/scripts/_vendor/NOTICE) for per-package attribution and full license texts.
