@@ -89,7 +89,7 @@ If no paper path is supplied, ask the user for one before proceeding. Supplement
 **Paper:** <path or title>
 **Supplementary material:** <paths>
 **Identified study type(s):** <one or more from study-types/>
-**Skill version:** 2026.09_rev5
+**Skill version:** 2026.09_rev6
 
 > This report applies the community LLM reporting guidelines from
 > <https://llm-guidelines.org> as a self-check for authors. It is not a
