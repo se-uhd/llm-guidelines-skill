@@ -37,7 +37,6 @@ COMMANDS_DIR = PLUGIN_DIR / 'commands'
 SKILL_DIR = SKILLS_DIR / 'llm-guidelines'
 REFS_DIR = SKILL_DIR / 'references'
 
-EXPECTED_CLAUDE_VERSION = '2026.09_rev7'
 VERSION_RE = re.compile(r'^\d{4}\.\d{2}(_rev\d+)?$')
 SEMVER_RE = re.compile(r'^\d+\.\d+\.\d+$')
 SKILL_NAME_RE = re.compile(r'^[a-z0-9]+(-[a-z0-9]+)*$')
@@ -103,11 +102,41 @@ def codex_semver_for(version):
 
 # ---------- version coherence ----------
 
+def release_key(version):
+    """Order releases. The bare `YYYY.MM` is revision 0 of its month."""
+    m = re.match(r'^(\d{4})\.(\d{2})(?:_rev(\d+))?$', version)
+    assert m, f"cannot order {version!r}"
+    year, month, revision = m.groups()
+    return (int(year), int(month), int(revision or 0))
+
+
 def test_version_file_format():
     v = bundle_version()
     assert VERSION_RE.match(v), f"VERSION {v!r} does not match YYYY.MM[_revN]"
-    assert v == EXPECTED_CLAUDE_VERSION, \
-        f"VERSION {v!r} != expected release {EXPECTED_CLAUDE_VERSION!r}"
+
+
+def test_version_not_behind_latest_tag():
+    """`generate-skill.sh` writes VERSION from `_skill/REVISION` in the
+    website checkout, so a bundle regenerated from a stale checkout would
+    stamp an older release over a newer one. The other version tests cannot
+    see that, because every stamp still agrees with VERSION. The release
+    tags can, and CI fetches them with `fetch-depth: 0`."""
+    try:
+        run = subprocess.run(
+            ['git', 'tag', '--list'],
+            cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+        )
+    except OSError:
+        print('SKIP  test_version_not_behind_latest_tag: git not installed')
+        return
+    tags = [t for t in run.stdout.split() if VERSION_RE.match(t)]
+    if run.returncode != 0 or not tags:
+        print('SKIP  test_version_not_behind_latest_tag: no release tags in this checkout')
+        return
+    latest = max(tags, key=release_key)
+    v = bundle_version()
+    assert release_key(v) >= release_key(latest), \
+        f"VERSION {v!r} is behind the latest release tag {latest!r}"
 
 
 def test_plugin_json_version_matches():
@@ -502,6 +531,7 @@ def test_optional_pi_cli_package_smoke():
 
 TESTS = [
     test_version_file_format,
+    test_version_not_behind_latest_tag,
     test_plugin_json_version_matches,
     test_marketplace_json_version_matches,
     test_codex_plugin_json_version_and_shape,
