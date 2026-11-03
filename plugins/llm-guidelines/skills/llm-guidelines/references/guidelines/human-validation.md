@@ -16,7 +16,7 @@ Studies that include human participants need additional considerations, includin
 
 ### Replacing Human Judgment
 
-LLMs may be used to replace, rather than augment, humans in research tasks such as annotating software artifacts, coding interview transcripts, or simulating participants in user studies. In such cases, researchers **must** explain whether and how the replacement is justified and **should** follow systematic approaches to support this judgment, e.g., showing that a jury of three LLMs exhibits inter-model agreement at the same threshold researchers would require for human-to-human agreement, such as Krippendorff’s *α* &gt; 0.8. Such agreement is necessary but not sufficient. High inter-model agreement can reflect shared model biases rather than valid annotation, so researchers **should** additionally validate a sample against human experts before treating LLM outputs as a substitute for human work (Ahmed et al. 2025; Krippendorff 2018). For qualitative coding of interpretive data such as open-ended developer interview responses, agreement metrics do not show that an LLM can perform the interpretive work that the task requires. Researchers **should** justify why the LLM is methodologically appropriate (see [*LLMs for Research*](../study-types/llms-for-research.md)).
+LLMs may be used to replace, rather than augment, humans in research tasks such as annotating software artifacts, coding interview transcripts, or simulating participants in user studies. In such cases, researchers **must** explain whether and how the replacement is justified and **should** follow systematic approaches to support this judgment, e.g., showing that a jury of three LLMs exhibits inter-model agreement at the same threshold researchers would require for human-to-human agreement, such as Krippendorff’s *α* &gt; 0.8. Such agreement is necessary but not sufficient. High inter-model agreement can reflect shared model biases rather than valid annotation, so researchers **should** additionally validate a sample against human experts before treating LLM outputs as a substitute for human work (Ahmed et al. 2025; Krippendorff 2018). For qualitative coding of interpretive data such as open-ended answers from developer interviews, agreement metrics do not show that an LLM can perform the interpretive work that the task requires. Researchers **should** justify why the LLM is methodologically appropriate (see [*LLMs for Research*](../study-types/llms-for-research.md)).
 
 ### Subjective Judgment and Agreement
 
@@ -27,7 +27,7 @@ One systematic approach to building the human reference is to randomly order the
 1. independently rating one group of objects,
 2. calculating inter-rater agreement (IRA) or reliability (IRR),
 3. meeting to discuss disagreements and reach consensus,
-4. updating the decision rules so the disagreement will not recur.
+4. updating the decision rules so that the disagreement does not recur.
 
 The goal is to reach a target IRA or IRR (e.g., Krippendorff’s *α* &gt; 0.8), indicating sufficient decision rules. Once this target is reached and sustained for two to three groups, it is permissible to continue with a single rater. Researchers **should** report measures of IRA or IRR, preferably broken down by round, and **should** apply thresholds consistent with established standards. Krippendorff (2018) recommends discarding data with *α* &lt; 0.667, considers 0.667 ≤ *α* &lt; 0.8 sufficient only for tentative conclusions, and requires *α* ≥ 0.8 for reliable data (Krippendorff 2018).
 

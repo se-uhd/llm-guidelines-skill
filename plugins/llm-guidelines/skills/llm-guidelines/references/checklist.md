@@ -54,7 +54,7 @@ The following checklist, inspired by CONSORT (Schulz, Altman, and Moher 2010), 
 
 ### Session Traces
 
-- **must** Where tool-native trace formats are used (e.g., Claude Code’s session transcripts, LangGraph’s state logs), describe the file format and report the tool version ([Traces](./guidelines/traces.md)).
+- **must** Where a trace is kept in the native format of a tool (e.g., Claude Code’s session transcripts, LangGraph’s state logs), describe the file format and report the tool version ([Traces](./guidelines/traces.md)).
 - **must** `[restricted-sharing]` For traces containing sensitive information, anonymize personal identifiers, replace proprietary code with placeholders, and clearly highlight modified sections ([Traces](./guidelines/traces.md)).
 - **should** Use an open trace format with a documented schema where it fits (e.g., the OpenTelemetry GenAI semantic conventions or OpenInference) ([Traces](./guidelines/traces.md)).
 - **should** Include full interaction logs (prompts and responses) as *supplementary material* if privacy and confidentiality can be ensured ([Traces](./guidelines/traces.md)).
@@ -109,7 +109,7 @@ The following checklist, inspired by CONSORT (Schulz, Altman, and Moher 2010), 
 
 ## Limitations and Threats to Validity
 
-- **must** Discuss potential data leakage effects and their impact on results, and describe how the quality of subjective results was ensured ([Limitations](./guidelines/limitations.md)).
+- **must** Discuss potential data leakage and its impact on results, and describe how the quality of subjective results was ensured ([Limitations](./guidelines/limitations.md)).
 - **must** Transparently report study limitations, including the impact of non-determinism and generalizability constraints ([Limitations](./guidelines/limitations.md)).
 - **must** Specify whether generalization across LLMs or across time was assessed, and discuss model and version differences ([Limitations](./guidelines/limitations.md)).
 - **must** `[restricted-sharing]` Acknowledge non-disclosed confidential or proprietary components as reproducibility limitations ([Design](./guidelines/design.md)).
